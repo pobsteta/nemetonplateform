@@ -1,0 +1,37 @@
+﻿# Néméton — Règles pour Claude Code
+
+## Convention NMT (Néméton Naming Convention)
+- Clés techniques en snake_case français sans accent
+- Translittération : é->e, è->e, ê->e, à->a, ô->o, î->i, ù->u, ç->c
+- Maximum 30 caractères par clé
+- Codes courts en majuscules : B, C, W, B1, C2
+
+## Langage ubiquitaire
+- "famille" = un des 12 groupes thématiques (famille_biodiversite, famille_carbone, etc.)
+- "radar" = graphique en étoile à 12 axes, 1 par famille
+- "ndp" = Niveau De Précision (ndp_decouverte à ndp_jumeau)
+- "perspective" = texte d'interprétation LLM adapté au profil_acteur
+- "indicateur" = mesure quantitative 0-100 (indicateur_B1_protection, etc.)
+- "placette" = point d'observation géolocalisé
+- "confiance_phi" = indice de confiance Fibonacci
+
+## Architecture (ADR-009)
+- Le code métier est dans le paquet_nemeton (jamais dans l'app Shiny)
+- L'application_nemeton (Shiny/golem) est une couche de présentation
+- Aucune logique métier dans server.R ou ui.R
+- Les textes passent par i18n$t("cle"), jamais en littéral
+
+## Stack (ADR-001)
+- R/Shiny avec golem
+- bslib (Bootstrap 5) pour le layout
+- plotly pour les graphiques interactifs
+- leaflet pour les cartes
+- shiny.i18n pour l'internationalisation
+
+## Nommage dans le code R
+- Fonctions : snake_case NMT (calculer_famille, afficher_radar)
+- Variables : snake_case NMT (donnees_foret, score_biodiversite)
+- Commentaires : en français
+- Documentation roxygen : en français
+- Fichiers de traduction : inst/translations/{langue}.json
+- Tests : testthat, 1 fichier par module
