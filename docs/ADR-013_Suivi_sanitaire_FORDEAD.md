@@ -543,7 +543,16 @@ La placette est un héritage de la surveillance rapide par échantillonnage GRTS
 ### Phasage (sans migration immédiate)
 
 - **Phase A (v0.92.0)** : la table `alert` est vidée (`TRUNCATE`, 2026-06-18) et **n'est plus alimentée**. Le **masque 0-4 sur disque devient la source de vérité unique** de l'affichage santé. Le cœur débranche `.insert_fordead_alerts()` / `.insert_reconfort_alerts()` de la phase `persist` (les rasters + bundle restent écrits). **R5 n'est pas impacté** : il lit l'`alerts_sf` en mémoire, pas la DB. L'UI décide « zone saine » sur le raster (pixels classe ≥ 1), plus sur le compte d'alertes. **Aucune migration.**
-- **Phase B (ultérieure)** : la re-persistance d'alertes pixel exigera une migration (ajout `zone_id` + géométrie + `n_pixels`/`area_m2`, `plot_id` nullable, nouvelle clé d'unicité, fusion G2 sur proximité spatiale). Schéma cible documenté en spec 008 §15.3, **non appliqué**.
+- **Phase B (re-persistance pixel)** : exige une migration. Décisions **figées le 2026-06-18** (D-B1 à D-B4 ci-dessous), code à venir. Schéma cible détaillé en spec 008 §15.3.
+
+### Phase B — décisions figées (D-B1 à D-B4)
+
+- **D-B1 — Idempotence inter-runs : « replace-by-window ».** `cluster_id` étant attribué par run (non stable), chaque pipeline **purge la fenêtre de monitoring** du run (`DELETE … WHERE zone_id=? AND alert_type=? AND trigger_date BETWEEN <fenêtre>`) puis ré-insère. La contrainte `UNIQUE(zone_id, alert_type, trigger_date, cluster_id)` reste un garde-fou *intra-run*, pas le mécanisme inter-runs.
+- **D-B2 — Géométrie : `geom_wkt TEXT` en EPSG:4326.** Pas de type PostGIS `geometry` (briserait SQLite) ; centroïde stocké en WKT, projeté en 4326 à l'insertion (cohérent avec `plot.geom_wkt` / `monitoring_zone.zone_wkt`). Dual-backend préservé.
+- **D-B3 — Migration : `DROP TABLE` + `CREATE TABLE`** (`0007_alert_pixel_geometry`, pg + sqlite). La table est vide (contrat Phase A) et n'a aucun enfant FK → recréation sûre et portable, sans les pièges SQLite de l'`ALTER` (`DROP NOT NULL`/`DROP CONSTRAINT`) ni des FK différées sous la transaction unique de `db_migrate()` (cf. incident zone-cascade, v0.74.1). **Pré-vol** : `count(*) alert = 0` en prod avant déploiement.
+- **D-B4 — G4 scindé** : B-cœur (schéma + persistance + lecture + fusion G2 spatiale) et B-app (markers/centroïdes) d'abord ; la réécriture du workflow de validation terrain QField (`validation_*` sur clé pixel) est livrée en **Phase B.2**.
+
+Effets Phase B : `.insert_*_alerts()` cessent de snapper (DELETE-fenêtre + insert `zone_id`/`geom_wkt`/`n_pixels`/`area_m2`/`cluster_id`, `plot_id` NULL), re-câblées dans les pipelines ; `list_alerts()` lit `geom_wkt` (`LEFT JOIN plot`) ; `classify_disturbance()` (G2) joint sur proximité spatiale (≤ `radius_m`) ± `window_days` ; **R5 inchangé** (lit `alerts_sf` mémoire).
 
 ### Affichage multi-strates : calcul sur `_tot`, masquage à l'affichage (D2)
 
