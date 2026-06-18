@@ -543,7 +543,7 @@ La placette est un héritage de la surveillance rapide par échantillonnage GRTS
 ### Phasage (sans migration immédiate)
 
 - **Phase A (v0.92.0)** : la table `alert` est vidée (`TRUNCATE`, 2026-06-18) et **n'est plus alimentée**. Le **masque 0-4 sur disque devient la source de vérité unique** de l'affichage santé. Le cœur débranche `.insert_fordead_alerts()` / `.insert_reconfort_alerts()` de la phase `persist` (les rasters + bundle restent écrits). **R5 n'est pas impacté** : il lit l'`alerts_sf` en mémoire, pas la DB. L'UI décide « zone saine » sur le raster (pixels classe ≥ 1), plus sur le compte d'alertes. **Aucune migration.**
-- **Phase B (re-persistance pixel)** : exige une migration. Décisions **figées le 2026-06-18** (D-B1 à D-B4 ci-dessous), code à venir. Schéma cible détaillé en spec 008 §15.3.
+- **Phase B (re-persistance pixel) — livrée en `nemeton` v0.93.0** (2026-06-18). Migration `0007_alert_pixel_geometry` (pg + sqlite, `DROP`+`CREATE`), persistance pixel re-câblée (FORDEAD + RECONFORT, replace-by-window), `list_alerts()` / `classify_disturbance()` refondues, **FORDEAD mono-indice** (`.fordead_supported_vi = c("CRSWIR")`). Décisions D-B1 à D-B4 ci-dessous. Schéma détaillé en spec 008 §15.3. **Reste : Phase B.2** — refonte du workflow de validation terrain G4 sur clé pixel (D-B4), encore sur modèle placette.
 
 ### Phase B — décisions figées (D-B1 à D-B4)
 
