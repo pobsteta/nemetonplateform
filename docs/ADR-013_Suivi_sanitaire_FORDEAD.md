@@ -1,7 +1,7 @@
 # ADR-013 — Suivi sanitaire multi-méthodes : FAST + FORDEAD (résineux) + RECONFORT (feuillus), avec garde-fous applicatifs
 
 **Statut** : Accepté
-**Date**   : 2026-04-26 (initial) — amendements A1 (2026-05-16), A2 (2026-05-16), A3 (2026-05-20), A4 (2026-06-10), A5 (2026-06-18)
+**Date**   : 2026-04-26 (initial) — amendements A1 (2026-05-16), A2 (2026-05-16), A3 (2026-05-20), A4 (2026-06-10), A5 (2026-06-18), A6 (2026-06-28, révisé 2026-06-29)
 **Auteur** : Pascal Obstétar (via Claude)
 **Cible initiale** : `nemeton` v0.21.0
 **Livraisons réelles** : `nemeton` v0.21.0 (E6.c.1-4 + E6.d) → v0.23.0 (A1 migration fordead 2.x) → v0.24.0 (A2 refonte signature) → v0.42.0 (A3 L1 bundle diagnostic) → v0.43.0 (A3 L2 `read_fordead_pixel_series()`) ; `nemetonshiny` v0.31.0+ (modules suivi sanitaire), v0.42.0 (basculement raster spec 013)
@@ -594,3 +594,46 @@ Avant clôture de la release v0.92.0 :
 4. Aucune occurrence de « placette » dans les clés i18n du mode santé.
 5. Pipelines (mockés) verts après débranchement de l'insertion ; `devtools::check()` propre.
 6. FORDEAD calculé une seule fois sur `_tot` ; sélectionner `_res` / `_mix` ne relance aucun run et masque le raster `_tot` à la géométrie UGF de la strate (D2).
+
+---
+
+## Amendement A6 (2026-06-28, révisé 2026-06-29) — Masque UGF des sorties RECONFORT au read (raster + vecteur), parité des 3 pipelines
+
+**Statut** : Accepté — **livré**. `nemeton` v0.98.0 (raster) + v0.99.0 (vecteur) ; `nemetonshiny` v0.93.0 (raster) + v0.93.1 (vecteur).
+**Spec associée** : spec 021 L7 (cadrage `specs/021-suivi-sanitaire-reconfort/L7-clip-ugf-cadrage.md`) ; étend spec 016 (« Mask UGF par défaut sur le pipeline raster », `nemeton` v0.49.0) et A5/D2.
+**Déclencheur** : run réel **zone 5 Mouthe** (2026-06-29) — le **score raster** RECONFORT était clippé à l'UGF, mais le **vecteur d'alertes débordait** largement (1336 centroïdes répandus sur tous les feuillus de la bbox + 3 km).
+
+### Contexte de l'amendement
+
+A5/D2 a posé le primitif de masquage UGF (`.get_zone_aoi()` + `terra::mask()`) et son application FAST (au compute) / FORDEAD (à l'affichage du masque `_tot`). RECONFORT, livré après (spec 021), n'appliquait **aucun** masque UGF : ses sorties s'étendaient à la **bbox de l'AOI + 3 km**, filtrée par le seul masque d'occupation du sol **OSO feuillus** (classe 16, land-cover national) — pas la limite de gestion. RECONFORT était donc le **seul des trois pipelines** à ne pas masquer à l'UGF, et l'app `nemetonshiny` v0.92.3 compensait par un `terra::mask` **local** (sémantique spatiale en présentation, contraire à ADR-009 / règles strictes §1-3).
+
+### Décision
+
+Étendre le contrat spec 016 / A5-D2 à RECONFORT **et rapatrier toute la sémantique de masquage dans le cœur**, en parité stricte des trois pipelines. Décisions actées via AskUserQuestion (2026-06-28, révision 2026-06-29) :
+
+- **D1 — Nommage** : `apply_zone_mask` (identique aux readers FAST/FORDEAD), défaut `TRUE`, opt-out `FALSE`. Pas `clip_to_aoi`.
+- **D2 — Raster, au read-time** : reader cœur `read_reconfort_layer(layer, con, zone_id, apply_zone_mask, mask_polygon)` qui applique `.apply_zone_mask()` à la lecture (accepte un chemin ou une ligne raster du manifeste ; rejette une ligne vecteur). Les `.tif` IOTA² ne sont pas réécrits (« masque au read, pas au write »). Livré **`nemeton` v0.98.0**.
+- **D3 — Vecteur d'alertes : clippé au read-time** *(RÉVISÉ 2026-06-29)*. La position initiale (« ne pas clipper les centroïdes », parité supposée) reposait sur une hypothèse fausse : les centroïdes RECONFORT proviennent du `Final_Classif_masked_<year>.tif` masqué **OSO-feuillus** (pas UGF), donc débordent. Correctif : `filter_alerts_to_zone(alerts, con, zone_id, apply_zone_mask, mask_polygon)` — **helper unique partagé par les 3 pipelines** (le filtre `sf` POINT est identique → vraie parité, pas de duplication) — qui ne garde que les centroïdes intra-UGF, **au read** (table `alert` non modifiée). Interne `.filter_alerts_to_zone()`, miroir de `.apply_zone_mask()`. Livré **`nemeton` v0.99.0**.
+
+### Conséquences
+
+**Positives**
+- **Parité raster + vecteur des 3 pipelines** : FAST / FORDEAD / RECONFORT masquent désormais raster *et* vecteur à l'UGF dans leur reader / helper cœur.
+- `nemetonshiny` ne porte **plus aucune** opération spatiale de masquage : v0.93.0 (`628a49b2`) consomme `read_reconfort_layer()` et retire son `terra::mask` raster local ; v0.93.1 (`703bdd66`) enchaîne `list_alerts()` → `filter_alerts_to_zone()`. Conforme ADR-009 / §1-3.
+- Aucun nouveau code de masquage : réutilisation de `.apply_zone_mask` / `.get_zone_aoi`. Pipeline RECONFORT et table `alert` inchangés.
+
+**Points d'attention**
+- Changement de comportement par défaut (`apply_zone_mask = TRUE`) ; opt-out explicite pour l'emprise rectangulaire (debug / analyse comparative).
+- Le filtre vecteur est à l'**affichage** : la table `alert` conserve tous les centroïdes (provenance `zone_id`) ; **R5 inchangé** (il fait son propre `st_intersects` par UGF, cf. G5).
+
+### Alternatives écartées
+
+- **Masque au write** (réécrire des `.tif` clippés) : diverge du principe spec 016 / A5-D2, alourdit le pipeline, casse la séparation cache/affichage.
+- **Masquage côté `nemetonshiny`** (le `terra::mask` local de v0.92.3) : sémantique spatiale en présentation, contraire à ADR-009 ; retiré par A6.
+- **Clip des centroïdes au postprocess (write-time)** : asymétrique vs le read-time des rasters, et perd les alertes hors-UGF en base.
+
+### Tests de validation de A6
+
+1. `read_reconfort_layer()` — `test-reconfort-reader.R` (11 PASS) : masque `mask_polygon`, opt-out, `warn` sans polygone, rejet d'une ligne vecteur, résolution chemin/manifeste.
+2. `filter_alerts_to_zone()` — `test-filter-alerts-to-zone.R` (8 PASS) : filtre in/out polygone, reprojection CRS, opt-out, passthrough non-sf/vide.
+3. App (zone 5 Mouthe) : raster **et** alertes restreints à l'UGF (plus aucun point hors polygone).
