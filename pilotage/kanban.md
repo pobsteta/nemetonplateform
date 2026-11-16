@@ -25,27 +25,28 @@ _Modèle de carte :_
 
 ## Bac à sable
 
-- [001-nemeton-commande-de-tests](missions/001-nemeton-commande-de-tests.md) · nemeton · depuis le cycle 0
+## Validé
+
+## Planifié
+
+- [001-nemeton-commande-de-tests](missions/001-nemeton-commande-de-tests.md) · nemeton · depuis le cycle 1
   - Homme : `testeur` (sonnet), dans une session ouverte dans `nemeton` (ADR 0001)
   - Mission : versionner une `.claude/test-command` complète
   - Moyens : la CI du projet comme modèle ; budget 3 $ (provisoire)
   - Dépend de : rien
 
-- [002-foretaccess-plugin-et-tests](missions/002-foretaccess-plugin-et-tests.md) · foretaccess · depuis le cycle 0
+- [002-foretaccess-plugin-et-tests](missions/002-foretaccess-plugin-et-tests.md) · foretaccess · depuis le cycle 1
   - Homme : `testeur` (sonnet), dans une session ouverte dans `foretaccess` (ADR 0001)
   - Mission : activer le plugin, versionner une `.claude/test-command`
   - Moyens : la CI du projet comme modèle ; budget 3 $ (provisoire)
   - Dépend de : rien
 
-- [003-nemetonmcp-plugin-et-tests](missions/003-nemetonmcp-plugin-et-tests.md) · nemetonmcp · depuis le cycle 0
+- [003-nemetonmcp-plugin-et-tests](missions/003-nemetonmcp-plugin-et-tests.md) · nemetonmcp · depuis le cycle 1
   - Homme : `testeur` (sonnet), dans une session ouverte dans `nemetonmcp` (ADR 0001)
   - Mission : activer le plugin, versionner une `.claude/test-command` (JS et R)
   - Moyens : la CI du projet comme modèle ; budget 3 $ (provisoire)
   - Dépend de : rien
 
-## Validé
-
-## Planifié
 
 ## Terminé
 
