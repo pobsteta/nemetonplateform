@@ -126,9 +126,11 @@ Les projets auxquels il touche sont les six de la réponse d'abord, plus `marcul
   (`CLAUDE.md`).
 - **Formats ouverts, logiciels libres** ; licence de la plateforme GPL-3
   (`docs/ADR-015_Licence_GPL3.md`).
-- **Points ouverts de la carte** : la liste des projets est-elle complète ; par quoi
-  passe le lien d'`aigora`. À trancher par Pascal. Le nom de ce dépôt est tranché :
-  `nemetonplateforme` (Pascal, 2026-11-16).
+- **Points de la carte**, tranchés par Pascal le 2026-11-16 : la liste des projets est
+  complète (les dépôts au nom voisin sont hors périmètre) ; le lien d'`aigora` passe par
+  son adaptation privée `aigora-nemeton`, ajoutée aux projets pilotés (treize) ; le nom
+  de ce dépôt est `nemetonplateforme`. Reste ouvert : `aigora-nemeton` n'a pas de dépôt
+  GitHub et ne doit pas être publié, comment une mission y passe-t-elle la porte n° 3 ?
 - **Plafond global contre plafonds locaux** (contradicteur, point 5) : tranché par
   Pascal le 2026-11-16. Le plafond global de 3 PR, tous projets confondus, l'emporte
   toujours ; le plafond local d'un projet n'est qu'une limite de plus à l'intérieur de
@@ -149,7 +151,7 @@ faire aucun geste « Agir » dans un autre dépôt. À trancher par ADR au cribl
 - Non vérifié : ce que protègent `garde_main` et `journal_intact` quand la commande vise
   un autre dépôt.
 - `.claude/test-command` manque au moins dans `nemeton` et `victor` : le premier cycle en
-  fait l'inventaire pour les douze projets.
+  fait l'inventaire pour les treize projets.
 
 ## Ce que la spec devra trancher (critique du contradicteur, retenue par Pascal le 2026-11-16)
 
@@ -157,11 +159,12 @@ faire aucun geste « Agir » dans un autre dépôt. À trancher par ADR au cribl
   `repository_dispatch`), et où est gardé l'état du dernier cycle (derniers tags vus).
 - Qui publie une release : l'orchestrateur, Pascal ou la CI.
 - Où se déposent les briefs : la convention `brief-<projet>-<sujet>.md` et
-  `briefs/traites/` n'existe que dans `nemetonshiny` ; `nemeton` range les siens dans
+  `briefs/traites/` n'existe que dans `nemetonshiny` ; `aigora-nemeton` écrit les siens
+  hors dépôt, dans `~/dev/briefs/vers-<dépôt>/` ; `nemeton` range les siens dans
   `specs/`.
 - Ce que sont les « quatre temps » d'une alerte de rupture (fiche n° 8 : décidé et par
   qui ; ouvert ; ce que ça change ; qui fait quoi d'ici quand), et à qui elle s'adresse.
-- Les accès aux douze dépôts, et le repli si GitHub ou JitPack ne répond pas.
+- Les accès aux treize dépôts, et le repli si GitHub ou JitPack ne répond pas.
 - Une carte lisible par une machine (un fichier YAML, par exemple) à côté de sa version
   en prose, pour le test du successeur.
 - Le multi-dépôts est gardé : le dire, et ce qu'il coûte face à un monorepo.
