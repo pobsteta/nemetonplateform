@@ -41,14 +41,15 @@ _Modèle de carte :_
   - Moyens : la CI du projet comme modèle ; budget 3 $ (provisoire)
   - Dépend de : rien
 
-- [003-nemetonmcp-plugin-et-tests](missions/003-nemetonmcp-plugin-et-tests.md) · nemetonmcp · depuis le cycle 1
+
+
+## Terminé
+
+- [003-nemetonmcp-plugin-et-tests](missions/003-nemetonmcp-plugin-et-tests.md) · nemetonmcp · depuis le cycle 1 · PR #36 fusionnée (cf89cd3)
   - Homme : `testeur` (sonnet), dans une session ouverte dans `nemetonmcp` (ADR 0001)
   - Mission : activer le plugin, versionner une `.claude/test-command` (JS et R)
   - Moyens : la CI du projet comme modèle ; budget 3 $ (provisoire)
   - Dépend de : rien
-
-
-## Terminé
 
 ## Abandonné
 
