@@ -29,6 +29,12 @@ _Modèle de carte :_
 
 ## Planifié
 
+- [004-nemetonshiny-commande-de-tests](missions/004-nemetonshiny-commande-de-tests.md) · nemetonshiny · depuis le cycle 2
+  - Homme : `testeur` (sonnet), dans une session ouverte dans `nemetonshiny` (ADR 0001)
+  - Mission : versionner la `.claude/test-command` (niveau rapide si besoin, suite complète en CI)
+  - Moyens : missions 001 et 002 en modèles ; budget 3 $
+  - Dépend de : rien
+
 - [001-nemeton-commande-de-tests](missions/001-nemeton-commande-de-tests.md) · nemeton · depuis le cycle 1
   - Homme : `testeur` (sonnet), dans une session ouverte dans `nemeton` (ADR 0001)
   - Mission : versionner une `.claude/test-command` complète
