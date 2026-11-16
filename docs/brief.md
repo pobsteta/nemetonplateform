@@ -1,4 +1,4 @@
-# nemetonplateform — brief
+# nemetonplateforme — brief
 
 > Rédigé par Claude avec `/imperatrice:brief` : à chaque question, une proposition de
 > Claude que Pascal retient, corrige ou rejette ; relu par Pascal, puis critiqué par le
@@ -47,7 +47,7 @@
 - **Coût complet aujourd'hui** : inconnu. Pascal a laissé cette part de sa réponse
   entre crochets.
 
-## Ce que fait nemetonplateform
+## Ce que fait nemetonplateforme
 
 - **En une phrase** : il vérifie tous les projets de la plateforme Néméton, repère ceux
   qu'un changement impacte et fait avancer leurs missions, en série le long des
@@ -127,7 +127,8 @@ Les projets auxquels il touche sont les six de la réponse d'abord, plus `marcul
 - **Formats ouverts, logiciels libres** ; licence de la plateforme GPL-3
   (`docs/ADR-015_Licence_GPL3.md`).
 - **Points ouverts de la carte** : la liste des projets est-elle complète ; par quoi
-  passe le lien d'`aigora` ; le nom de ce dépôt. À trancher par Pascal.
+  passe le lien d'`aigora`. À trancher par Pascal. Le nom de ce dépôt est tranché :
+  `nemetonplateforme` (Pascal, 2026-11-16).
 - **Plafond global contre plafonds locaux** : sept projets ont leur propre plafond de
   3 PR ; lequel l'emporte, et ce qui compte dans le plafond global, est à trancher par
   Pascal (contradicteur, point 5).

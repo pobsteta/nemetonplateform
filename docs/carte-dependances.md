@@ -121,5 +121,7 @@ confiée depuis ce dépôt dans un autre.
   `alphaearthnemeton`, `forptnemeton`, `tarif-nemeton` (hors périmètre, retenu par Pascal
   le 2026-11-16).
 - Le lien d'`aigora` avec la plateforme : par quoi passe-t-il ?
-- Le nom de ce dépôt : `nemetonplateform` sur GitHub, `nemeton_plateforme` dans son
-  README, `platform_nemeton` dans les `CLAUDE.md` de `nemeton` et `nemetonshiny`.
+- ~~Le nom de ce dépôt~~ : tranché par Pascal le 2026-11-16, **`nemetonplateforme`**.
+  Anciens noms : `nemetonplateform` (GitHub, redirigé), `nemeton_plateforme` (README),
+  `platform_nemeton` (`CLAUDE.md` de `nemeton` et `nemetonshiny`, dossier
+  `nemetonshiny/briefs/vers-platform_nemeton/`) : un brief à déposer dans ces deux projets.

@@ -1,4 +1,4 @@
-# Équipe de nemetonplateform
+# Équipe de nemetonplateforme
 
 > Produit par l'orchestrateur avec `/imperatrice:mission`, **validé par Pascal** avant
 > tout démarrage. Règle de staffing : un agent par mission qui passe les trois

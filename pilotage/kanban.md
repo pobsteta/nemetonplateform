@@ -1,4 +1,4 @@
-# Kanban de nemetonplateform
+# Kanban de nemetonplateforme
 
 > Cinq colonnes (fiche n° 8). Chaque carte porte l'Homme (qui), la Mission (quoi, quand,
 > combien) et les Moyens (comment, où, avec qui), et renvoie à sa fiche dans

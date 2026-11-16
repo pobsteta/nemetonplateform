@@ -1,6 +1,6 @@
-# nemetonplateform — consignes de l'orchestrateur
+# nemetonplateforme — consignes de l'orchestrateur
 
-nemetonplateform est le poste de pilotage de la plateforme Néméton : il vérifie les
+nemetonplateforme est le poste de pilotage de la plateforme Néméton : il vérifie les
 projets de la plateforme, repère ceux qu'un changement impacte et fait avancer leurs
 missions, en série ou en parallèle selon leurs dépendances. Il est conduit par une équipe
 d'agents IA selon **la méthode de l'Impératrice** de Pascal Obstétar, apportée par le
