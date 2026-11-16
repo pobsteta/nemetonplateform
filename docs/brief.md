@@ -41,8 +41,9 @@
   `nemetonshiny/briefs/` ; l'aval installe la dernière release de l'amont, pas `main`
   (carte). Le plafond de relecture est écrit projet par projet, si bien que les PR à
   relire s'additionnent d'un projet à l'autre (carte).
-- **Bénéficiaires** : d'abord Pascal, seul à décider et à relire les PR (réponse
-  d'abord) ; ensuite : à trancher par Pascal.
+- **Bénéficiaires** : Pascal, seul à décider et à relire les PR (réponse d'abord). Les
+  utilisateurs finaux de la plateforme (forestiers, gestionnaires) ne sont pas
+  bénéficiaires de l'orchestrateur : ils le sont des projets qu'il fait avancer (critique du contradicteur, retenue par Pascal le 2026-11-16).
 - **Coût complet aujourd'hui** : inconnu. Pascal a laissé cette part de sa réponse
   entre crochets.
 
@@ -54,18 +55,40 @@
 - **Les gestes sur le terrain** : le cycle de `CLAUDE.md`, d'un projet à l'autre :
   1. **Observer** ce qui a changé dans chaque projet depuis le dernier cycle : tags et
      releases, `NEWS.md` ou `CHANGELOG.md`, contrat public, briefs déposés, PR ouvertes.
-  2. **S'orienter** : trouver les projets en aval d'après la carte, en partant de
-     `nemeton` (réponse d'abord), et déposer un brief dans chaque projet impacté
+     Avant toute release d'un projet en amont, les tests des projets en aval sont lancés
+     contre sa branche `main` (contrôle des dépendances inverses, à la manière de
+     `revdepcheck` pour R) ; la carte est relevée de nouveau à chaque cycle (critique du contradicteur, retenue par Pascal le 2026-11-16).
+  2. **S'orienter** : trouver les projets en aval d'après la carte, en partant du projet
+     qui a changé (`nemeton` le plus souvent, d'après la réponse d'abord), et déposer un brief dans chaque projet impacté
      (`brief-<projet>-<sujet>.md`, rangé dans `briefs/traites/` une fois traité).
   3. **Décider** : proposer les missions du cycle dans la limite du plafond global.
   4. **Agir** : en série le long d'une chaîne, une mission en aval attendant la release
      en amont dont elle dépend ; en parallèle entre missions indépendantes (`nemeton`
      et `foretaccess`, tests d'aval écrits pendant que l'amont avance, d'après la carte).
   5. **Dire tout de suite** toute rupture de contrat entre deux projets.
+
+  Ce qu'est un « impact » dépend du lien (critique du contradicteur, retenue par Pascal le 2026-11-16) :
+  - **dépendance de code R** (`Imports`, `Remotes: …@*release`) : l'aval suit la dernière
+    release de l'amont ; il peut casser à la prochaine release, sans PR de sa part ;
+  - **dépendance Gradle** (`terrain`, version épinglée) : l'aval ne change que si l'on monte
+    de version ; à chaque release de `terrain`, l'orchestrateur propose la montée, que
+    Pascal décide (c'est un contrat entre projets) ;
+  - **échange de données ou de format** (`deperis.gpkg`, plan d'action gpkg) : un contrat
+    sans ordre de release, protégé par un test de contrat.
+
+  Seules les dépendances de code fixent l'ordre des releases ; elles ne doivent jamais
+  former de cycle, et l'orchestrateur le vérifie à chaque cycle. La plateforme a deux
+  chaînes : R/Python (`nemeton`, `foretaccess` en tête) et Kotlin/Android (`terrain` en
+  tête).
 - **Ce qu'il produit** : les briefs déposés dans les projets impactés ; les fiches de
   mission qui traversent plusieurs projets (`pilotage/missions/`) ; une PR par mission,
   dans le dépôt du projet ; le kanban commun et le journal ; les alertes de rupture de
   contrat (`CLAUDE.md`). Aucun code produit dans ce dépôt.
+- **Ce qu'il demande aux projets** (critique du contradicteur, retenue par Pascal le 2026-11-16) : chaque projet en amont tient une rubrique
+  « Ruptures » dans son `NEWS.md` ou `CHANGELOG.md`, que l'orchestrateur lit (le schéma de
+  version reste le choix de chaque projet) ; chaque lien de la carte a son contrat écrit
+  et son test de contrat, sur le modèle de `nemetonshiny/CONTRAT.md` et
+  `test-contrat_nemetonmcp.R`.
 
 ## Ce qu'il ne fait pas (hors périmètre)
 
@@ -74,8 +97,9 @@ D'après `CLAUDE.md` :
 - il ne contient ni n'écrit de code produit dans ce dépôt ;
 - il ne tranche aucune question de sens, de périmètre, de valeur ou de contrat entre
   projets : il la prépare et la pose à Pascal (réponse d'abord) ;
-- il ne tient pas le pilotage propre d'un projet qui a son `pilotage/` (aujourd'hui
-  `nemetonshiny`) : il y renvoie sans recopier ;
+- il ne tient pas le pilotage propre d'un projet qui a son `pilotage/` (`nemetonshiny`,
+  `terrain`, `marculus`, `surculus`, `ramulus`, `groma`, `sylvostation`) : il y renvoie sans
+  recopier ;
 - il ne confie aucune mission de développement à un projet sans la méthode : l'installer
   est la première mission, avec l'accord de Pascal.
 
@@ -102,8 +126,39 @@ Les projets auxquels il touche sont les six de la réponse d'abord, plus `marcul
   (`CLAUDE.md`).
 - **Formats ouverts, logiciels libres** ; licence de la plateforme GPL-3
   (`docs/ADR-015_Licence_GPL3.md`).
-- **Deux limites du plugin `imperatrice` 0.7.0**, à trancher par ADR avant la première
-  mission dans un autre dépôt : le hook de tests ne lit que le dépôt de la session, et
-  `/boucle` isole les agents dans un worktree de ce dépôt-ci (carte).
 - **Points ouverts de la carte** : la liste des projets est-elle complète ; par quoi
   passe le lien d'`aigora` ; le nom de ce dépôt. À trancher par Pascal.
+- **Plafond global contre plafonds locaux** : sept projets ont leur propre plafond de
+  3 PR ; lequel l'emporte, et ce qui compte dans le plafond global, est à trancher par
+  Pascal (contradicteur, point 5).
+
+## Préalables bloquants (critique du contradicteur, retenue par Pascal le 2026-11-16)
+
+Rien de ce qui suit n'est levé ; tant qu'ils ne le sont pas, l'orchestrateur ne peut
+faire aucun geste « Agir » dans un autre dépôt. À trancher par ADR au crible FRANCE.
+
+- Le hook de tests du plugin `imperatrice` ne lit que le `.claude/test-command` du dépôt
+  de la session (`hooks/tests_obligatoires.py`) : une session ouverte ici ne teste aucun
+  projet.
+- `/boucle` isole les agents dans un worktree du dépôt de la session, pas de celui où ils
+  écrivent (carte). Piste à étudier : une session ouverte dans le dépôt du projet, sur
+  commande de l'orchestrateur.
+- Non vérifié : ce que protègent `garde_main` et `journal_intact` quand la commande vise
+  un autre dépôt.
+- `.claude/test-command` manque au moins dans `nemeton` et `victor` : le premier cycle en
+  fait l'inventaire pour les douze projets.
+
+## Ce que la spec devra trancher (critique du contradicteur, retenue par Pascal le 2026-11-16)
+
+- Ce qui déclenche un cycle (à la demande, à un rythme, sur release par
+  `repository_dispatch`), et où est gardé l'état du dernier cycle (derniers tags vus).
+- Qui publie une release : l'orchestrateur, Pascal ou la CI.
+- Où se déposent les briefs : la convention `brief-<projet>-<sujet>.md` et
+  `briefs/traites/` n'existe que dans `nemetonshiny` ; `nemeton` range les siens dans
+  `specs/`.
+- Ce que sont les « quatre temps » d'une alerte de rupture (fiche n° 8 : décidé et par
+  qui ; ouvert ; ce que ça change ; qui fait quoi d'ici quand), et à qui elle s'adresse.
+- Les accès aux douze dépôts, et le repli si GitHub ou JitPack ne répond pas.
+- Une carte lisible par une machine (un fichier YAML, par exemple) à côté de sa version
+  en prose, pour le test du successeur.
+- Le multi-dépôts est gardé : le dire, et ce qu'il coûte face à un monorepo.
