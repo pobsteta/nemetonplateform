@@ -9,14 +9,14 @@
 
 ## Plafond humain
 
-> **Global** : il compte les PR ouvertes de tous les projets pilotés (liste dans
-> `docs/carte-dependances.md`), pas celles de ce seul dépôt. Les deux chiffres ci-dessous
-> sont des propositions, à confirmer par Pascal.
+> **Ce qu'il compte** (cap de Pascal du 2026-11-16, qui remplace « toutes les PR de tous
+> les projets ») : les PR ouvertes par l'orchestrateur de `nemetonplateforme`, dans quelque dépôt que ce soit ; les PR que chaque projet ouvre dans son propre pilotage relèvent de son plafond local.
 
-- **PR ouvertes en même temps, au plus, tous projets confondus :** 3 _(confirmé par
+- **PR ouvertes en même temps par l'orchestrateur, au plus :** 3 _(d'abord confirmé par
   Pascal le 2026-11-16 : ce plafond global l'emporte toujours sur le plafond local d'un
   projet, qui n'est qu'une limite de plus dans ce projet ; il compte toutes les PR qui
-  attendent la relecture de Pascal, quel que soit le dépôt)_
+  attendent la relecture de Pascal, quel que soit le dépôt ; revu le même jour : ne
+  compte que les PR ouvertes par l'orchestrateur)_
 - **Rythme de relecture de Pascal :** _… (pour mémoire, `nemetonshiny/pilotage/equipe.md`
   note 5 PR par jour ouvré, bilan du 2026-11-13, pour ce seul projet)_
 

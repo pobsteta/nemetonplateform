@@ -119,8 +119,9 @@ Pascal a ajoutés le 2026-11-16.
 
 - **Décision humaine** : Pascal garde le sens, le périmètre et les contrats entre
   projets ; il veut être sollicité le moins possible (réponse d'abord).
-- **Plafond humain global** : au plus 3 PR ouvertes à la fois, tous projets confondus
-  (réponse d'abord, `pilotage/equipe.md`).
+- **Plafond humain** : au plus 3 PR ouvertes à la fois par l'orchestrateur, dans
+  quelque dépôt que ce soit (`pilotage/equipe.md`, cap de Pascal du 2026-11-16 ; la
+  réponse d'abord disait « tous projets confondus »).
 - **Ordre de fusion** : celui de la carte. Pas de mission en aval avant la release en
   amont dont elle dépend.
 - **Chaque projet reste chez lui** : son `CLAUDE.md` prime pour ce qui lui est propre,
@@ -138,7 +139,8 @@ Pascal a ajoutés le 2026-11-16.
   Pascal le 2026-11-16. Le plafond global de 3 PR, tous projets confondus, l'emporte
   toujours ; le plafond local d'un projet n'est qu'une limite de plus à l'intérieur de
   ce projet. Le plafond global compte toutes les PR qui attendent la relecture de
-  Pascal, quel que soit le dépôt.
+  Pascal, quel que soit le dépôt. **Revu par Pascal le même jour (cap)** : le plafond
+  de 3 ne compte que les PR ouvertes par l'orchestrateur de `nemetonplateforme`, dans quelque dépôt que ce soit ; les PR que chaque projet ouvre dans son propre pilotage relèvent de son plafond local.
 
 ## Préalables bloquants (critique du contradicteur, retenue par Pascal le 2026-11-16)
 

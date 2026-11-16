@@ -21,7 +21,8 @@ Pascal est le seul humain du parcours. Il ouvre une session Claude Code dans
 2. **S'orienter.** Pour chaque changement, il suit la carte vers l'aval et dépose un
    brief par projet impacté (§ 4).
 3. **Décider.** Il propose à Pascal les missions du cycle, dans la limite du plafond
-   global (3 PR qui attendent la relecture de Pascal, tous dépôts confondus). Pascal
+   (3 PR ouvertes par l'orchestrateur, dans quelque dépôt que ce soit ;
+   `pilotage/equipe.md`). Pascal
    retient, corrige ou rejette.
 4. **Agir.** Il confie les missions retenues, en série le long d'une chaîne, en parallèle
    entre chaînes. **Bloqué** tant que les ADR des préalables ne sont pas tranchées.
@@ -111,8 +112,8 @@ périmètre et les contrats entre projets :
   `.claude/test-command`, pas de test de contrat) : faute de vert, rien n'est délégué.
 
 Chaque fusion et chaque release faite par l'orchestrateur est inscrite au journal (dépôt,
-PR ou tag, contrôles verts) et dite à Pascal au bilan du cycle. Le plafond global reste
-celui de `pilotage/equipe.md` : il compte les PR qui attendent Pascal.
+PR ou tag, contrôles verts) et dite à Pascal au bilan du cycle. Le plafond est celui
+de `pilotage/equipe.md` : 3 PR ouvertes par l'orchestrateur.
 
 ## 6. Une alerte de rupture de contrat
 
@@ -191,7 +192,7 @@ YAML : format ouvert, lisible sans outil, que tout successeur relit.
 **Proposé :** une mission y travaille sur une branche locale ; l'orchestrateur fusionne
 la branche dans `main` aux conditions du § 5 (sans CI GitHub : la commande de tests du
 projet en tient lieu). Sinon, Pascal relit le diff (`git diff main...<branche>`) et
-fusionne ; cette relecture compte dans le plafond global comme une PR. Rien n'est
+fusionne ; cette relecture compte dans le plafond comme une PR. Rien n'est
 jamais poussé vers un dépôt distant. Sa première
 mission, avec l'accord de Pascal, est d'installer la méthode, avec une
 `.claude/test-command`.
@@ -224,7 +225,8 @@ La spec est tenue quand :
 3. un changement de `nemeton` produit un brief dans `~/dev/briefs/vers-<projet>/` pour
    chaque projet en aval d'après la carte, et pour eux seuls ;
 4. une rupture vue est dite en quatre temps dans la session et au journal ;
-5. jamais plus de 3 PR (ou relectures de branche locale) n'attendent Pascal à la fois ;
+5. jamais plus de 3 PR (ou relectures de branche locale) ouvertes par l'orchestrateur à
+   la fois ;
 6. aucune fusion ni aucune release n'est faite par l'orchestrateur sans les six contrôles
    verts du § 5, et aucune qui déclare une rupture ;
 7. avant toute mission « Agir » : les ADR sur les tests et les worktrees d'un dépôt à

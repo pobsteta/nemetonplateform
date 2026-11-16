@@ -30,7 +30,7 @@ l'effort.**
 | Ce qu'on construit, pour qui | `docs/brief.md` puis `docs/spec.md` |
 | Qui dépend de qui, et l'ordre de fusion | `docs/carte-dependances.md` |
 | Les décisions d'architecture | `docs/adr/NNNN-titre.md` (les ADR antérieures restent dans `docs/`) |
-| L'équipe validée, le plafond humain **global** | `pilotage/equipe.md` |
+| L'équipe validée, le plafond humain | `pilotage/equipe.md` |
 | Les missions qui traversent plusieurs projets | `pilotage/missions/NNN-titre.md` |
 | L'avancement, tous projets confondus | `pilotage/kanban.md` |
 | La mémoire du pilotage commun | `pilotage/journal.md` — **ajout seul, on n'efface jamais** |
@@ -75,8 +75,9 @@ un projet.
 2. **S'orienter** : pour chaque changement, les projets en aval d'après la carte. Pour
    chacun, un brief déposé dans le projet impacté, selon la convention déjà en usage
    (`brief-<projet>-<sujet>.md`, rangé dans `briefs/traites/` une fois traité).
-3. **Décider** : proposer les missions du cycle dans la limite du **plafond humain
-   global** de `pilotage/equipe.md`, qui compte les PR ouvertes de tous les projets.
+3. **Décider** : proposer les missions du cycle dans la limite du **plafond humain**
+   de `pilotage/equipe.md` : 3 PR ouvertes par l'orchestrateur, dans quelque dépôt
+   que ce soit (les PR propres au pilotage d'un projet n'y comptent pas).
 4. **Agir** : en série le long d'une chaîne de dépendances, en parallèle entre missions
    indépendantes. Une mission en aval ne part pas avant la release en amont dont elle
    dépend ; la fiche le dit dans « Dépend de / rouge attendu jusqu'à ».
