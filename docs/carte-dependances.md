@@ -19,8 +19,13 @@
 | `surculus` | application Android, suivi des travaux de plantation | `versionName` injecté par la CI | v0.7.84 | plugin activé, `pilotage/` |
 | `ramulus` | application Android, état des houppiers (protocole DEPERIS du DSF) | `versionName` injecté par la CI | aucun | plugin activé, `pilotage/` |
 | `groma` | inventaire forestier par vidéo : application Android, paquet Python, serveur | voir `CHANGELOG.md` | v2026.11.7 | plugin activé, `pilotage/` |
+| `sylvostation` | paquet R et pipeline `targets` : catalogue de stations forestières par sylvoécorégion | 0.0.0.9000 | aucun | `CLAUDE.md` de la méthode et `pilotage/` ; délégation totale de Pascal depuis le 2026-11-16 (son `CLAUDE.md`) |
 
-Les cinq dernières lignes ont été ajoutées le 2026-11-16 à la demande de Pascal, d'après une
+`sylvostation` n'a pas de clone dans `~/dev`. Sa branche par défaut sur GitHub est
+`claude/admiring-cerf-hq7t8l` : il n'a pas de `main`. Son `DESCRIPTION` n'importe aucun
+projet de la plateforme, et aucun lien n'est relevé.
+
+Les six dernières lignes ont été ajoutées le 2026-11-16 à la demande de Pascal, d'après une
 première lecture du dépôt local de chaque projet ; leurs liens sont à confirmer.
 
 À regarder : dans `nemeton`, `DESCRIPTION` annonce 2026.11.34.9000 alors que le dernier
@@ -113,8 +118,8 @@ confiée depuis ce dépôt dans un autre.
 
 - La liste des projets est-elle complète ? Dépôts au nom voisin non relevés ici :
   `opencanopy`, `maestronemeton`, `treesatnemeton`, `flairhubnemeton`,
-  `alphaearthnemeton`, `forptnemeton`, `tarif-nemeton`, `sylvostation` (hors périmètre,
-  retenu par Pascal le 2026-11-16).
+  `alphaearthnemeton`, `forptnemeton`, `tarif-nemeton` (hors périmètre, retenu par Pascal
+  le 2026-11-16).
 - Le lien d'`aigora` avec la plateforme : par quoi passe-t-il ?
 - Le nom de ce dépôt : `nemetonplateform` sur GitHub, `nemeton_plateforme` dans son
   README, `platform_nemeton` dans les `CLAUDE.md` de `nemeton` et `nemetonshiny`.

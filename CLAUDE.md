@@ -52,8 +52,8 @@ chaque PR vers `main`) → `/imperatrice:bilan`.
 ### Les projets pilotés
 
 `nemeton`, `foretaccess`, `nemetonshiny`, `nemetonmcp`, `victor`, `aigora`, `terrain`,
-`marculus`, `surculus`, `ramulus`, `groma` (les cinq derniers ajoutés par Pascal le
-2026-11-16). La liste et
+`marculus`, `surculus`, `ramulus`, `groma`, `sylvostation` (les six derniers ajoutés par
+Pascal le 2026-11-16). La liste et
 les liens entre eux sont dans `docs/carte-dependances.md` ; Pascal y ajoute ou en retire
 un projet.
 

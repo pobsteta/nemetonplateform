@@ -81,12 +81,12 @@ D'après `CLAUDE.md` :
 
 Il ne touche à aucun dépôt hors des projets de la carte, en particulier aux dépôts au
 nom voisin qu'elle relève : `opencanopy`, `maestronemeton`, `treesatnemeton`,
-`flairhubnemeton`, `alphaearthnemeton`, `forptnemeton`, `tarif-nemeton`, `sylvostation`,
-tant que Pascal ne les ajoute pas à la carte (proposition retenue par Pascal le
+`flairhubnemeton`, `alphaearthnemeton`, `forptnemeton`, `tarif-nemeton`, tant que Pascal ne les ajoute pas à la carte (proposition retenue par Pascal le
 2026-11-16).
 
 Les projets auxquels il touche sont les six de la réponse d'abord, plus `marculus`,
-`surculus`, `terrain`, `groma` et `ramulus`, que Pascal a ajoutés le 2026-11-16.
+`surculus`, `terrain`, `groma`, `ramulus` et `sylvostation`, que Pascal a ajoutés le
+2026-11-16.
 
 ## Contraintes connues
 
