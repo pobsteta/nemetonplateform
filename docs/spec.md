@@ -82,15 +82,37 @@ briefs traités à ce jour).
 - Limite à dire : cette boîte n'est ni versionnée ni sauvegardée par git. Elle vit sur
   le seul PC de Pascal.
 
-## 5. Qui publie une release
+## 5. Qui fusionne et qui publie une release
 
-**Proposé : Pascal, toujours.** L'orchestrateur prépare la release (numéro, rubrique
-« Ruptures », contrôle des dépendances inverses vert) et la propose ; Pascal pousse le
-tag ou valide la PR de release, et la CI du projet publie là où elle publie déjà.
+> **Changement de cap du 2026-11-16 (Pascal)** : la première version de ce paragraphe
+> disait « Pascal, toujours ». Pascal délègue désormais les fusions et les releases à
+> l'orchestrateur, **quand tout est vert**.
 
-- Pourquoi : une release peut casser l'aval, c'est un contrat entre projets, que Pascal
-  garde (brief, « Décision humaine »).
-- L'orchestrateur ne crée jamais de tag ni de release.
+**L'orchestrateur fusionne une PR vers `main`** quand tout ce qui suit est vert :
+
+1. la CI de la PR dans le dépôt du projet ;
+2. la commande de tests du projet (`.claude/test-command`), lancée dans le dépôt ;
+3. les tests des projets en aval d'après la carte, lancés contre la branche (contrôle des
+   dépendances inverses) ;
+4. les tests de contrat des liens touchés (sur le modèle de
+   `test-contrat_nemetonmcp.R`) ;
+5. la relecture du `contradicteur` sur la PR, sans objection bloquante ;
+6. la PR ne déclare aucune rupture (rubrique « Ruptures » vide ou absente).
+
+**L'orchestrateur publie une release** aux mêmes conditions, sur `main` à jour, avec le
+schéma de version du projet ; la CI du projet publie là où elle publie déjà.
+
+**Revient à Pascal**, même tout vert, parce que le brief validé lui garde le sens, le
+périmètre et les contrats entre projets :
+
+- toute PR ou release qui déclare une rupture, ou qui change un contrat écrit (§ 6) ;
+- toute montée de version de `terrain` dans l'aval (brief : « Pascal décide ») ;
+- tout projet où un des six contrôles ci-dessus n'existe pas encore (pas de
+  `.claude/test-command`, pas de test de contrat) : faute de vert, rien n'est délégué.
+
+Chaque fusion et chaque release faite par l'orchestrateur est inscrite au journal (dépôt,
+PR ou tag, contrôles verts) et dite à Pascal au bilan du cycle. Le plafond global reste
+celui de `pilotage/equipe.md` : il compte les PR qui attendent Pascal.
 
 ## 6. Une alerte de rupture de contrat
 
@@ -166,9 +188,11 @@ YAML : format ouvert, lisible sans outil, que tout successeur relit.
 
 `aigora-nemeton` n'a pas de dépôt GitHub et ne doit pas être publié : pas de PR possible.
 
-**Proposé :** une mission y travaille sur une branche locale ; Pascal relit le diff
-(`git diff main...<branche>`) dans une session ouverte dans `aigora-nemeton`, et fusionne
-lui-même. Cette relecture compte dans le plafond global comme une PR. Sa première
+**Proposé :** une mission y travaille sur une branche locale ; l'orchestrateur fusionne
+la branche dans `main` aux conditions du § 5 (sans CI GitHub : la commande de tests du
+projet en tient lieu). Sinon, Pascal relit le diff (`git diff main...<branche>`) et
+fusionne ; cette relecture compte dans le plafond global comme une PR. Rien n'est
+jamais poussé vers un dépôt distant. Sa première
 mission, avec l'accord de Pascal, est d'installer la méthode, avec une
 `.claude/test-command`.
 
@@ -201,7 +225,8 @@ La spec est tenue quand :
    chaque projet en aval d'après la carte, et pour eux seuls ;
 4. une rupture vue est dite en quatre temps dans la session et au journal ;
 5. jamais plus de 3 PR (ou relectures de branche locale) n'attendent Pascal à la fois ;
-6. aucune release ni aucun tag n'est créé par l'orchestrateur ;
+6. aucune fusion ni aucune release n'est faite par l'orchestrateur sans les six contrôles
+   verts du § 5, et aucune qui déclare une rupture ;
 7. avant toute mission « Agir » : les ADR sur les tests et les worktrees d'un dépôt à
    l'autre sont tranchées par Pascal, et l'inventaire des `.claude/test-command` des
    treize projets est fait.

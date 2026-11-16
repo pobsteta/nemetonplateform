@@ -41,8 +41,9 @@ Un lien plutôt qu'une copie. Si une information existe à deux endroits, l'un d
 ## Le déroulé
 
 `/imperatrice:brief` (porte n° 1 : Pascal valide brief et spec) → `/imperatrice:mission`
-(porte n° 2 : Pascal valide l'équipe) → `/imperatrice:boucle` (porte n° 3 : Pascal valide
-chaque PR vers `main`) → `/imperatrice:bilan`.
+(porte n° 2 : Pascal valide l'équipe) → `/imperatrice:boucle` (porte n° 3 : déléguée par
+Pascal le 2026-11-16, l'orchestrateur fusionne et publie quand tout est vert, au sens de
+`docs/spec.md` § 5 ; le reste revient à Pascal) → `/imperatrice:bilan`.
 
 ## Règles métier du projet
 
