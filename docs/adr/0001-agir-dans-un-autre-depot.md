@@ -1,8 +1,8 @@
 # ADR 0001 — agir dans un autre dépôt : une session ouverte dans le dépôt du projet
 
 - **Date :** 2026-11-16
-- **Statut :** proposée, amendée le 2026-11-16 après la critique du `contradicteur`
-  (amendements retenus par Pascal) ; à trancher par Pascal
+- **Statut :** acceptée par Pascal le 2026-11-16, **sous réserve de l'essai à blanc**
+  dans `terrain` (amendée le même jour après la critique du `contradicteur`)
 - **Proposée par :** Claude (orchestrateur)
 - **Tranchée par :** Pascal
 
