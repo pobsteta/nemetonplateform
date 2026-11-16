@@ -1,8 +1,8 @@
 # ADR 0001 — agir dans un autre dépôt : une session ouverte dans le dépôt du projet
 
 - **Date :** 2026-11-16
-- **Statut :** acceptée par Pascal le 2026-11-16, **sous réserve de l'essai à blanc**
-  dans `terrain` (amendée le même jour après la critique du `contradicteur`)
+- **Statut :** acceptée par Pascal le 2026-11-16 (amendée le même jour après la critique
+  du `contradicteur`, puis après les deux essais à blanc dans `terrain`)
 - **Proposée par :** Claude (orchestrateur)
 - **Tranchée par :** Pascal
 
@@ -85,6 +85,7 @@ chargés, **l'ADR tombe** et revient à Pascal. Le résultat est inscrit au jour
 
 ```
 cd ~/dev/<projet> && claude -p "<consigne>" -w <mission> \
+  --settings '{"enabledPlugins":{"imperatrice@pobsteta":true}}' \
   --permission-mode auto --permission-prompts none \
   --disallowedTools "Bash(gh pr merge *)" \
   --max-budget-usd <plafond de la fiche> \
@@ -92,6 +93,9 @@ cd ~/dev/<projet> && claude -p "<consigne>" -w <mission> \
 ```
 
 - Jamais dans l'arbre de travail principal : `-w` est obligatoire.
+- **Le plugin est imposé au lancement** (`--settings`) : un worktree ne contient que les
+  fichiers versionnés, et `.claude/settings.json` ne l'est pas partout (premier essai
+  à blanc, ci-dessous).
 - **Un verrou par dépôt tenu par l'orchestrateur** : une seule session lancée par lui à
   la fois dans un dépôt.
 - La consigne renvoie au brief déposé dans `~/dev/briefs/vers-<projet>/` (spec § 4).
@@ -129,6 +133,20 @@ de `victor` et d'`aigora` (pas de CI), et de tous les projets sans commande de t
 **La trace et le coût.** Chaque session lancée est inscrite au journal d'ici : projet,
 brief, PR, tests (SHA, code), `total_cost_usd`. Le plafond de dépense d'une mission est
 écrit dans sa fiche et validé par Pascal à la porte n° 2.
+
+### Les essais à blanc (2026-11-16, dans `terrain`)
+
+1. **Sans `--settings`** (5 tours, 0,68 $) : `CLAUDE.md` chargé, worktrees de la session
+   et du sous-agent créés dans `terrain`, sortie structurée remplie, aucun refus de
+   permission ; mais **plugin absent et aucun hook**. Cause vérifiée :
+   `.claude/settings.json` n'est pas versionné dans `terrain` (ni dans `nemetonshiny` ni
+   dans `groma`), donc absent du worktree créé par `-w`.
+2. **Avec `--settings`** (9 tours, 0,64 $) : plugin `imperatrice` listé à
+   l'initialisation ; hooks `PreToolUse` (garde de `main`, journal), `SubagentStop` et
+   `Stop` déclenchés et sortis en succès ; `./gradlew test` vert sur d74d2f3. **Réussi.**
+
+Les deux worktrees et branches d'essai ont été supprimés ; `terrain` est revenu à son
+état.
 
 ## Le crible FRANCE
 
