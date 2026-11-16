@@ -14,6 +14,14 @@
 | `nemetonmcp` | paquet R (`r/`) et plugin Claude | 2026.11.10 | v2026.11.10 | ni plugin ni `pilotage/` |
 | `victor` | assistant vocal, Python | 1.0.0 | aucun | ni plugin ni `pilotage/` |
 | `aigora` | Claude Code en local, RStudio | 1.0.0-rstudio | aucun | non ; a ses propres agents, hooks et règles (`.claude/`) |
+| `terrain` | bibliothèque Kotlin (modules carte, gnss, gpkg, journal, style, voix), publiée par JitPack | `VERSION` injectée par la CI | v0.7.1 | plugin activé, `pilotage/` |
+| `marculus` | application Android, martelage forestier | `versionName` injecté par la CI | v0.68.4 | plugin activé, `pilotage/` |
+| `surculus` | application Android, suivi des travaux de plantation | `versionName` injecté par la CI | v0.7.84 | plugin activé, `pilotage/` |
+| `ramulus` | application Android, état des houppiers (protocole DEPERIS du DSF) | `versionName` injecté par la CI | aucun | plugin activé, `pilotage/` |
+| `groma` | inventaire forestier par vidéo : application Android, paquet Python, serveur | voir `CHANGELOG.md` | v2026.11.7 | plugin activé, `pilotage/` |
+
+Les cinq dernières lignes ont été ajoutées le 2026-11-16 à la demande de Pascal, d'après une
+première lecture du dépôt local de chaque projet ; leurs liens sont à confirmer.
 
 À regarder : dans `nemeton`, `DESCRIPTION` annonce 2026.11.34.9000 alors que le dernier
 tag est v2026.11.35.
@@ -29,6 +37,13 @@ flowchart LR
   nemetonshiny --> victor
   nemetonmcp --> victor
   nemetonmcp -.-> aigora
+  terrain --> marculus
+  terrain --> surculus
+  terrain --> ramulus
+  terrain --> groma
+  nemetonshiny -.-> surculus
+  surculus -.-> nemeton
+  ramulus -.-> nemeton
 ```
 
 La flèche va de l'amont vers l'aval : un changement en amont peut casser l'aval.
@@ -41,6 +56,12 @@ La flèche va de l'amont vers l'aval : un changement en amont peut casser l'aval
 | `nemetonmcp` | `nemeton` | `Imports: nemeton (>= 2026.11.30)` | `nemetonmcp/r/DESCRIPTION` |
 | `victor` | `nemetonmcp` | appelle `nemetonmcp::fiche_projet()` et lit les fiches qu'il écrit | `victor/server.py` |
 | `victor` | `nemetonshiny` | démarre le service `nemetonshiny`, suit `compute_job.json` | `victor/server.py` |
+| `marculus`, `surculus`, `ramulus` | `terrain` | dépendance Gradle `com.github.pobsteta.terrain` (JitPack) | `*/build.gradle.kts` ou `gradle/libs.versions.toml` de chaque projet |
+| `groma` | `terrain` | `terrain-carte` et `terrain-style` en v0.7.1 | fichiers Gradle de `groma/android` |
+| `surculus` | `nemetonshiny` | **à confirmer** : lit le plan d'action (`export_action_plan_gpkg`) | `surculus/docs/architecture.md` |
+| `nemeton` | `surculus` | **à confirmer** : reçoit le bilan de gestion et les indicateurs | `surculus/docs/architecture.md` |
+| `nemeton` | `ramulus` | **à confirmer** : format commun `deperis.gpkg`, lu et écrit par les deux | `ramulus/pilotage/missions/002-format-echange-deperis-v1.md` |
+| `groma` | `nemeton`, `nemetonshiny` | **à confirmer** : briefs vers `nemeton` ; `groma` s'interdit de les modifier | `groma/CLAUDE.md` |
 | `aigora` | `nemetonmcp` | **à confirmer** : `CONTRAT.md` de nemetonshiny dit « le serveur MCP de VICTOR et d'AIGORA », mais rien dans le dépôt `aigora` ne nomme Néméton | `nemetonshiny/CONTRAT.md` § 6 bis |
 
 Lien non trouvé : `nemeton` ne déclare pas `foretaccess` dans son `DESCRIPTION`, alors
@@ -51,6 +72,7 @@ s'écrivent sans dépendre l'un de l'autre par le code.
 
 **En série**, dans cet ordre, quand un changement descend la chaîne :
 
+0. `terrain`, jusqu'à la release, avant `marculus`, `surculus`, `ramulus` et `groma` ;
 1. `nemeton` ou `foretaccess`, jusqu'à la release (l'aval installe la dernière release,
    pas `main`) ;
 2. `nemetonshiny`, jusqu'à la release ;
@@ -61,6 +83,8 @@ s'écrivent sans dépendre l'un de l'autre par le code.
 **En parallèle** :
 
 - `nemeton` et `foretaccess`, qui ne dépendent pas l'un de l'autre par le code ;
+- `marculus`, `surculus`, `ramulus` et `groma` entre eux, une fois la release de `terrain`
+  dont ils dépendent publiée ;
 - les tests d'un projet en aval, écrits pendant que l'amont se développe ;
 - toute mission qui ne touche ni contrat public ni version minimale d'un autre projet.
 
@@ -89,7 +113,8 @@ confiée depuis ce dépôt dans un autre.
 
 - La liste des projets est-elle complète ? Dépôts au nom voisin non relevés ici :
   `opencanopy`, `maestronemeton`, `treesatnemeton`, `flairhubnemeton`,
-  `alphaearthnemeton`, `forptnemeton`, `tarif-nemeton`, `sylvostation`, `marculus`.
+  `alphaearthnemeton`, `forptnemeton`, `tarif-nemeton`, `sylvostation` (hors périmètre,
+  retenu par Pascal le 2026-11-16).
 - Le lien d'`aigora` avec la plateforme : par quoi passe-t-il ?
 - Le nom de ce dépôt : `nemetonplateform` sur GitHub, `nemeton_plateforme` dans son
   README, `platform_nemeton` dans les `CLAUDE.md` de `nemeton` et `nemetonshiny`.
