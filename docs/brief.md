@@ -129,9 +129,11 @@ Les projets auxquels il touche sont les six de la réponse d'abord, plus `marcul
 - **Points ouverts de la carte** : la liste des projets est-elle complète ; par quoi
   passe le lien d'`aigora`. À trancher par Pascal. Le nom de ce dépôt est tranché :
   `nemetonplateforme` (Pascal, 2026-11-16).
-- **Plafond global contre plafonds locaux** : sept projets ont leur propre plafond de
-  3 PR ; lequel l'emporte, et ce qui compte dans le plafond global, est à trancher par
-  Pascal (contradicteur, point 5).
+- **Plafond global contre plafonds locaux** (contradicteur, point 5) : tranché par
+  Pascal le 2026-11-16. Le plafond global de 3 PR, tous projets confondus, l'emporte
+  toujours ; le plafond local d'un projet n'est qu'une limite de plus à l'intérieur de
+  ce projet. Le plafond global compte toutes les PR qui attendent la relecture de
+  Pascal, quel que soit le dépôt.
 
 ## Préalables bloquants (critique du contradicteur, retenue par Pascal le 2026-11-16)
 

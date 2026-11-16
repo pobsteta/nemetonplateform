@@ -13,8 +13,10 @@
 > `docs/carte-dependances.md`), pas celles de ce seul dépôt. Les deux chiffres ci-dessous
 > sont des propositions, à confirmer par Pascal.
 
-- **PR ouvertes en même temps, au plus, tous projets confondus :** 3 _(proposition :
-  réglage par défaut du plugin, appliqué à l'ensemble)_
+- **PR ouvertes en même temps, au plus, tous projets confondus :** 3 _(confirmé par
+  Pascal le 2026-11-16 : ce plafond global l'emporte toujours sur le plafond local d'un
+  projet, qui n'est qu'une limite de plus dans ce projet ; il compte toutes les PR qui
+  attendent la relecture de Pascal, quel que soit le dépôt)_
 - **Rythme de relecture de Pascal :** _… (pour mémoire, `nemetonshiny/pilotage/equipe.md`
   note 5 PR par jour ouvré, bilan du 2026-11-13, pour ce seul projet)_
 
