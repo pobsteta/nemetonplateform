@@ -37,3 +37,10 @@
 
 | Mission | Dépôt | Agent | Modèle | Temps de la main | Les 3 questions | Cycle |
 |---|---|---|---|---|---|---|
+| [001](missions/001-nemeton-commande-de-tests.md) commande de tests | `nemeton` | `testeur` | sonnet | appuyer | 3 oui | 1 |
+| [002](missions/002-foretaccess-plugin-et-tests.md) plugin et commande de tests | `foretaccess` | `testeur` | sonnet | appuyer | 3 oui | 1 |
+| [003](missions/003-nemetonmcp-plugin-et-tests.md) plugin et commande de tests | `nemetonmcp` | `testeur` | sonnet | appuyer | 3 oui | 1 |
+
+Chaque mission est exécutée par une session ouverte dans le dépôt du projet (ADR 0001),
+relue par le `relecteur`, puis prouvée et fusionnée par l'orchestrateur (spec § 5).
+Les trois sont indépendantes : elles partent en parallèle, dans le plafond de 3 PR.
