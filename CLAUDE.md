@@ -46,8 +46,9 @@ chaque PR vers `main`) → `/imperatrice:bilan`.
 
 ## Règles métier du projet
 
-> **Statut : proposées le 2026-11-16, non validées.** Elles deviennent la règle au
-> « oui » de Pascal sur `docs/brief.md`. D'ici là, rien ne se développe dans les projets.
+> **Statut : validées par Pascal le 2026-11-16, avec `docs/brief.md`.** Rien ne se
+> développe pour autant dans les projets avant la spec validée et la levée des préalables
+> bloquants du brief (ADR).
 
 ### Les projets pilotés
 

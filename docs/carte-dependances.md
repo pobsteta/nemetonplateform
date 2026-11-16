@@ -1,6 +1,6 @@
 # Carte des dépendances de la plateforme Néméton
 
-> **Statut : proposée, non validée par Pascal.** Relevé du 2026-11-16, fait par lecture
+> **Statut : validée par Pascal le 2026-11-16, avec le brief.** Relevé du 2026-11-16, fait par lecture
 > de la branche `main` de chaque dépôt. Chaque lien cite le fichier où il est écrit. Un
 > lien sans source est marqué « à confirmer ».
 

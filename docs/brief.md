@@ -6,6 +6,9 @@
 > 2. les questions et leurs propositions, ajustées aux réponses, puis le brief rédigé ;
 > 3. la relecture de Pascal ; 4. la critique du contradicteur, puis les arbitrages de Pascal.
 
+> **Statut : validé par Pascal le 2026-11-16** (porte n° 1, première moitié ; la spec
+> reste à écrire et à valider).
+
 ## Ma réponse d'abord (fiche n° 15)
 
 > « J'attends un orchestrateur qui vérifie tous les projets de la plateforme Néméton
