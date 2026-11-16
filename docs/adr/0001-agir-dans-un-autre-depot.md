@@ -124,6 +124,15 @@ code de sortie. Le hook de la session reste un garde-fou, il n'est pas la preuve
 contrôles n° 3 à 5 (tests en aval, tests de contrat, relecture du `contradicteur`) sont
 lancés par l'orchestrateur de la même façon. Puis il fusionne, ou rend à Pascal.
 
+> **Amendement du 2026-11-16 (Pascal) : deux niveaux de tests.** Dans un projet dont la
+> suite complète dépasse de loin les 630 s du hook (`nemeton`, `foretaccess`), la
+> `.claude/test-command` versionnée est un **niveau rapide** (moins de 600 s), que le
+> fichier dit en commentaire, et la suite complète reste à la CI. La preuve du vert y est
+> alors double : la commande rapide lancée par l'orchestrateur sur le commit exact de la
+> PR, **et** la CI de la PR, qui lance la suite complète, verte sur ce même commit. Un tel
+> projet n'est pas « sans commande complète » au sens du paragraphe suivant tant que sa
+> CI lance toute la suite sur les PR.
+
 **Pas de délégation sans contrôles.** Un projet sans plugin activé, sans
 `.claude/test-command` complète, ou sans CI, ne voit aucune fusion déléguée : soit sa
 première mission pose ce qui manque (avec l'accord de Pascal, `CLAUDE.md`), soit la

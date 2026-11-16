@@ -59,6 +59,13 @@ _Rempli par Pascal seul, avant de lire le travail de l'agent._
   le réseau (`online-tests.yaml`) : passent-ils, sont-ils sautés, ou échouent-ils sur le PC ?
   L'agent le dit ; Pascal tranche ce que la commande doit couvrir.
 
+- **Décision de Pascal (2026-11-16) : deux niveaux.** La mesure a dépassé 630 s. La
+  `.claude/test-command` est un niveau rapide, moins de 600 s mesurées sur le PC, dont la
+  première ligne est un commentaire qui le dit ; la suite complète reste à la CI. La
+  session propose le sous-ensemble (fichiers retenus et écartés, durée mesurée), le met
+  dans la description de la PR et vérifie que la CI lance bien toute la suite sur les PR.
+  Elle ne modifie pas la CI. Preuve du vert : ADR 0001, amendement du 2026-11-16.
+
 ## Dépend de / rouge attendu jusqu'à
 
 - **Dépend de :** rien.

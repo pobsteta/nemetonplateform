@@ -92,7 +92,9 @@ briefs traités à ce jour).
 **L'orchestrateur fusionne une PR vers `main`** quand tout ce qui suit est vert :
 
 1. la CI de la PR dans le dépôt du projet ;
-2. la commande de tests du projet (`.claude/test-command`), lancée dans le dépôt ;
+2. la commande de tests du projet (`.claude/test-command`), lancée dans le dépôt ; là où
+   elle n'est qu'un niveau rapide (ADR 0001, amendement du 2026-11-16), la CI de la PR doit
+   lancer la suite complète et être verte sur le même commit ;
 3. les tests des projets en aval d'après la carte, lancés contre la branche (contrôle des
    dépendances inverses) ;
 4. les tests de contrat des liens touchés (sur le modèle de

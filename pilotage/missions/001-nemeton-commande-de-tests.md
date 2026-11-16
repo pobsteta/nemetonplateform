@@ -52,6 +52,13 @@ _Rempli par Pascal seul, avant de lire le travail de l'agent._
   seul un sous-ensemble : il rend la mesure, et Pascal tranche (la commande complète
   reste celle de la preuve du vert, ADR 0001).
 
+- **Décision de Pascal (2026-11-16) : deux niveaux.** La mesure a dépassé 630 s. La
+  `.claude/test-command` est un niveau rapide, moins de 600 s mesurées sur le PC, dont la
+  première ligne est un commentaire qui le dit ; la suite complète reste à la CI. La
+  session propose le sous-ensemble (fichiers retenus et écartés, durée mesurée), le met
+  dans la description de la PR et vérifie que la CI lance bien toute la suite sur les PR.
+  Elle ne modifie pas la CI. Preuve du vert : ADR 0001, amendement du 2026-11-16.
+
 ## Dépend de / rouge attendu jusqu'à
 
 - **Dépend de :** rien.
