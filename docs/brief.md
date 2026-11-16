@@ -6,8 +6,8 @@
 > 2. les questions et leurs propositions, ajustées aux réponses, puis le brief rédigé ;
 > 3. la relecture de Pascal ; 4. la critique du contradicteur, puis les arbitrages de Pascal.
 
-> **Statut : validé par Pascal le 2026-11-16** (porte n° 1, première moitié ; la spec
-> reste à écrire et à valider).
+> **Statut : validé par Pascal le 2026-11-16**, avec `docs/spec.md` validée le même
+> jour (porte n° 1 franchie).
 
 ## Ma réponse d'abord (fiche n° 15)
 

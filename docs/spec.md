@@ -1,6 +1,7 @@
 # nemetonplateforme — spec
 
-> **Statut : proposée par Claude le 2026-11-16, non validée.** Écrite à partir du brief
+> **Statut : validée par Pascal le 2026-11-16, toutes propositions retenues.**
+> Proposée par Claude le même jour. Écrite à partir du brief
 > validé par Pascal le 2026-11-16 (`docs/brief.md`), de la carte
 > (`docs/carte-dependances.md`) et de ce qui existe déjà sur le PC de Pascal. Chaque
 > décision marquée **proposé** attend que Pascal la retienne, la corrige ou la rejette ;
