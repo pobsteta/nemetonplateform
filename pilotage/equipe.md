@@ -20,6 +20,23 @@
 - **Rythme de relecture de Pascal :** _… (pour mémoire, `nemetonshiny/pilotage/equipe.md`
   note 5 PR par jour ouvré, bilan du 2026-11-13, pour ce seul projet)_
 
+## Délégation
+
+> Ce que Pascal demande à l'orchestrateur de trancher à sa place (skill `methode`,
+> « La délégation », plugin `imperatrice` 1.0.0). Mise au format le 2026-11-16 : les
+> décisions de Pascal sont celles du journal du même jour (lignes `cap`), inchangées.
+
+- **Portée :** porte n° 3 : fusionner les PR vers `main` et publier les releases, dans
+  tous les projets pilotés, quand les six contrôles de `docs/spec.md` § 5 sont verts ;
+  et, sur demande expresse du 2026-11-16, les six PR alors ouvertes (`terrain` #33,
+  `nemetonshiny` #301 et #302, `ramulus` #23, `groma` #111 et #112), CI verte.
+- **Jusqu'à :** révocation.
+- **Réservé à Pascal :** toute PR ou release qui déclare une rupture ou change un contrat
+  écrit ; toute montée de version de `terrain` dans l'aval ; tout projet où un des six
+  contrôles manque ; et toujours : sa réponse d'abord, rendre la main, ce qui touche
+  l'extérieur et ne se défait pas.
+- **Inscrite au journal le :** 2026-11-16.
+
 ## Le vivier (catalogue, pas une équipe)
 
 | Agent | A / plan | Modèle | Écrit du code ? |
