@@ -112,8 +112,8 @@ nom voisin qu'elle relève : `opencanopy`, `maestronemeton`, `treesatnemeton`,
 2026-11-16).
 
 Les projets auxquels il touche sont les six de la réponse d'abord, plus `marculus`,
-`surculus`, `terrain`, `groma`, `ramulus` et `sylvostation`, que Pascal a ajoutés le
-2026-11-16.
+`surculus`, `terrain`, `groma`, `ramulus`, `sylvostation` et `aigora-nemeton`, que
+Pascal a ajoutés le 2026-11-16.
 
 ## Contraintes connues
 
