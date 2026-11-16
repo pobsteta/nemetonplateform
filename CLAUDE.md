@@ -1,6 +1,6 @@
-# nemetonplateform — consignes de l'orchestrateur
+# nemetonplateforme — consignes de l'orchestrateur
 
-nemetonplateform est le poste de pilotage de la plateforme Néméton : il vérifie les
+nemetonplateforme est le poste de pilotage de la plateforme Néméton : il vérifie les
 projets de la plateforme, repère ceux qu'un changement impacte et fait avancer leurs
 missions, en série ou en parallèle selon leurs dépendances. Il est conduit par une équipe
 d'agents IA selon **la méthode de l'Impératrice** de Pascal Obstétar, apportée par le
@@ -30,7 +30,7 @@ l'effort.**
 | Ce qu'on construit, pour qui | `docs/brief.md` puis `docs/spec.md` |
 | Qui dépend de qui, et l'ordre de fusion | `docs/carte-dependances.md` |
 | Les décisions d'architecture | `docs/adr/NNNN-titre.md` (les ADR antérieures restent dans `docs/`) |
-| L'équipe validée, le plafond humain **global** | `pilotage/equipe.md` |
+| L'équipe validée, le plafond humain | `pilotage/equipe.md` |
 | Les missions qui traversent plusieurs projets | `pilotage/missions/NNN-titre.md` |
 | L'avancement, tous projets confondus | `pilotage/kanban.md` |
 | La mémoire du pilotage commun | `pilotage/journal.md` — **ajout seul, on n'efface jamais** |
@@ -41,17 +41,21 @@ Un lien plutôt qu'une copie. Si une information existe à deux endroits, l'un d
 ## Le déroulé
 
 `/imperatrice:brief` (porte n° 1 : Pascal valide brief et spec) → `/imperatrice:mission`
-(porte n° 2 : Pascal valide l'équipe) → `/imperatrice:boucle` (porte n° 3 : Pascal valide
-chaque PR vers `main`) → `/imperatrice:bilan`.
+(porte n° 2 : Pascal valide l'équipe) → `/imperatrice:boucle` (porte n° 3 : déléguée par
+Pascal le 2026-11-16, l'orchestrateur fusionne et publie quand tout est vert, au sens de
+`docs/spec.md` § 5 ; le reste revient à Pascal) → `/imperatrice:bilan`.
 
 ## Règles métier du projet
 
-> **Statut : proposées le 2026-11-16, non validées.** Elles deviennent la règle au
-> « oui » de Pascal sur `docs/brief.md`. D'ici là, rien ne se développe dans les projets.
+> **Statut : validées par Pascal le 2026-11-16, avec `docs/brief.md`.** Rien ne se
+> développe pour autant dans les projets avant la spec validée et la levée des préalables
+> bloquants du brief (ADR).
 
 ### Les projets pilotés
 
-`nemeton`, `foretaccess`, `nemetonshiny`, `nemetonmcp`, `victor`, `aigora`. La liste et
+`nemeton`, `foretaccess`, `nemetonshiny`, `nemetonmcp`, `victor`, `aigora`, `terrain`,
+`marculus`, `surculus`, `ramulus`, `groma`, `sylvostation`, `aigora-nemeton` (les sept
+derniers ajoutés par Pascal le 2026-11-16). La liste et
 les liens entre eux sont dans `docs/carte-dependances.md` ; Pascal y ajoute ou en retire
 un projet.
 
@@ -71,8 +75,9 @@ un projet.
 2. **S'orienter** : pour chaque changement, les projets en aval d'après la carte. Pour
    chacun, un brief déposé dans le projet impacté, selon la convention déjà en usage
    (`brief-<projet>-<sujet>.md`, rangé dans `briefs/traites/` une fois traité).
-3. **Décider** : proposer les missions du cycle dans la limite du **plafond humain
-   global** de `pilotage/equipe.md`, qui compte les PR ouvertes de tous les projets.
+3. **Décider** : proposer les missions du cycle dans la limite du **plafond humain**
+   de `pilotage/equipe.md` : 3 PR ouvertes par l'orchestrateur, dans quelque dépôt
+   que ce soit (les PR propres au pilotage d'un projet n'y comptent pas).
 4. **Agir** : en série le long d'une chaîne de dépendances, en parallèle entre missions
    indépendantes. Une mission en aval ne part pas avant la release en amont dont elle
    dépend ; la fiche le dit dans « Dépend de / rouge attendu jusqu'à ».
