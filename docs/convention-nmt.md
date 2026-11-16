@@ -1,4 +1,9 @@
-﻿# Néméton — Règles pour Claude Code
+# Néméton — Règles pour Claude Code
+
+> **Statut :** écrit le 2026-05-25 sous `.claude/rules`, avant l'extraction de
+> nemetonshiny ; déplacé ici le 2026-11-16 (décision de Pascal), sans réécriture. La
+> convention NMT et le langage ubiquitaire valent pour la plateforme ; la partie
+> « Stack » est à confirmer dans chaque projet, dont le `CLAUDE.md` prime.
 
 ## Convention NMT (Néméton Naming Convention)
 - Clés techniques en snake_case français sans accent
