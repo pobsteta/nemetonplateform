@@ -78,8 +78,9 @@ briefs traités à ce jour).
   changements, y compris ceux qu'écrit `aigora-nemeton`.
 - Les conventions internes (`nemetonshiny/briefs/traites/`, `nemeton/specs/`) restent
   celles des projets ; l'orchestrateur ne les modifie pas.
-- Le nom `vers-nemetonplateform/` est renommé `vers-nemetonplateforme/` (cap du
-  2026-11-16). Il contient 4 briefs en attente, à traiter dans un cycle.
+- La boîte de ce dépôt est `vers-nemetonplateforme/` (renommée depuis
+  `vers-nemetonplateform/` le 2026-11-16, cap du même jour). Elle contient 4 briefs en
+  attente, à traiter dans un cycle.
 - Limite à dire : cette boîte n'est ni versionnée ni sauvegardée par git. Elle vit sur
   le seul PC de Pascal.
 
