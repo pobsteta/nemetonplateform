@@ -29,6 +29,12 @@ _Modèle de carte :_
 
 ## Planifié
 
+- [011-sommier-demarrer](missions/011-sommier-demarrer.md) · sommieR · depuis le cycle 6 · lancée le 2026-11-17
+  - Homme : orchestrateur d'une session ouverte dans `sommieR` (`/imperatrice:demarrer`, sonnet, ADR 0001)
+  - Mission : installer la méthode, versionner `.claude/settings.json` et `.claude/test-command`
+  - Moyens : réponses de Pascal du 2026-11-17 ; budget 3 $, 5400 s
+  - Dépend de : rien
+
 ## Terminé
 
 - [009-nemetonshiny-availablecores-tests](missions/009-nemetonshiny-availablecores-tests.md) · nemetonshiny · depuis le cycle 5 · PR #305 fusionnée (50de1fd)
