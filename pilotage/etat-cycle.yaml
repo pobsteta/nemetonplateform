@@ -70,12 +70,12 @@ groma:
   lu_le: 2026-11-17
   lu_sur: github
 sylvostation:
-  dernier_tag_vu: null
-  main_lu: ceb736792bc1afc98ddacfe6a236a566c904a554
+  dernier_tag_vu: v2026.11.1
+  main_lu: ecdd6c9b10fe31eb51082e8f9e2bf8edd95f0860
   lu_le: 2026-11-17
   lu_sur: github
 sommieR:
   dernier_tag_vu: v0.37.1
-  main_lu: f0229b940728be735558ee260ebf872430fa51c5
+  main_lu: cce46d07067e6d5938c506dd0e423c54d877ca88
   lu_le: 2026-11-17
   lu_sur: github

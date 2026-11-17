@@ -108,7 +108,7 @@ projets:
     chemin: ~/dev/sommieR
     depot: pobsteta/sommieR
     chaine: r
-    methode: aucune          # ni plugin, ni CLAUDE.md, ni .claude/test-command sur main (relevé du 2026-11-17)
+    methode: plugin+pilotage   # méthode installée par la mission 011 (PR sommieR #70, 2026-11-17)
     briefs: ~/dev/briefs/vers-sommier
 
 liens:
