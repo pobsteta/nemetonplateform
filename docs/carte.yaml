@@ -134,7 +134,7 @@ liens:
     amont: nemetonshiny
     nature: service
     par: "démarre le service nemetonshiny, suit compute_job.json"
-    source: victor/victor/server.py:1130
+    source: victor/victor/server.py:1168
     confirme: oui
   - aval: marculus
     amont: terrain
@@ -146,7 +146,7 @@ liens:
     amont: terrain
     nature: gradle
     par: "dépendance Gradle com.github.pobsteta.terrain (JitPack)"
-    source: surculus/gradle/libs.versions.toml:15
+    source: surculus/gradle/libs.versions.toml:79-80
     confirme: oui
   - aval: ramulus
     amont: terrain
