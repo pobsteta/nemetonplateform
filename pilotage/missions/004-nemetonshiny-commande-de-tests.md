@@ -83,3 +83,7 @@ _Rempli par Pascal seul, avant de lire le travail de l'agent._ (Pascal a délég
 
 Une session `claude -p -w` lancée dans `nemetonshiny` après la fusion trouve
 `.claude/test-command` dans son worktree, et le hook la lance à l'arrêt.
+
+## Retour (2026-11-17)
+
+PR #303 fusionnée (5b58734). La session a dépassé la limite de 3600 s (suite complète au-delà de 1800 s, puis mesure par fichier) ; reprise avec `--resume` et 5400 s. Leçon : pour un projet à suite longue, la fiche fixe la limite de la session à 5400 s.

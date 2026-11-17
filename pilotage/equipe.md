@@ -35,6 +35,12 @@
   écrit ; toute montée de version de `terrain` dans l'aval ; tout projet où un des six
   contrôles manque ; et toujours : sa réponse d'abord, rendre la main, ce qui touche
   l'extérieur et ne se défait pas.
+- **Élargie le 2026-11-16 (Pascal, « fusionne et continue, ne me demande plus rien tant
+  que tout n'est pas terminé ») :** fusionner les PR de pilotage et de documentation de
+  `nemetonplateforme` (ni CI ni tests) ; et, jusqu'à la fin du travail en cours, valider à
+  sa place les missions de même nature que 001 à 003 (plugin et `.claude/test-command`
+  dans un projet piloté) et les tâches de rangement de la plateforme. Les questions
+  réservées ci-dessus ne sont pas tranchées : elles sont mises de côté et posées au bilan.
 - **Inscrite au journal le :** 2026-11-16.
 
 ## Le vivier (catalogue, pas une équipe)
