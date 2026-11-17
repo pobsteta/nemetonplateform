@@ -1,10 +1,13 @@
 {
-  "extraKnownMarketplaces": {
-    "pobsteta": {
-      "source": { "source": "github", "repo": "pobsteta/methode-imperatrice" }
-    }
-  },
   "enabledPlugins": {
     "imperatrice@pobsteta": true
+  },
+  "extraKnownMarketplaces": {
+    "pobsteta": {
+      "source": {
+        "source": "github",
+        "repo": "pobsteta/methode-imperatrice"
+      }
+    }
   }
 }
