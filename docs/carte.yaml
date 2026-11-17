@@ -104,8 +104,33 @@ projets:
     chaine: r
     methode: plugin+pilotage   # plugin imperatrice activé dans son dépôt (relevé du 2026-11-17)
     briefs: ~/dev/briefs/vers-sylvostation
+  sommieR:
+    chemin: ~/dev/sommieR
+    depot: pobsteta/sommieR
+    chaine: r
+    methode: aucune          # ni plugin, ni CLAUDE.md, ni .claude/test-command sur main (relevé du 2026-11-17)
+    briefs: ~/dev/briefs/vers-sommier
 
 liens:
+  - aval: sommieR
+    amont: nemeton
+    nature: code-r
+    par: "Suggests: nemeton (Remotes pobsteta/nemeton) ; nemeton::ifn_prelevement_essence_ser()"
+    source: sommieR/DESCRIPTION:33,43 ; sommieR/R/nemeton.R:100
+    confirme: oui
+  - aval: surculus
+    amont: sommieR
+    nature: donnees
+    par: "tournée de travaux travaux.gpkg, écrite par sommieR, complétée sur le terrain par surculus"
+    source: sommieR/R/travaux_qfield.R:56-57 ; surculus/app/build.gradle.kts:163 ; surculus/app/src/androidTest/kotlin/io/github/pobsteta/surculus/FumeeGeoPackageTest.kt:58
+    confirme: oui
+  - aval: nemetonshiny
+    amont: sommieR
+    nature: donnees
+    par: "réalisé de la tournée de travaux : CSV écrit par sommier_actions_realisees(), relu par nemetonshiny"
+    source: nemetonshiny/R/service_tournee_travaux.R:1-7,59 ; nemetonshiny/R/mod_action_plan.R:163
+    confirme: non
+    question: "nemetonshiny lit le CSV écrit par sommier_actions_realisees(), mais cette fonction n'existe pas sur origin/main de sommieR (relevé du 2026-11-17 ; le clone est sur la branche a50-1-edition). Le lien est-il à venir (fonction pas encore livrée par sommieR) ou la fonction a-t-elle changé de nom ?"
   - aval: nemetonshiny
     amont: nemeton
     nature: code-r
