@@ -29,14 +29,14 @@ _Modèle de carte :_
 
 ## Planifié
 
-- [006-victor-tests-et-ci](missions/006-victor-tests-et-ci.md) · victor · depuis le cycle 3 · PR #1 prête, CI verte, à fusionner par Pascal
+
+## Terminé
+
+- [006-victor-tests-et-ci](missions/006-victor-tests-et-ci.md) · victor · depuis le cycle 3 · PR #1 fusionnée (1ac4cce)
   - Homme : `dev` (sonnet), dans une session ouverte dans `victor` (ADR 0001)
   - Mission : premiers tests `pytest` du cœur, `.claude/test-command`, plugin, CI minimale ; Pascal fusionne
   - Moyens : `uv` du projet ; budget 3 $, 3600 s
   - Dépend de : rien
-
-
-## Terminé
 
 - [003-nemetonmcp-plugin-et-tests](missions/003-nemetonmcp-plugin-et-tests.md) · nemetonmcp · depuis le cycle 1 · PR #36 fusionnée (cf89cd3)
   - Homme : `testeur` (sonnet), dans une session ouverte dans `nemetonmcp` (ADR 0001)
