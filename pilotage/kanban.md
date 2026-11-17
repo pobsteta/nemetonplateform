@@ -10,7 +10,7 @@
 > mission propre à un projet qui a son `pilotage/` reste dans le kanban de ce projet ;
 > ici, sa carte y renvoie par un lien, sans la recopier.
 
-**Dernier cycle :** 4 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
+**Dernier cycle :** 5 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
 rien lancé. Une carte est immobile quand dernier cycle − N ≥ 2.)_
 
 _Modèle de carte :_
@@ -29,19 +29,19 @@ _Modèle de carte :_
 
 ## Planifié
 
-- [010-confirmer-liens-carte](missions/010-confirmer-liens-carte.md) · nemetonplateforme · depuis le cycle 5 · lancée le 2026-11-17
-  - Homme : `archiviste` (sonnet), sous-agent dans un worktree de ce dépôt
-  - Mission : vérifier dans le code les 6 liens `confirme: non` de `docs/carte.yaml`
-  - Moyens : lecture seule des clones et de `~/dev/briefs/` ; PR fusionnée par délégation
-  - Dépend de : 007 et 008 (fusionnées)
+## Terminé
 
-- [009-nemetonshiny-availablecores-tests](missions/009-nemetonshiny-availablecores-tests.md) · nemetonshiny · depuis le cycle 5 · lancée le 2026-11-17
+- [009-nemetonshiny-availablecores-tests](missions/009-nemetonshiny-availablecores-tests.md) · nemetonshiny · depuis le cycle 5 · PR #305 fusionnée (50de1fd)
   - Homme : `dev` (sonnet), dans une session ouverte dans `nemetonshiny` (ADR 0001)
   - Mission : les deux derniers `future::availableCores()` des tests passés à `parallelly`
-  - Moyens : budget 3 $, 5400 s
+  - Moyens : budget 3 $, 5400 s ; 0,43 $ et 261 s
   - Dépend de : 005 (fusionnée)
 
-## Terminé
+- [010-confirmer-liens-carte](missions/010-confirmer-liens-carte.md) · nemetonplateforme · depuis le cycle 5 · PR #20 fusionnée (691ebaa)
+  - Homme : `archiviste` (sonnet), sous-agent dans un worktree de ce dépôt
+  - Mission : 6 liens `confirme: non` relus dans le code : 2 retirés, 4 laissés à `non` avec une question pour Pascal
+  - Moyens : lecture seule des clones et de `~/dev/briefs/`
+  - Dépend de : 007 et 008 (fusionnées)
 
 - [008-etat-cycle-yaml](missions/008-etat-cycle-yaml.md) · nemetonplateforme · depuis le cycle 4 · PR #18 fusionnée (562542d)
   - Homme : `archiviste` (sonnet), sous-agent dans un worktree de ce dépôt
@@ -115,3 +115,4 @@ l'inscrit avec ce qu'elle nous apprend._
 - cycle 2 · `nemetonshiny` versionne sa `.claude/test-command` (niveau rapide, 118 fichiers sur 181, par exclusion des lents) ; ADR-016 rangée, rejetée · pour l'orchestrateur et Pascal · quatre projets ont désormais leurs fusions délégables ; mauvaise nouvelle apprise : une session sur une suite longue dépasse 3600 s, la fiche doit prévoir sa limite
 - cycle 3 · `victor` a ses premiers tests, sa `.claude/test-command` et sa CI ; `nemetonshiny` n'a plus de test rouge quand il passe seul, et son niveau rapide repasse à 119 fichiers · pour l'orchestrateur et Pascal · cinq projets ont désormais leurs fusions prouvables ; mauvaise nouvelle apprise : une session lancée en arrière-plan ne survit ni à l'archivage de la session qui l'attend ni à un redémarrage, ses traces vont hors de `/tmp`
 - cycle 4 · `docs/carte.yaml` (13 projets, 20 liens sourcés, 6 à confirmer) et `pilotage/etat-cycle.yaml` (état lu des 13 projets) · pour l'orchestrateur · un cycle peut désormais partir de ce qui a changé et trouver l'aval dans un fichier lu par la machine ; critères n° 1 et 2 de la spec en place ; mauvaise nouvelle apprise : la carte en prose recopiait des tags et des versions, périmés en un jour (cinq tags sur treize)
+- cycle 5 · plus aucun appel déprécié à `future::availableCores()` dans `nemetonshiny` ; carte relue dans le code (18 liens, 4 questions précises au lieu de 6 liens douteux) · pour l'orchestrateur et Pascal · la carte ne désigne plus d'aval qui n'existe pas (`surculus` n'est pas en aval de `nemetonshiny`) ; mauvaise nouvelle apprise : un trajet réel peut passer par un projet hors carte (sommieR), et une décision « seulement observé » peut perdre sa raison en un cycle (`sylvostation` a désormais un `main`)

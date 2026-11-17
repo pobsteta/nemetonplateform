@@ -21,7 +21,7 @@ foretaccess:
   lu_sur: github
 nemetonshiny:
   dernier_tag_vu: v2026.11.2
-  main_lu: 3a009900b645e1396dd2a74b7c74aff3c096aa05
+  main_lu: 50de1fde820e7528d649584af5a9bb559c53c22b
   lu_le: 2026-11-17
   lu_sur: github
 nemetonmcp:
@@ -71,7 +71,6 @@ groma:
   lu_sur: github
 sylvostation:
   dernier_tag_vu: null
-  branche: claude/admiring-cerf-hq7t8l
-  main_lu: 80c6c843498d7c8ae841ad74d4d474996c95e936
+  main_lu: ceb736792bc1afc98ddacfe6a236a566c904a554
   lu_le: 2026-11-17
   lu_sur: github
