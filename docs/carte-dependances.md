@@ -20,14 +20,14 @@
 | `surculus` | application Android, suivi des travaux de plantation | plugin activé, `pilotage/` |
 | `ramulus` | application Android, état des houppiers (protocole DEPERIS du DSF) | plugin activé, `pilotage/` |
 | `groma` | inventaire forestier par vidéo : application Android, paquet Python, serveur | plugin activé, `pilotage/` |
-| `sylvostation` | paquet R et pipeline `targets` : catalogue de stations forestières par sylvoécorégion | `CLAUDE.md` de la méthode et `pilotage/` ; délégation totale de Pascal depuis le 2026-11-16 (son `CLAUDE.md`) |
+| `sylvostation` | paquet R et pipeline `targets` : catalogue de stations forestières par sylvoécorégion | plugin activé, `CLAUDE.md` de la méthode et `pilotage/` ; délégation totale de Pascal depuis le 2026-11-16 (son `CLAUDE.md`) |
 
 L'état lu de chaque projet (dernier tag, commit lu sur la branche par défaut) est dans
 `pilotage/etat-cycle.yaml`, réécrit à chaque cycle.
 
-`sylvostation` n'a pas de clone dans `~/dev`. Sa branche par défaut sur GitHub est
-`claude/admiring-cerf-hq7t8l` : il n'a pas de `main`. Son `DESCRIPTION` n'importe aucun
-projet de la plateforme, et aucun lien n'est relevé.
+`sylvostation` n'a pas de clone dans `~/dev`. Depuis le 2026-11-17, sa branche par défaut
+sur GitHub est `main`, et le plugin `imperatrice` y est activé. Son `DESCRIPTION`
+n'importe aucun projet de la plateforme, et aucun lien n'est relevé.
 
 Les six dernières lignes ont été ajoutées le 2026-11-16 à la demande de Pascal, d'après une
 première lecture du dépôt local de chaque projet ; l'état de confirmation
