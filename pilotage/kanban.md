@@ -27,21 +27,21 @@ _Modèle de carte :_
 
 ## Validé
 
-- [007-carte-yaml](missions/007-carte-yaml.md) · nemetonplateforme · depuis le cycle 3 · pour le cycle 4
-  - Homme : `archiviste` (sonnet)
-  - Mission : écrire `docs/carte.yaml` (spec § 8), source unique des projets et des liens
-  - Moyens : `docs/carte-dependances.md`, lecture seule des clones ; PR fusionnée par délégation
-  - Dépend de : rien
+## Planifié
 
-- [008-etat-cycle-yaml](missions/008-etat-cycle-yaml.md) · nemetonplateforme · depuis le cycle 3 · pour le cycle 4
+- [008-etat-cycle-yaml](missions/008-etat-cycle-yaml.md) · nemetonplateforme · depuis le cycle 4 · agent lancé le 2026-11-17
   - Homme : `archiviste` (sonnet)
   - Mission : écrire `pilotage/etat-cycle.yaml` (spec § 3), l'état lu des treize projets
   - Moyens : `git ls-remote` et `gh` en lecture seule ; PR fusionnée par délégation
   - Dépend de : 007 fusionnée
 
-## Planifié
-
 ## Terminé
+
+- [007-carte-yaml](missions/007-carte-yaml.md) · nemetonplateforme · depuis le cycle 4 · PR #17 fusionnée (37f507a)
+  - Homme : `archiviste` (sonnet), sous-agent dans un worktree de ce dépôt
+  - Mission : `docs/carte.yaml`, 13 projets et 20 liens (6 à confirmer), source unique des liens
+  - Moyens : `docs/carte-dependances.md`, lecture seule des clones
+  - Dépend de : rien
 
 - [005-nemetonshiny-service-monitoring-wiring](missions/005-nemetonshiny-service-monitoring-wiring.md) · nemetonshiny · depuis le cycle 3 · PR #304 fusionnée (3a00990)
   - Homme : `dev` (sonnet), dans une session ouverte dans `nemetonshiny` (ADR 0001)
