@@ -21,7 +21,7 @@
 | `ramulus` | application Android, état des houppiers (protocole DEPERIS du DSF) | plugin activé, `pilotage/` |
 | `groma` | inventaire forestier par vidéo : application Android, paquet Python, serveur | plugin activé, `pilotage/` |
 | `sylvostation` | paquet R et pipeline `targets` : catalogue de stations forestières par sylvoécorégion | plugin activé, `CLAUDE.md` de la méthode et `pilotage/` ; délégation totale de Pascal depuis le 2026-11-16 (son `CLAUDE.md`) |
-| `sommieR` | paquet R : sommier forestier unifié à valeur probante (tournée de travaux, réalisé) | aucune : ni plugin, ni `CLAUDE.md`, ni `.claude/test-command` |
+| `sommieR` | paquet R : sommier forestier unifié à valeur probante (tournée de travaux, réalisé) | plugin activé, `CLAUDE.md` de la méthode et `pilotage/` (brief et ADR dans `pilotage/`, `docs/` étant le site pkgdown) ; mission 011 |
 
 L'état lu de chaque projet (dernier tag, commit lu sur la branche par défaut) est dans
 `pilotage/etat-cycle.yaml`, réécrit à chaque cycle.

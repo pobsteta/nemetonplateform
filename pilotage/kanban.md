@@ -10,7 +10,7 @@
 > mission propre à un projet qui a son `pilotage/` reste dans le kanban de ce projet ;
 > ici, sa carte y renvoie par un lien, sans la recopier.
 
-**Dernier cycle :** 5 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
+**Dernier cycle :** 6 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
 rien lancé. Une carte est immobile quand dernier cycle − N ≥ 2.)_
 
 _Modèle de carte :_
@@ -30,6 +30,12 @@ _Modèle de carte :_
 ## Planifié
 
 ## Terminé
+
+- [011-sommier-demarrer](missions/011-sommier-demarrer.md) · sommieR · depuis le cycle 6 · PR #70 fusionnée en squash (cce46d0)
+  - Homme : orchestrateur d'une session ouverte dans `sommieR` (`/imperatrice:demarrer`, sonnet, ADR 0001)
+  - Mission : méthode installée (brief et ADR dans `pilotage/`), plugin, `.claude/test-command` en niveau rapide (30 fichiers sur 45, base PostGIS jointe)
+  - Moyens : budget 3 $ ; entre 1,55 et 2,18 $ estimés, trois passes, environ 78 min
+  - Dépend de : rien
 
 - [009-nemetonshiny-availablecores-tests](missions/009-nemetonshiny-availablecores-tests.md) · nemetonshiny · depuis le cycle 5 · PR #305 fusionnée (50de1fd)
   - Homme : `dev` (sonnet), dans une session ouverte dans `nemetonshiny` (ADR 0001)
@@ -116,3 +122,4 @@ l'inscrit avec ce qu'elle nous apprend._
 - cycle 3 · `victor` a ses premiers tests, sa `.claude/test-command` et sa CI ; `nemetonshiny` n'a plus de test rouge quand il passe seul, et son niveau rapide repasse à 119 fichiers · pour l'orchestrateur et Pascal · cinq projets ont désormais leurs fusions prouvables ; mauvaise nouvelle apprise : une session lancée en arrière-plan ne survit ni à l'archivage de la session qui l'attend ni à un redémarrage, ses traces vont hors de `/tmp`
 - cycle 4 · `docs/carte.yaml` (13 projets, 20 liens sourcés, 6 à confirmer) et `pilotage/etat-cycle.yaml` (état lu des 13 projets) · pour l'orchestrateur · un cycle peut désormais partir de ce qui a changé et trouver l'aval dans un fichier lu par la machine ; critères n° 1 et 2 de la spec en place ; mauvaise nouvelle apprise : la carte en prose recopiait des tags et des versions, périmés en un jour (cinq tags sur treize)
 - cycle 5 · plus aucun appel déprécié à `future::availableCores()` dans `nemetonshiny` ; carte relue dans le code (18 liens, 4 questions précises au lieu de 6 liens douteux) · pour l'orchestrateur et Pascal · la carte ne désigne plus d'aval qui n'existe pas (`surculus` n'est pas en aval de `nemetonshiny`) ; mauvaise nouvelle apprise : un trajet réel peut passer par un projet hors carte (sommieR), et une décision « seulement observé » peut perdre sa raison en un cycle (`sylvostation` a désormais un `main`)
+- cycle 6 · sommieR, 14ᵉ projet, a la méthode, le plugin et une `.claude/test-command` (niveau rapide, base PostGIS jointe, échec si elle manque) ; carte entièrement tranchée par la règle « un lien suit la dépendance technique » ; `sylvostation` piloté · pour l'orchestrateur et Pascal · sept projets ont leurs fusions prouvables ; mauvaise nouvelle apprise : `/demarrer` pose ses questions à Pascal et ne se lance pas sans lui ; le gabarit met brief et ADR dans `docs/`, publié par pkgdown dans les paquets R ; le coût d'une session reprise est cumulé, pas additionnel
