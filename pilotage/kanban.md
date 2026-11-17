@@ -27,6 +27,12 @@ _Modèle de carte :_
 
 ## Validé
 
+- [006-victor-tests-et-ci](missions/006-victor-tests-et-ci.md) · victor · depuis le cycle 3
+  - Homme : `dev` (sonnet), dans une session ouverte dans `victor` (ADR 0001)
+  - Mission : premiers tests `pytest` du cœur, `.claude/test-command`, plugin, CI minimale ; Pascal fusionne
+  - Moyens : `uv` du projet ; budget 3 $, 3600 s
+  - Dépend de : rien
+
 ## Planifié
 
 
