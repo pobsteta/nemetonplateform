@@ -29,6 +29,8 @@ _Modèle de carte :_
 
 ## Planifié
 
+- [005-nemetonshiny-service-monitoring-wiring](missions/005-nemetonshiny-service-monitoring-wiring.md) · nemetonshiny · depuis le cycle 3 · session lancée le 2026-11-17
+
 
 ## Terminé
 
