@@ -54,6 +54,7 @@ projets:
     depot: pobsteta/aigora
     chaine: r
     methode: aucune
+    observe_seulement: oui   # Pascal, 2026-11-17 : ni plugin ni mission, seulement observé
     briefs: ~/dev/briefs/vers-aigora
   aigora-nemeton:
     chemin: ~/dev/aigora/aigora-nemeton
