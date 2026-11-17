@@ -55,8 +55,9 @@ Pascal le 2026-11-16, l'orchestrateur fusionne et publie quand tout est vert, au
 
 `nemeton`, `foretaccess`, `nemetonshiny`, `nemetonmcp`, `victor`, `aigora`, `terrain`,
 `marculus`, `surculus`, `ramulus`, `groma`, `sylvostation`, `aigora-nemeton` (les sept
-derniers ajoutés par Pascal le 2026-11-16). La liste et
-les liens entre eux sont dans `docs/carte-dependances.md` ; Pascal y ajoute ou en retire
+derniers ajoutés par Pascal le 2026-11-16), `sommieR` (ajouté par Pascal le 2026-11-17).
+La liste et les liens entre eux sont dans `docs/carte.yaml` (la carte en prose,
+`docs/carte-dependances.md`, en garde le schéma et l'explication) ; Pascal y ajoute ou en retire
 un projet.
 
 ### Chaque projet reste chez lui

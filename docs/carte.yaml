@@ -20,6 +20,8 @@
 #   nature   : code-r | gradle | donnees | mcp | service | brief | git
 #   confirme : oui | non  (non = « à confirmer » dans la carte en prose)
 #   question : présente sur tout lien `non` : la question précise posée à Pascal
+#   note : précision sur un lien `oui` confirmé par décision ou dont le sens a été fixé par Pascal
+#   Règle (Pascal, 2026-11-17) : un lien suit la dépendance technique (l'amont produit ce que l'aval lit), jamais le seul flux des briefs.
 
 projets:
   nemeton:
@@ -97,14 +99,38 @@ projets:
     methode: plugin+pilotage
     briefs: ~/dev/briefs/vers-groma
   sylvostation:
-    chemin: null           # pas de clone dans ~/dev
+    chemin: ~/dev/sylvostation
     depot: pobsteta/sylvostation   # vérifié par gh le 2026-11-17
     chaine: r
     methode: plugin+pilotage   # plugin imperatrice activé dans son dépôt (relevé du 2026-11-17)
-    observe_seulement: oui   # Pascal, 2026-11-17 : seulement observé (décidé quand il n'avait pas de main ; à revoir au bilan)
     briefs: ~/dev/briefs/vers-sylvostation
+  sommieR:
+    chemin: ~/dev/sommieR
+    depot: pobsteta/sommieR
+    chaine: r
+    methode: aucune          # ni plugin, ni CLAUDE.md, ni .claude/test-command sur main (relevé du 2026-11-17)
+    briefs: ~/dev/briefs/vers-sommier
 
 liens:
+  - aval: sommieR
+    amont: nemeton
+    nature: code-r
+    par: "Suggests: nemeton (Remotes pobsteta/nemeton) ; nemeton::ifn_prelevement_essence_ser()"
+    source: sommieR/DESCRIPTION:33,43 ; sommieR/R/nemeton.R:100
+    confirme: oui
+  - aval: surculus
+    amont: sommieR
+    nature: donnees
+    par: "tournée de travaux travaux.gpkg, écrite par sommieR, complétée sur le terrain par surculus"
+    source: sommieR/R/travaux_qfield.R:56-57 ; surculus/app/build.gradle.kts:163 ; surculus/app/src/androidTest/kotlin/io/github/pobsteta/surculus/FumeeGeoPackageTest.kt:58
+    confirme: oui
+  - aval: nemetonshiny
+    amont: sommieR
+    nature: donnees
+    par: "réalisé de la tournée de travaux : CSV écrit par sommier_actions_realisees(), relu par nemetonshiny"
+    source: nemetonshiny/R/service_tournee_travaux.R:1-7,59 ; nemetonshiny/R/mod_action_plan.R:163
+    confirme: non
+    question: "nemetonshiny lit le CSV écrit par sommier_actions_realisees(), mais cette fonction n'existe pas sur origin/main de sommieR (relevé du 2026-11-17 ; le clone est sur la branche a50-1-edition). Le lien est-il à venir (fonction pas encore livrée par sommieR) ou la fonction a-t-elle changé de nom ?"
   - aval: nemetonshiny
     amont: nemeton
     nature: code-r
@@ -170,22 +196,22 @@ liens:
     nature: donnees
     par: "format commun deperis.gpkg (deperis-v1) : nemeton écrit la tournée et l'importe, ramulus la complète"
     source: ramulus/docs/adr/0003-echange-avec-nemeton.md:10-13 ; ramulus/core/src/main/kotlin/io/github/pobsteta/ramulus/core/echange/EchangeDeperis.kt:8-9 ; ramulus/pilotage/equipe.md:33
-    confirme: non
-    question: "Côté ramulus, le code lit et écrit deperis-v1 (EchangeDeperis.kt:8-9). Côté nemeton (origin/main du 2026-11-17), aucune fonction creer_tournee_deperis() ni importer_deperis() : l'ADR 0003 de ramulus (acceptée le 2026-10-28) les prévoit, le brief vers nemeton est « à écrire » (ramulus/pilotage/equipe.md:33) et ~/dev/briefs/vers-nemeton n'en contient aucun. Le lien reste-t-il « non » jusqu'à la livraison côté nemeton, ou le passe-t-on à « oui » sur la foi de l'ADR ? Et le sens : nemeton écrit puis importe, ramulus complète entre les deux."
+    confirme: oui
+    note: "Confirmé par Pascal le 2026-11-17 sur la foi de l'ADR 0003 de ramulus (acceptée le 2026-10-28). Côté nemeton, les fonctions creer_tournee_deperis() et importer_deperis() ne sont pas encore écrites (origin/main du 2026-11-17), et le brief de ramulus vers nemeton reste à écrire. Sens : nemeton écrit la tournée puis l'importe, ramulus la complète entre les deux."
   - aval: groma
     amont: nemeton
-    nature: brief
-    par: "briefs entre groma et nemeton ; groma s'interdit de modifier nemeton"
-    source: groma/CLAUDE.md:8-12 ; briefs/vers-groma/2026-10-17-reponse-projet-qgs-ids-couches.md:3 (~/dev/briefs)
-    confirme: non
-    question: "Le mécanisme existe, mais le sens écrit ici n'est pas celui du flux. groma écrit 13 briefs vers nemeton (groma/briefs/vers-nemeton/, rangés « traités » avec PR nemeton dans ~/dev/briefs/traites/INDEX.md:34-48) ; nemeton n'a répondu que par 2 réponses (~/dev/briefs/vers-groma/2026-10-17-reponse-*.md, ligne 3 : « Émetteur : nemeton. Destinataire : Groma »), jamais rangées en traites/, et groma/ n'y renvoie nulle part. Un lien « brief » suit-il le flux du brief (groma amont, nemeton aval) ou la dépendance technique (nemeton amont) ? Le lien technique réel, lui, existe : voir les liens nouveaux signalés (gpkg inventaire vidéo)."
+    nature: donnees
+    par: "projet d'inventaire vidéo : GeoPackage inventaire_video.gpkg écrit par nemeton, envoyé au serveur Groma et lu par l'application ; résultats relus par nemeton (schéma unique côté groma)"
+    source: nemeton/R/inventaire_video.R:1424 (creer_projet_inventaire_video), :2319 (groma_envoyer_projet), :1796 (importer_inventaire_video) ; groma/android/app/src/main/kotlin/groma/app/DepotProjets.kt:237 (GPKG = inventaire_video.gpkg) ; groma/CLAUDE.md:15-17 (schéma unique)
+    confirme: oui
+    note: "Sens fixé par Pascal le 2026-11-17 : un lien suit la dépendance technique, de nemeton vers groma, pas le flux des briefs (groma écrit surtout des briefs vers nemeton). Nature passée de brief à donnees, sources relues dans le code des deux côtés le 2026-11-17."
   - aval: groma
     amont: nemetonshiny
-    nature: brief
-    par: "briefs entre groma et nemetonshiny ; groma s'interdit de modifier nemetonshiny"
-    source: groma/CLAUDE.md:8-12 ; nemetonshiny/R/mod_inventaire_video.R:1
-    confirme: non
-    question: "Même question que pour nemeton, plus un constat : aucun brief de nemetonshiny vers groma n'existe (~/dev/briefs/vers-groma/ et traites/ : zéro ; nemetonshiny/ ne cite jamais vers-groma). Les briefs vont de groma vers nemetonshiny (groma/briefs/vers-nemetonshiny/, 2 briefs ; nemetonshiny/R/mod_inventaire_video.R:1 « brief groma 2026-10-12 »). Sens écrit ici inversé par rapport au flux. Retirer ce lien « brief » au profit du lien de données réel (nemetonshiny publie les projets que groma télécharge), ou le garder avec le sens du flux ?"
+    nature: donnees
+    par: "projet QField d'inventaire vidéo publié par nemetonshiny sur le serveur Groma (via nemeton::groma_envoyer_projet) et téléchargé par l'application"
+    source: nemetonshiny/R/service_inventaire_video.R:237-242 (video_envoi_disponible, groma_envoyer_projet) ; groma/android/app/src/main/kotlin/groma/app/TelechargementProjet.kt:37 ; groma/android/app/src/main/kotlin/groma/app/Projet.kt:29
+    confirme: oui
+    note: "Sens et nature fixés le 2026-11-17 par la règle de Pascal (un lien suit la dépendance technique) : le lien « brief », dont le flux allait de groma vers nemetonshiny, est remplacé par ce lien de données, relu dans le code des deux côtés."
   - aval: aigora-nemeton
     amont: nemetonmcp
     nature: mcp
@@ -210,14 +236,13 @@ liens:
     par: "adaptation : son origin git est le clone local d'aigora"
     source: "git remote -v dans aigora/aigora-nemeton"
     confirme: oui
-  - aval: aigora-nemeton
-    amont: victor
+  - aval: victor
+    amont: aigora-nemeton
     nature: service
-    par: "VICTOR délègue des tâches « claude -p » dans l'espace nemeton (aigora-nemeton) ; aigora-nemeton lui rend un bloc JSON (vue, display_report) que VICTOR lit"
-    source: victor/server.py:283-285 ; victor/server.py:698 ; aigora/aigora-nemeton/CLAUDE.md:76-78 ; aigora/aigora-nemeton/.claude/skills/diagnostic/SKILL.md:92-96
-    confirme: non
-    question: "Le lien existe et le code est des deux côtés, mais dans les deux sens : victor lance « claude -p » dans l'espace nemeton (server.py:698) et impose 600 s (SKILL.md:95) ; aigora-nemeton écrit en retour le bloc que victor décode (server.py:1052-1060, SKILL.md:96). Un changement de l'un peut casser l'autre. Le garde-t-on en un seul lien (et dans quel sens), ou en deux liens (victor vers aigora-nemeton pour le lancement, aigora-nemeton vers victor pour le bloc de retour) ? Autre réserve : l'espace « nemeton » est une variable d'environnement de victor (VICTOR_ESPACES, README.md:233), non versionnée : le code ne nomme pas aigora-nemeton."
-
+    par: "contrat de sortie : sous VICTOR (claude -p dans l'espace nemeton), aigora-nemeton termine sa réponse par un bloc JSON {\"vue\": ...} que victor décode (extraire_vue) pour l'afficher"
+    source: aigora-nemeton/.claude/skills/diagnostic/SKILL.md:92-96 (contrat de sortie) ; aigora-nemeton/CLAUDE.md:76-78 ; victor/victor/server.py:1052-1060 (extraire_vue) ; victor/victor/server.py:283-285, :698 (lancement claude -p)
+    confirme: oui
+    note: "Sens fixé le 2026-11-17 par la règle de Pascal (un lien suit la dépendance technique) : aigora-nemeton produit le bloc que victor lit, donc un changement d'aigora-nemeton peut casser victor. Dans l'autre sens, victor ne transmet que du texte libre ; seule sa coupure à 600 s est prise en compte par aigora-nemeton (SKILL.md:95, « toujours lancer_calcul »), convention écrite et non format lu : pas de second lien. L'espace nemeton n'est nommé que dans la configuration de victor (VICTOR_ESPACES, victor/README.md:233)."
 # Liens retirés (mission 010, 2026-11-17), gardés ici pour ne pas être remis à tort.
 # Preuve : le code et la spec de l'aval disent que le lien n'existe pas en direct.
 # - surculus <- nemetonshiny (plan d'action, export_action_plan_gpkg) : surculus ne lit que la
