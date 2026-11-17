@@ -182,11 +182,11 @@ liens:
     note: "Sens fixé par Pascal le 2026-11-17 : un lien suit la dépendance technique, de nemeton vers groma, pas le flux des briefs (groma écrit surtout des briefs vers nemeton). Nature passée de brief à donnees, sources relues dans le code des deux côtés le 2026-11-17."
   - aval: groma
     amont: nemetonshiny
-    nature: brief
-    par: "briefs entre groma et nemetonshiny ; groma s'interdit de modifier nemetonshiny"
-    source: groma/CLAUDE.md:8-12 ; nemetonshiny/R/mod_inventaire_video.R:1
-    confirme: non
-    question: "Même question que pour nemeton, plus un constat : aucun brief de nemetonshiny vers groma n'existe (~/dev/briefs/vers-groma/ et traites/ : zéro ; nemetonshiny/ ne cite jamais vers-groma). Les briefs vont de groma vers nemetonshiny (groma/briefs/vers-nemetonshiny/, 2 briefs ; nemetonshiny/R/mod_inventaire_video.R:1 « brief groma 2026-10-12 »). Sens écrit ici inversé par rapport au flux. Retirer ce lien « brief » au profit du lien de données réel (nemetonshiny publie les projets que groma télécharge), ou le garder avec le sens du flux ?"
+    nature: donnees
+    par: "projet QField d'inventaire vidéo publié par nemetonshiny sur le serveur Groma (via nemeton::groma_envoyer_projet) et téléchargé par l'application"
+    source: nemetonshiny/R/service_inventaire_video.R:237-242 (video_envoi_disponible, groma_envoyer_projet) ; groma/android/app/src/main/kotlin/groma/app/TelechargementProjet.kt:37 ; groma/android/app/src/main/kotlin/groma/app/Projet.kt:29
+    confirme: oui
+    note: "Sens et nature fixés le 2026-11-17 par la règle de Pascal (un lien suit la dépendance technique) : le lien « brief », dont le flux allait de groma vers nemetonshiny, est remplacé par ce lien de données, relu dans le code des deux côtés."
   - aval: aigora-nemeton
     amont: nemetonmcp
     nature: mcp

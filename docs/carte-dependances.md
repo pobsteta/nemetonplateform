@@ -62,6 +62,7 @@ flowchart LR
   terrain --> groma
   ramulus --> nemeton
   nemeton --> groma
+  nemetonshiny --> groma
 ```
 
 La flèche va de l'amont vers l'aval : un changement en amont peut casser l'aval.
@@ -69,16 +70,16 @@ La flèche va de l'amont vers l'aval : un changement en amont peut casser l'aval
 Les liens (18 au 2026-11-17 : amont, aval, nature, ce par quoi ils passent, source et
 état « confirmé ou non ») sont dans **`docs/carte.yaml`**, source unique, lue par
 l'orchestrateur à chaque cycle (`docs/spec.md` § 8). Ils ne sont plus recopiés ici.
-Deux liens y portent encore `confirme: non`, chacun avec la question posée à Pascal
+Un lien y porte encore `confirme: non`, chacun avec la question posée à Pascal
 (mission 010, 2026-11-17) ; `nemeton` ← `ramulus` a été confirmé par Pascal le 2026-11-17
 sur la foi de l'ADR 0003 de `ramulus`, avant le code de `nemeton` ;
 `groma` ← `nemeton` a été confirmé le même jour comme lien de données (projet d'inventaire
-vidéo), Pascal ayant fixé qu'un lien suit la dépendance technique, pas le flux des briefs ; les deux autres des six liens « à confirmer » ont été retirés
+vidéo), Pascal ayant fixé qu'un lien suit la dépendance technique, pas le flux des briefs ;
+`groma` ← `nemetonshiny` aussi, par la même règle (projet publié sur le serveur Groma) ; les deux autres des six liens « à confirmer » ont été retirés
 (`surculus` ← `nemetonshiny` et `nemeton` ← `surculus` : `surculus` ne lit que la tournée de
 sommieR, qui n'est pas un projet de la carte ; preuves en pied de `docs/carte.yaml`).
-Le schéma ci-dessus n'en dessine que seize ;
-ne sont pas dessinés : `groma` ← `nemetonshiny` (brief, `non`),
-`aigora-nemeton` ← `victor` (`non`). En cas d'écart, le YAML fait foi.
+Le schéma ci-dessus en dessine dix-sept ;
+n'est pas dessiné : `aigora-nemeton` ← `victor` (`non`). En cas d'écart, le YAML fait foi.
 
 Lien non trouvé : `nemeton` ne déclare pas `foretaccess` dans son `DESCRIPTION`, alors
 que `nemeton/specs/` contient des briefs `brief-foretaccess-*.md`. Les deux projets
