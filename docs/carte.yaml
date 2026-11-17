@@ -20,6 +20,7 @@
 #   nature   : code-r | gradle | donnees | mcp | service | brief | git
 #   confirme : oui | non  (non = « à confirmer » dans la carte en prose)
 #   question : présente sur tout lien `non` : la question précise posée à Pascal
+#   note : précision sur un lien `oui` confirmé par décision plutôt que par le code des deux côtés
 
 projets:
   nemeton:
@@ -169,8 +170,8 @@ liens:
     nature: donnees
     par: "format commun deperis.gpkg (deperis-v1) : nemeton écrit la tournée et l'importe, ramulus la complète"
     source: ramulus/docs/adr/0003-echange-avec-nemeton.md:10-13 ; ramulus/core/src/main/kotlin/io/github/pobsteta/ramulus/core/echange/EchangeDeperis.kt:8-9 ; ramulus/pilotage/equipe.md:33
-    confirme: non
-    question: "Côté ramulus, le code lit et écrit deperis-v1 (EchangeDeperis.kt:8-9). Côté nemeton (origin/main du 2026-11-17), aucune fonction creer_tournee_deperis() ni importer_deperis() : l'ADR 0003 de ramulus (acceptée le 2026-10-28) les prévoit, le brief vers nemeton est « à écrire » (ramulus/pilotage/equipe.md:33) et ~/dev/briefs/vers-nemeton n'en contient aucun. Le lien reste-t-il « non » jusqu'à la livraison côté nemeton, ou le passe-t-on à « oui » sur la foi de l'ADR ? Et le sens : nemeton écrit puis importe, ramulus complète entre les deux."
+    confirme: oui
+    note: "Confirmé par Pascal le 2026-11-17 sur la foi de l'ADR 0003 de ramulus (acceptée le 2026-10-28). Côté nemeton, les fonctions creer_tournee_deperis() et importer_deperis() ne sont pas encore écrites (origin/main du 2026-11-17), et le brief de ramulus vers nemeton reste à écrire. Sens : nemeton écrit la tournée puis l'importe, ramulus la complète entre les deux."
   - aval: groma
     amont: nemeton
     nature: brief
