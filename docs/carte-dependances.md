@@ -25,8 +25,9 @@
 L'état lu de chaque projet (dernier tag, commit lu sur la branche par défaut) est dans
 `pilotage/etat-cycle.yaml`, réécrit à chaque cycle.
 
-`sylvostation` n'a pas de clone dans `~/dev`. Depuis le 2026-11-17, sa branche par défaut
-sur GitHub est `main`, et le plugin `imperatrice` y est activé. Son `DESCRIPTION`
+`sylvostation` est cloné dans `~/dev/sylvostation`. Depuis le 2026-11-17, sa branche par
+défaut sur GitHub est `main`, et le plugin `imperatrice` y est activé ; c'est un projet
+piloté comme les autres (décision de Pascal du 2026-11-17). Son `DESCRIPTION`
 n'importe aucun projet de la plateforme, et aucun lien n'est relevé.
 
 Les six dernières lignes ont été ajoutées le 2026-11-16 à la demande de Pascal, d'après une

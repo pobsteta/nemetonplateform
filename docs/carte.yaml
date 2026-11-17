@@ -97,11 +97,10 @@ projets:
     methode: plugin+pilotage
     briefs: ~/dev/briefs/vers-groma
   sylvostation:
-    chemin: null           # pas de clone dans ~/dev
+    chemin: ~/dev/sylvostation
     depot: pobsteta/sylvostation   # vérifié par gh le 2026-11-17
     chaine: r
     methode: plugin+pilotage   # plugin imperatrice activé dans son dépôt (relevé du 2026-11-17)
-    observe_seulement: oui   # Pascal, 2026-11-17 : seulement observé (décidé quand il n'avait pas de main ; à revoir au bilan)
     briefs: ~/dev/briefs/vers-sylvostation
 
 liens:
