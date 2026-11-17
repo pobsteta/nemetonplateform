@@ -98,6 +98,7 @@ projets:
     depot: pobsteta/sylvostation   # vérifié par gh le 2026-11-17
     chaine: r
     methode: pilotage
+    observe_seulement: oui   # Pascal, 2026-11-17 : tel quel (sans main ni clone), seulement observé
     briefs: ~/dev/briefs/vers-sylvostation
     branche: claude/admiring-cerf-hq7t8l   # pas de main
 
