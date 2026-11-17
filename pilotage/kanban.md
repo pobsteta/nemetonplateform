@@ -27,6 +27,12 @@ _Modèle de carte :_
 
 ## Validé
 
+- [009-nemetonshiny-availablecores-tests](missions/009-nemetonshiny-availablecores-tests.md) · nemetonshiny · depuis le cycle 4 · pour le cycle 5
+  - Homme : `dev` (sonnet), dans une session ouverte dans `nemetonshiny` (ADR 0001)
+  - Mission : les deux derniers `future::availableCores()` des tests passés à `parallelly`
+  - Moyens : budget 3 $, 5400 s
+  - Dépend de : 005 (fusionnée)
+
 ## Planifié
 
 ## Terminé
