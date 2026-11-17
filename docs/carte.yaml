@@ -20,7 +20,8 @@
 #   nature   : code-r | gradle | donnees | mcp | service | brief | git
 #   confirme : oui | non  (non = « à confirmer » dans la carte en prose)
 #   question : présente sur tout lien `non` : la question précise posée à Pascal
-#   note : précision sur un lien `oui` confirmé par décision plutôt que par le code des deux côtés
+#   note : précision sur un lien `oui` confirmé par décision ou dont le sens a été fixé par Pascal
+#   Règle (Pascal, 2026-11-17) : un lien suit la dépendance technique (l'amont produit ce que l'aval lit), jamais le seul flux des briefs.
 
 projets:
   nemeton:
@@ -174,11 +175,11 @@ liens:
     note: "Confirmé par Pascal le 2026-11-17 sur la foi de l'ADR 0003 de ramulus (acceptée le 2026-10-28). Côté nemeton, les fonctions creer_tournee_deperis() et importer_deperis() ne sont pas encore écrites (origin/main du 2026-11-17), et le brief de ramulus vers nemeton reste à écrire. Sens : nemeton écrit la tournée puis l'importe, ramulus la complète entre les deux."
   - aval: groma
     amont: nemeton
-    nature: brief
-    par: "briefs entre groma et nemeton ; groma s'interdit de modifier nemeton"
-    source: groma/CLAUDE.md:8-12 ; briefs/vers-groma/2026-10-17-reponse-projet-qgs-ids-couches.md:3 (~/dev/briefs)
-    confirme: non
-    question: "Le mécanisme existe, mais le sens écrit ici n'est pas celui du flux. groma écrit 13 briefs vers nemeton (groma/briefs/vers-nemeton/, rangés « traités » avec PR nemeton dans ~/dev/briefs/traites/INDEX.md:34-48) ; nemeton n'a répondu que par 2 réponses (~/dev/briefs/vers-groma/2026-10-17-reponse-*.md, ligne 3 : « Émetteur : nemeton. Destinataire : Groma »), jamais rangées en traites/, et groma/ n'y renvoie nulle part. Un lien « brief » suit-il le flux du brief (groma amont, nemeton aval) ou la dépendance technique (nemeton amont) ? Le lien technique réel, lui, existe : voir les liens nouveaux signalés (gpkg inventaire vidéo)."
+    nature: donnees
+    par: "projet d'inventaire vidéo : GeoPackage inventaire_video.gpkg écrit par nemeton, envoyé au serveur Groma et lu par l'application ; résultats relus par nemeton (schéma unique côté groma)"
+    source: nemeton/R/inventaire_video.R:1424 (creer_projet_inventaire_video), :2319 (groma_envoyer_projet), :1796 (importer_inventaire_video) ; groma/android/app/src/main/kotlin/groma/app/DepotProjets.kt:237 (GPKG = inventaire_video.gpkg) ; groma/CLAUDE.md:15-17 (schéma unique)
+    confirme: oui
+    note: "Sens fixé par Pascal le 2026-11-17 : un lien suit la dépendance technique, de nemeton vers groma, pas le flux des briefs (groma écrit surtout des briefs vers nemeton). Nature passée de brief à donnees, sources relues dans le code des deux côtés le 2026-11-17."
   - aval: groma
     amont: nemetonshiny
     nature: brief
