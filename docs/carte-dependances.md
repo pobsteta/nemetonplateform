@@ -6,21 +6,24 @@
 
 ## Les projets et leur état
 
-| Projet | Nature | Version lue sur `main` | Dernier tag | Méthode de l'Impératrice |
-|---|---|---|---|---|
-| `nemeton` | paquet R, cœur métier | 2026.11.34.9000 | v2026.11.35 | plugin activé (`.claude/settings.json`), pas de `pilotage/` |
-| `foretaccess` | paquet R | 2.6.0.9000 | v2.6.0 | ni plugin ni `pilotage/` |
-| `nemetonshiny` | application Shiny/golem | 2026.11.2.9001 | v2026.11.2 | `pilotage/` complet, équipe validée le 2026-11-10 ; pas de `.claude/settings.json` versionné |
-| `nemetonmcp` | paquet R (`r/`) et plugin Claude | 2026.11.10 | v2026.11.10 | ni plugin ni `pilotage/` |
-| `victor` | assistant vocal, Python | 1.0.0 | aucun | ni plugin ni `pilotage/` |
-| `aigora` | Claude Code en local, RStudio | 1.0.0-rstudio | aucun | non ; a ses propres agents, hooks et règles (`.claude/`) |
-| `aigora-nemeton` | adaptation privée d'`aigora` : diagnostics Néméton pour des clients, sans interface | 1.0.0-nemeton (`plugin.json`) | aucun | non ; a ses propres agents, hooks et règles (`.claude/`), pas de `.claude/test-command` |
-| `terrain` | bibliothèque Kotlin (modules carte, gnss, gpkg, journal, style, voix), publiée par JitPack | `VERSION` injectée par la CI | v0.7.1 | plugin activé, `pilotage/` |
-| `marculus` | application Android, martelage forestier | `versionName` injecté par la CI | v0.68.4 | plugin activé, `pilotage/` |
-| `surculus` | application Android, suivi des travaux de plantation | `versionName` injecté par la CI | v0.7.84 | plugin activé, `pilotage/` |
-| `ramulus` | application Android, état des houppiers (protocole DEPERIS du DSF) | `versionName` injecté par la CI | aucun | plugin activé, `pilotage/` |
-| `groma` | inventaire forestier par vidéo : application Android, paquet Python, serveur | voir `CHANGELOG.md` | v2026.11.7 | plugin activé, `pilotage/` |
-| `sylvostation` | paquet R et pipeline `targets` : catalogue de stations forestières par sylvoécorégion | 0.0.0.9000 | aucun | `CLAUDE.md` de la méthode et `pilotage/` ; délégation totale de Pascal depuis le 2026-11-16 (son `CLAUDE.md`) |
+| Projet | Nature | Méthode de l'Impératrice |
+|---|---|---|
+| `nemeton` | paquet R, cœur métier | plugin activé (`.claude/settings.json`), pas de `pilotage/` |
+| `foretaccess` | paquet R | ni plugin ni `pilotage/` |
+| `nemetonshiny` | application Shiny/golem | `pilotage/` complet, équipe validée le 2026-11-10 ; pas de `.claude/settings.json` versionné |
+| `nemetonmcp` | paquet R (`r/`) et plugin Claude | ni plugin ni `pilotage/` |
+| `victor` | assistant vocal, Python | ni plugin ni `pilotage/` |
+| `aigora` | Claude Code en local, RStudio | non ; a ses propres agents, hooks et règles (`.claude/`) |
+| `aigora-nemeton` | adaptation privée d'`aigora` : diagnostics Néméton pour des clients, sans interface | non ; a ses propres agents, hooks et règles (`.claude/`), pas de `.claude/test-command` |
+| `terrain` | bibliothèque Kotlin (modules carte, gnss, gpkg, journal, style, voix), publiée par JitPack | plugin activé, `pilotage/` |
+| `marculus` | application Android, martelage forestier | plugin activé, `pilotage/` |
+| `surculus` | application Android, suivi des travaux de plantation | plugin activé, `pilotage/` |
+| `ramulus` | application Android, état des houppiers (protocole DEPERIS du DSF) | plugin activé, `pilotage/` |
+| `groma` | inventaire forestier par vidéo : application Android, paquet Python, serveur | plugin activé, `pilotage/` |
+| `sylvostation` | paquet R et pipeline `targets` : catalogue de stations forestières par sylvoécorégion | `CLAUDE.md` de la méthode et `pilotage/` ; délégation totale de Pascal depuis le 2026-11-16 (son `CLAUDE.md`) |
+
+L'état lu de chaque projet (dernier tag, commit lu sur la branche par défaut) est dans
+`pilotage/etat-cycle.yaml`, réécrit à chaque cycle.
 
 `sylvostation` n'a pas de clone dans `~/dev`. Sa branche par défaut sur GitHub est
 `claude/admiring-cerf-hq7t8l` : il n'a pas de `main`. Son `DESCRIPTION` n'importe aucun
@@ -36,9 +39,6 @@ jamais publier ce dossier ». Sa branche `main` a 13 commits d'avance et 4 de re
 cet `origin`. Son `CLAUDE.md` lui interdit de modifier les dépôts Néméton : il leur écrit
 des briefs dans `~/dev/briefs/vers-<dépôt>/`. Les données des clients (`missions/`)
 restent sur le PC de Pascal.
-
-À regarder : dans `nemeton`, `DESCRIPTION` annonce 2026.11.34.9000 alors que le dernier
-tag est v2026.11.35.
 
 ## Qui dépend de qui
 
