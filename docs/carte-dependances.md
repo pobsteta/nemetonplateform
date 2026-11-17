@@ -30,7 +30,8 @@ L'état lu de chaque projet (dernier tag, commit lu sur la branche par défaut) 
 projet de la plateforme, et aucun lien n'est relevé.
 
 Les six dernières lignes ont été ajoutées le 2026-11-16 à la demande de Pascal, d'après une
-première lecture du dépôt local de chaque projet ; leurs liens sont à confirmer.
+première lecture du dépôt local de chaque projet ; l'état de confirmation
+de leurs liens est dans `docs/carte.yaml` (champ `confirme`).
 
 `aigora-nemeton` a été ajouté le 2026-11-16 à la demande de Pascal. C'est un dépôt git
 local, `~/dev/aigora/aigora-nemeton`, dont l'`origin` est le clone local d'`aigora`
@@ -58,18 +59,21 @@ flowchart LR
   terrain --> surculus
   terrain --> ramulus
   terrain --> groma
-  nemetonshiny -.-> surculus
-  surculus -.-> nemeton
   ramulus -.-> nemeton
 ```
 
 La flèche va de l'amont vers l'aval : un changement en amont peut casser l'aval.
 
-Les liens (20 au 2026-11-17 : amont, aval, nature, ce par quoi ils passent, source et
+Les liens (18 au 2026-11-17 : amont, aval, nature, ce par quoi ils passent, source et
 état « confirmé ou non ») sont dans **`docs/carte.yaml`**, source unique, lue par
 l'orchestrateur à chaque cycle (`docs/spec.md` § 8). Ils ne sont plus recopiés ici.
-Les six liens à confirmer y portent `confirme: non`.
-Le schéma ci-dessus n'en dessine que dix-sept ; en cas d'écart, le YAML fait foi.
+Quatre liens y portent encore `confirme: non`, chacun avec la question posée à Pascal
+(mission 010, 2026-11-17) ; les deux autres des six liens « à confirmer » ont été retirés
+(`surculus` ← `nemetonshiny` et `nemeton` ← `surculus` : `surculus` ne lit que la tournée de
+sommieR, qui n'est pas un projet de la carte ; preuves en pied de `docs/carte.yaml`).
+Le schéma ci-dessus n'en dessine que quinze (le lien pointillé est le seul `non` dessiné) ;
+ne sont pas dessinés : `groma` ← `nemeton` et `groma` ← `nemetonshiny` (briefs, `non`),
+`aigora-nemeton` ← `victor` (`non`). En cas d'écart, le YAML fait foi.
 
 Lien non trouvé : `nemeton` ne déclare pas `foretaccess` dans son `DESCRIPTION`, alors
 que `nemeton/specs/` contient des briefs `brief-foretaccess-*.md`. Les deux projets
