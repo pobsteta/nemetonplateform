@@ -27,19 +27,19 @@ _Modèle de carte :_
 
 ## Validé
 
-- [010-confirmer-liens-carte](missions/010-confirmer-liens-carte.md) · nemetonplateforme · depuis le cycle 4 · pour le cycle 5
+## Planifié
+
+- [010-confirmer-liens-carte](missions/010-confirmer-liens-carte.md) · nemetonplateforme · depuis le cycle 5 · lancée le 2026-11-17
   - Homme : `archiviste` (sonnet), sous-agent dans un worktree de ce dépôt
   - Mission : vérifier dans le code les 6 liens `confirme: non` de `docs/carte.yaml`
   - Moyens : lecture seule des clones et de `~/dev/briefs/` ; PR fusionnée par délégation
   - Dépend de : 007 et 008 (fusionnées)
 
-- [009-nemetonshiny-availablecores-tests](missions/009-nemetonshiny-availablecores-tests.md) · nemetonshiny · depuis le cycle 4 · pour le cycle 5
+- [009-nemetonshiny-availablecores-tests](missions/009-nemetonshiny-availablecores-tests.md) · nemetonshiny · depuis le cycle 5 · lancée le 2026-11-17
   - Homme : `dev` (sonnet), dans une session ouverte dans `nemetonshiny` (ADR 0001)
   - Mission : les deux derniers `future::availableCores()` des tests passés à `parallelly`
   - Moyens : budget 3 $, 5400 s
   - Dépend de : 005 (fusionnée)
-
-## Planifié
 
 ## Terminé
 
