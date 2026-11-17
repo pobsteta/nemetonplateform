@@ -15,7 +15,7 @@
 #   briefs   : boîte de dépôt des briefs (convention spec § 4) ; le dossier peut ne pas exister
 #   branche  : branche par défaut quand ce n'est pas main
 # liens[]
-#   nature   : code-r | gradle | mcp | donnees | brief | service | git
+#   nature   : code-r | gradle | donnees | mcp | service | brief | git
 #   confirme : oui | non  (non = « à confirmer » dans la carte en prose)
 
 projets:
@@ -93,7 +93,7 @@ projets:
     briefs: ~/dev/briefs/vers-groma
   sylvostation:
     chemin: null           # pas de clone dans ~/dev
-    depot: à confirmer     # propriétaire non relevé ; le dépôt est sur GitHub
+    depot: pobsteta/sylvostation   # vérifié par gh le 2026-11-17
     chaine: r
     methode: pilotage
     briefs: ~/dev/briefs/vers-sylvostation
@@ -103,8 +103,8 @@ liens:
   - aval: nemetonshiny
     amont: nemeton
     nature: code-r
-    par: "Imports: nemeton (>= 2026.11.30), installé depuis la dernière release"
-    source: nemetonshiny/DESCRIPTION:15
+    par: "Imports: nemeton (>= 2026.11.35), installé depuis la dernière release"
+    source: nemetonshiny/DESCRIPTION:15   # relevé du 2026-11-17
     confirme: oui
   - aval: nemetonshiny
     amont: foretaccess
