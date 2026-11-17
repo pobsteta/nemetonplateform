@@ -61,6 +61,7 @@ projets:
     depot: null            # dépôt git local sans GitHub ; ne jamais publier (son README.md)
     chaine: r
     methode: aucune
+    observe_seulement: oui   # Pascal, 2026-11-17 : ni plugin ni mission, seulement observé
     briefs: ~/dev/briefs/vers-aigora-nemeton
   terrain:
     chemin: ~/dev/terrain
