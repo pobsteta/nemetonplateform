@@ -4,6 +4,8 @@
 # Relevé du 2026-11-16 (docs/carte-dependances.md), mis en YAML le 2026-11-17 (mission 007).
 # Le schéma, l'état des projets (versions, tags) et les points ouverts restent dans
 # docs/carte-dependances.md. Ici : aucun lien nouveau, aucune source inventée.
+# Mission 010 (2026-11-17) : les six liens « à confirmer » relus dans le code des deux côtés ;
+# deux retirés (voir « Liens retirés » en fin de fichier), quatre laissés à `non` avec une question.
 #
 # Lecture : un lien va de l'amont vers l'aval ; un changement en amont peut casser l'aval.
 # Les chemins `source:` sont relatifs à ~/dev/ (ou à ~/dev/aigora/ pour aigora-nemeton).
@@ -17,6 +19,7 @@
 # liens[]
 #   nature   : code-r | gradle | donnees | mcp | service | brief | git
 #   confirme : oui | non  (non = « à confirmer » dans la carte en prose)
+#   question : présente sur tout lien `non` : la question précise posée à Pascal
 
 projets:
   nemeton:
@@ -163,36 +166,27 @@ liens:
     par: "terrain-carte et terrain-style en v0.7.1"
     source: groma/android/app/build.gradle.kts:87-88
     confirme: oui
-  - aval: surculus
-    amont: nemetonshiny
-    nature: donnees
-    par: "lit le plan d'action (export_action_plan_gpkg)"
-    source: surculus/docs/architecture.md:4
-    confirme: non
-  - aval: nemeton
-    amont: surculus
-    nature: donnees
-    par: "reçoit le bilan de gestion et les indicateurs"
-    source: surculus/docs/architecture.md:22
-    confirme: non
   - aval: nemeton
     amont: ramulus
     nature: donnees
-    par: "format commun deperis.gpkg, lu et écrit par les deux"
-    source: ramulus/pilotage/missions/002-format-echange-deperis-v1.md:6
+    par: "format commun deperis.gpkg (deperis-v1) : nemeton écrit la tournée et l'importe, ramulus la complète"
+    source: ramulus/docs/adr/0003-echange-avec-nemeton.md:10-13 ; ramulus/core/src/main/kotlin/io/github/pobsteta/ramulus/core/echange/EchangeDeperis.kt:8-9 ; ramulus/pilotage/equipe.md:33
     confirme: non
+    question: "Côté ramulus, le code lit et écrit deperis-v1 (EchangeDeperis.kt:8-9). Côté nemeton (origin/main du 2026-11-17), aucune fonction creer_tournee_deperis() ni importer_deperis() : l'ADR 0003 de ramulus (acceptée le 2026-10-28) les prévoit, le brief vers nemeton est « à écrire » (ramulus/pilotage/equipe.md:33) et ~/dev/briefs/vers-nemeton n'en contient aucun. Le lien reste-t-il « non » jusqu'à la livraison côté nemeton, ou le passe-t-on à « oui » sur la foi de l'ADR ? Et le sens : nemeton écrit puis importe, ramulus complète entre les deux."
   - aval: groma
     amont: nemeton
     nature: brief
-    par: "briefs vers nemeton ; groma s'interdit de les modifier"
-    source: groma/CLAUDE.md:10-11
+    par: "briefs entre groma et nemeton ; groma s'interdit de modifier nemeton"
+    source: groma/CLAUDE.md:8-12 ; briefs/vers-groma/2026-10-17-reponse-projet-qgs-ids-couches.md:3 (~/dev/briefs)
     confirme: non
+    question: "Le mécanisme existe, mais le sens écrit ici n'est pas celui du flux. groma écrit 13 briefs vers nemeton (groma/briefs/vers-nemeton/, rangés « traités » avec PR nemeton dans ~/dev/briefs/traites/INDEX.md:34-48) ; nemeton n'a répondu que par 2 réponses (~/dev/briefs/vers-groma/2026-10-17-reponse-*.md, ligne 3 : « Émetteur : nemeton. Destinataire : Groma »), jamais rangées en traites/, et groma/ n'y renvoie nulle part. Un lien « brief » suit-il le flux du brief (groma amont, nemeton aval) ou la dépendance technique (nemeton amont) ? Le lien technique réel, lui, existe : voir les liens nouveaux signalés (gpkg inventaire vidéo)."
   - aval: groma
     amont: nemetonshiny
     nature: brief
-    par: "briefs vers nemetonshiny ; groma s'interdit de les modifier"
-    source: groma/CLAUDE.md:10-11
+    par: "briefs entre groma et nemetonshiny ; groma s'interdit de modifier nemetonshiny"
+    source: groma/CLAUDE.md:8-12 ; nemetonshiny/R/mod_inventaire_video.R:1
     confirme: non
+    question: "Même question que pour nemeton, plus un constat : aucun brief de nemetonshiny vers groma n'existe (~/dev/briefs/vers-groma/ et traites/ : zéro ; nemetonshiny/ ne cite jamais vers-groma). Les briefs vont de groma vers nemetonshiny (groma/briefs/vers-nemetonshiny/, 2 briefs ; nemetonshiny/R/mod_inventaire_video.R:1 « brief groma 2026-10-12 »). Sens écrit ici inversé par rapport au flux. Retirer ce lien « brief » au profit du lien de données réel (nemetonshiny publie les projets que groma télécharge), ou le garder avec le sens du flux ?"
   - aval: aigora-nemeton
     amont: nemetonmcp
     nature: mcp
@@ -220,6 +214,19 @@ liens:
   - aval: aigora-nemeton
     amont: victor
     nature: service
-    par: "VICTOR le lance à la voix (espace « nemeton ») ; sens du lien à vérifier"
-    source: aigora/aigora-nemeton/README.md:17
+    par: "VICTOR délègue des tâches « claude -p » dans l'espace nemeton (aigora-nemeton) ; aigora-nemeton lui rend un bloc JSON (vue, display_report) que VICTOR lit"
+    source: victor/server.py:283-285 ; victor/server.py:698 ; aigora/aigora-nemeton/CLAUDE.md:76-78 ; aigora/aigora-nemeton/.claude/skills/diagnostic/SKILL.md:92-96
     confirme: non
+    question: "Le lien existe et le code est des deux côtés, mais dans les deux sens : victor lance « claude -p » dans l'espace nemeton (server.py:698) et impose 600 s (SKILL.md:95) ; aigora-nemeton écrit en retour le bloc que victor décode (server.py:1052-1060, SKILL.md:96). Un changement de l'un peut casser l'autre. Le garde-t-on en un seul lien (et dans quel sens), ou en deux liens (victor vers aigora-nemeton pour le lancement, aigora-nemeton vers victor pour le bloc de retour) ? Autre réserve : l'espace « nemeton » est une variable d'environnement de victor (VICTOR_ESPACES, README.md:233), non versionnée : le code ne nomme pas aigora-nemeton."
+
+# Liens retirés (mission 010, 2026-11-17), gardés ici pour ne pas être remis à tort.
+# Preuve : le code et la spec de l'aval disent que le lien n'existe pas en direct.
+# - surculus <- nemetonshiny (plan d'action, export_action_plan_gpkg) : surculus ne lit que la
+#   tournée de sommieR, « jamais ailleurs » (surculus/docs/brief.md:77-81) ; le prévu de
+#   nemetonshiny est « hors tranche 1 » (surculus/docs/spec.md:42-43) ; aucun code de surculus
+#   (gpkg/, core/, data/, app/) ne lit la couche `actions` ni `action_id`. Le trajet réel passe
+#   par sommieR, qui n'est pas un projet de la carte (nemetonshiny/R/service_tournee_travaux.R:1-7).
+# - nemeton <- surculus (bilan de gestion, indicateurs) : « nemeton n'est pas sur le chemin »
+#   (surculus/docs/spec.md:44) ; nemeton (origin/main, R/ et DESCRIPTION) ne cite ni surculus ni
+#   sommieR (seules des notes de PLAN.md:823-828 parlent du travaux.gpkg de sommieR). Le schéma surculus/docs/architecture.md:24
+#   (« bilan ... -> nemeton ») décrit une sortie de sommieR, pas une lecture par nemeton.
