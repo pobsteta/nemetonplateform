@@ -211,14 +211,13 @@ liens:
     par: "adaptation : son origin git est le clone local d'aigora"
     source: "git remote -v dans aigora/aigora-nemeton"
     confirme: oui
-  - aval: aigora-nemeton
-    amont: victor
+  - aval: victor
+    amont: aigora-nemeton
     nature: service
-    par: "VICTOR délègue des tâches « claude -p » dans l'espace nemeton (aigora-nemeton) ; aigora-nemeton lui rend un bloc JSON (vue, display_report) que VICTOR lit"
-    source: victor/server.py:283-285 ; victor/server.py:698 ; aigora/aigora-nemeton/CLAUDE.md:76-78 ; aigora/aigora-nemeton/.claude/skills/diagnostic/SKILL.md:92-96
-    confirme: non
-    question: "Le lien existe et le code est des deux côtés, mais dans les deux sens : victor lance « claude -p » dans l'espace nemeton (server.py:698) et impose 600 s (SKILL.md:95) ; aigora-nemeton écrit en retour le bloc que victor décode (server.py:1052-1060, SKILL.md:96). Un changement de l'un peut casser l'autre. Le garde-t-on en un seul lien (et dans quel sens), ou en deux liens (victor vers aigora-nemeton pour le lancement, aigora-nemeton vers victor pour le bloc de retour) ? Autre réserve : l'espace « nemeton » est une variable d'environnement de victor (VICTOR_ESPACES, README.md:233), non versionnée : le code ne nomme pas aigora-nemeton."
-
+    par: "contrat de sortie : sous VICTOR (claude -p dans l'espace nemeton), aigora-nemeton termine sa réponse par un bloc JSON {\"vue\": ...} que victor décode (extraire_vue) pour l'afficher"
+    source: aigora-nemeton/.claude/skills/diagnostic/SKILL.md:92-96 (contrat de sortie) ; aigora-nemeton/CLAUDE.md:76-78 ; victor/victor/server.py:1052-1060 (extraire_vue) ; victor/victor/server.py:283-285, :698 (lancement claude -p)
+    confirme: oui
+    note: "Sens fixé le 2026-11-17 par la règle de Pascal (un lien suit la dépendance technique) : aigora-nemeton produit le bloc que victor lit, donc un changement d'aigora-nemeton peut casser victor. Dans l'autre sens, victor ne transmet que du texte libre ; seule sa coupure à 600 s est prise en compte par aigora-nemeton (SKILL.md:95, « toujours lancer_calcul »), convention écrite et non format lu : pas de second lien. L'espace nemeton n'est nommé que dans la configuration de victor (VICTOR_ESPACES, victor/README.md:233)."
 # Liens retirés (mission 010, 2026-11-17), gardés ici pour ne pas être remis à tort.
 # Preuve : le code et la spec de l'aval disent que le lien n'existe pas en direct.
 # - surculus <- nemetonshiny (plan d'action, export_action_plan_gpkg) : surculus ne lit que la
