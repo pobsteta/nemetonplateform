@@ -10,7 +10,7 @@
 > mission propre à un projet qui a son `pilotage/` reste dans le kanban de ce projet ;
 > ici, sa carte y renvoie par un lien, sans la recopier.
 
-**Dernier cycle :** 2 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
+**Dernier cycle :** 3 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
 rien lancé. Une carte est immobile quand dernier cycle − N ≥ 2.)_
 
 _Modèle de carte :_
@@ -41,10 +41,13 @@ _Modèle de carte :_
 
 ## Planifié
 
-- [005-nemetonshiny-service-monitoring-wiring](missions/005-nemetonshiny-service-monitoring-wiring.md) · nemetonshiny · depuis le cycle 3 · session lancée le 2026-11-17
-
-
 ## Terminé
+
+- [005-nemetonshiny-service-monitoring-wiring](missions/005-nemetonshiny-service-monitoring-wiring.md) · nemetonshiny · depuis le cycle 3 · PR #304 fusionnée (3a00990)
+  - Homme : `dev` (sonnet), dans une session ouverte dans `nemetonshiny` (ADR 0001)
+  - Mission : `parallelly::availableCores()` au lieu de `future::availableCores()`, `service_monitoring_wiring` revenu dans le niveau rapide
+  - Moyens : budget 3 $, 5400 s ; 0,56 $ et 464 s à la relance
+  - Dépend de : rien
 
 - [006-victor-tests-et-ci](missions/006-victor-tests-et-ci.md) · victor · depuis le cycle 3 · PR #1 fusionnée (1ac4cce)
   - Homme : `dev` (sonnet), dans une session ouverte dans `victor` (ADR 0001)
@@ -98,3 +101,4 @@ l'inscrit avec ce qu'elle nous apprend._
 
 - cycle 1 · `nemeton`, `foretaccess` et `nemetonmcp` ont une `.claude/test-command` versionnée (et le plugin pour les deux derniers) · pour l'orchestrateur et Pascal · leurs PR deviennent prouvables vertes, donc leurs fusions délégables ; la règle des deux niveaux (rapide au hook, complet en CI) est née de la mauvaise nouvelle des suites d'une heure
 - cycle 2 · `nemetonshiny` versionne sa `.claude/test-command` (niveau rapide, 118 fichiers sur 181, par exclusion des lents) ; ADR-016 rangée, rejetée · pour l'orchestrateur et Pascal · quatre projets ont désormais leurs fusions délégables ; mauvaise nouvelle apprise : une session sur une suite longue dépasse 3600 s, la fiche doit prévoir sa limite
+- cycle 3 · `victor` a ses premiers tests, sa `.claude/test-command` et sa CI ; `nemetonshiny` n'a plus de test rouge quand il passe seul, et son niveau rapide repasse à 119 fichiers · pour l'orchestrateur et Pascal · cinq projets ont désormais leurs fusions prouvables ; mauvaise nouvelle apprise : une session lancée en arrière-plan ne survit ni à l'archivage de la session qui l'attend ni à un redémarrage, ses traces vont hors de `/tmp`
