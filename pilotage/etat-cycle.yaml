@@ -1,0 +1,77 @@
+# État du dernier cycle (docs/spec.md § 3). Réécrit à la fin de chaque cycle ; l'historique
+# est dans git et dans pilotage/journal.md. Le cycle suivant ne regarde que ce qui a changé
+# depuis ces valeurs. Propriétaire : l'orchestrateur. Liste des projets : docs/carte.yaml.
+#
+# dernier_tag_vu : tag le plus récent, tri par version (git ls-remote --tags --sort=-v:refname,
+#                  équivalent vérifié par la date des releases) ; null si aucun tag
+# main_lu        : SHA complet de la branche par défaut ; la branche est nommée dans
+#                  `branche` quand ce n'est pas main
+# lu_le          : date de lecture
+# lu_sur         : github (lecture seule, sans toucher aux clones) | clone local
+
+nemeton:
+  dernier_tag_vu: v2026.11.36
+  main_lu: 70618fd8928d7a25a6d9281e304bfc18f34c9c06
+  lu_le: 2026-11-17
+  lu_sur: github
+foretaccess:
+  dernier_tag_vu: v2.6.0
+  main_lu: 6c15472f2e1d5fc6b22d2ab767ad3edcc76297fc
+  lu_le: 2026-11-17
+  lu_sur: github
+nemetonshiny:
+  dernier_tag_vu: v2026.11.2
+  main_lu: 3a009900b645e1396dd2a74b7c74aff3c096aa05
+  lu_le: 2026-11-17
+  lu_sur: github
+nemetonmcp:
+  dernier_tag_vu: v2026.11.11
+  main_lu: 890b42c450e58ae267f21e55a144f0a08ece19de
+  lu_le: 2026-11-17
+  lu_sur: github
+victor:
+  dernier_tag_vu: null
+  main_lu: 1ac4ccec6b888801c679a977f2514a7117b68276
+  lu_le: 2026-11-17
+  lu_sur: github
+aigora:
+  dernier_tag_vu: null
+  main_lu: 4a816ab13768adefe4a48fbc0d3fb787923a5fbe
+  lu_le: 2026-11-17
+  lu_sur: github
+aigora-nemeton:
+  dernier_tag_vu: null
+  main_lu: 31a1e22e82d9658741d22052b4f1667cc6cebcf3
+  lu_le: 2026-11-17
+  lu_sur: clone local
+terrain:
+  dernier_tag_vu: v0.7.1
+  main_lu: 330ac46b7dd1eeef37283f3c1d385066d14bf622
+  lu_le: 2026-11-17
+  lu_sur: github
+marculus:
+  dernier_tag_vu: v2026.11.2
+  main_lu: c960afbe02d3bc8855885f41e0b9609d8de349ef
+  lu_le: 2026-11-17
+  lu_sur: github
+surculus:
+  dernier_tag_vu: v0.7.133
+  main_lu: 792cedd508e5efe239a8325c5fd2479a89700a73
+  lu_le: 2026-11-17
+  lu_sur: github
+ramulus:
+  dernier_tag_vu: null
+  main_lu: fb5739a99eac7bd3329fd6929509e7d1fd72ba1e
+  lu_le: 2026-11-17
+  lu_sur: github
+groma:
+  dernier_tag_vu: v2026.11.8
+  main_lu: 370b18640fe3e132993f09cfff8a1d962f9150a2
+  lu_le: 2026-11-17
+  lu_sur: github
+sylvostation:
+  dernier_tag_vu: null
+  branche: claude/admiring-cerf-hq7t8l
+  main_lu: 80c6c843498d7c8ae841ad74d4d474996c95e936
+  lu_le: 2026-11-17
+  lu_sur: github
