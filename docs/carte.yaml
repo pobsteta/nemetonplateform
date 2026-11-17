@@ -1,0 +1,222 @@
+# Carte des dépendances de la plateforme Néméton, lisible par une machine.
+# Source unique des projets et des liens (docs/spec.md § 8). Propriétaire : l'orchestrateur,
+# sur décision de Pascal. Mise à jour : à chaque cycle, quand un lien apparaît ou disparaît.
+# Relevé du 2026-11-16 (docs/carte-dependances.md), mis en YAML le 2026-11-17 (mission 007).
+# Le schéma, l'état des projets (versions, tags) et les points ouverts restent dans
+# docs/carte-dependances.md. Ici : aucun lien nouveau, aucune source inventée.
+#
+# Lecture : un lien va de l'amont vers l'aval ; un changement en amont peut casser l'aval.
+# Les chemins `source:` sont relatifs à ~/dev/ (ou à ~/dev/aigora/ pour aigora-nemeton).
+#
+# projets.<nom>
+#   chemin   : clone local            depot : <propriétaire>/<dépôt> sur GitHub, null si aucun
+#   chaine   : r | python | kotlin | kotlin+python
+#   methode  : plugin | pilotage | plugin+pilotage | aucune  (méthode de l'Impératrice installée)
+#   briefs   : boîte de dépôt des briefs (convention spec § 4) ; le dossier peut ne pas exister
+#   branche  : branche par défaut quand ce n'est pas main
+# liens[]
+#   nature   : code-r | gradle | donnees | mcp | service | brief | git
+#   confirme : oui | non  (non = « à confirmer » dans la carte en prose)
+
+projets:
+  nemeton:
+    chemin: ~/dev/nemeton
+    depot: pobsteta/nemeton
+    chaine: r
+    methode: plugin
+    briefs: ~/dev/briefs/vers-nemeton
+  foretaccess:
+    chemin: ~/dev/foretaccess
+    depot: pobsteta/foretaccess
+    chaine: r
+    methode: aucune
+    briefs: ~/dev/briefs/vers-foretaccess
+  nemetonshiny:
+    chemin: ~/dev/nemetonshiny
+    depot: pobsteta/nemetonshiny
+    chaine: r
+    methode: pilotage
+    briefs: ~/dev/briefs/vers-nemetonshiny
+  nemetonmcp:
+    chemin: ~/dev/nemetonmcp
+    depot: pobsteta/nemetonmcp
+    chaine: r
+    methode: aucune
+    briefs: ~/dev/briefs/vers-nemetonmcp
+  victor:
+    chemin: ~/dev/victor/victor
+    depot: pobsteta/victor
+    chaine: python
+    methode: aucune
+    briefs: ~/dev/briefs/vers-victor
+  aigora:
+    chemin: ~/dev/aigora/aigora
+    depot: pobsteta/aigora
+    chaine: r
+    methode: aucune
+    briefs: ~/dev/briefs/vers-aigora
+  aigora-nemeton:
+    chemin: ~/dev/aigora/aigora-nemeton
+    depot: null            # dépôt git local sans GitHub ; ne jamais publier (son README.md)
+    chaine: r
+    methode: aucune
+    briefs: ~/dev/briefs/vers-aigora-nemeton
+  terrain:
+    chemin: ~/dev/terrain
+    depot: pobsteta/terrain
+    chaine: kotlin
+    methode: plugin+pilotage
+    briefs: ~/dev/briefs/vers-terrain
+  marculus:
+    chemin: ~/dev/marculus
+    depot: pobsteta/marculus
+    chaine: kotlin
+    methode: plugin+pilotage
+    briefs: ~/dev/briefs/vers-marculus
+  surculus:
+    chemin: ~/dev/surculus
+    depot: pobsteta/surculus
+    chaine: kotlin
+    methode: plugin+pilotage
+    briefs: ~/dev/briefs/vers-surculus
+  ramulus:
+    chemin: ~/dev/ramulus
+    depot: pobsteta/ramulus
+    chaine: kotlin
+    methode: plugin+pilotage
+    briefs: ~/dev/briefs/vers-ramulus
+  groma:
+    chemin: ~/dev/groma
+    depot: pobsteta/groma
+    chaine: kotlin+python
+    methode: plugin+pilotage
+    briefs: ~/dev/briefs/vers-groma
+  sylvostation:
+    chemin: null           # pas de clone dans ~/dev
+    depot: pobsteta/sylvostation   # vérifié par gh le 2026-11-17
+    chaine: r
+    methode: pilotage
+    briefs: ~/dev/briefs/vers-sylvostation
+    branche: claude/admiring-cerf-hq7t8l   # pas de main
+
+liens:
+  - aval: nemetonshiny
+    amont: nemeton
+    nature: code-r
+    par: "Imports: nemeton (>= 2026.11.35), installé depuis la dernière release"
+    source: nemetonshiny/DESCRIPTION:15   # relevé du 2026-11-17
+    confirme: oui
+  - aval: nemetonshiny
+    amont: foretaccess
+    nature: code-r
+    par: "Imports: foretaccess (>= 2.4.0), installé depuis la dernière release"
+    source: nemetonshiny/DESCRIPTION:15
+    confirme: oui
+  - aval: nemetonmcp
+    amont: nemetonshiny
+    nature: code-r
+    par: "Imports: nemetonshiny (>= 2026.11.2) ; étend son serveur MCP et lit 33 de ses objets internes"
+    source: nemetonmcp/r/DESCRIPTION:20 ; nemetonshiny/CONTRAT.md § 6 bis (l. 213)
+    confirme: oui
+  - aval: nemetonmcp
+    amont: nemeton
+    nature: code-r
+    par: "Imports: nemeton (>= 2026.11.30)"
+    source: nemetonmcp/r/DESCRIPTION:20
+    confirme: oui
+  - aval: victor
+    amont: nemetonmcp
+    nature: mcp
+    par: "appelle nemetonmcp::fiche_projet() et lit les fiches qu'il écrit"
+    source: victor/victor/server.py:1239
+    confirme: oui
+  - aval: victor
+    amont: nemetonshiny
+    nature: service
+    par: "démarre le service nemetonshiny, suit compute_job.json"
+    source: victor/victor/server.py:1168
+    confirme: oui
+  - aval: marculus
+    amont: terrain
+    nature: gradle
+    par: "dépendance Gradle com.github.pobsteta.terrain (JitPack)"
+    source: marculus/gradle/libs.versions.toml:29
+    confirme: oui
+  - aval: surculus
+    amont: terrain
+    nature: gradle
+    par: "dépendance Gradle com.github.pobsteta.terrain (JitPack)"
+    source: surculus/gradle/libs.versions.toml:79-80
+    confirme: oui
+  - aval: ramulus
+    amont: terrain
+    nature: gradle
+    par: "dépendance Gradle com.github.pobsteta.terrain (JitPack)"
+    source: ramulus/gradle/libs.versions.toml:77
+    confirme: oui
+  - aval: groma
+    amont: terrain
+    nature: gradle
+    par: "terrain-carte et terrain-style en v0.7.1"
+    source: groma/android/app/build.gradle.kts:87-88
+    confirme: oui
+  - aval: surculus
+    amont: nemetonshiny
+    nature: donnees
+    par: "lit le plan d'action (export_action_plan_gpkg)"
+    source: surculus/docs/architecture.md:4
+    confirme: non
+  - aval: nemeton
+    amont: surculus
+    nature: donnees
+    par: "reçoit le bilan de gestion et les indicateurs"
+    source: surculus/docs/architecture.md:22
+    confirme: non
+  - aval: nemeton
+    amont: ramulus
+    nature: donnees
+    par: "format commun deperis.gpkg, lu et écrit par les deux"
+    source: ramulus/pilotage/missions/002-format-echange-deperis-v1.md:6
+    confirme: non
+  - aval: groma
+    amont: nemeton
+    nature: brief
+    par: "briefs vers nemeton ; groma s'interdit de les modifier"
+    source: groma/CLAUDE.md:10-11
+    confirme: non
+  - aval: groma
+    amont: nemetonshiny
+    nature: brief
+    par: "briefs vers nemetonshiny ; groma s'interdit de les modifier"
+    source: groma/CLAUDE.md:10-11
+    confirme: non
+  - aval: aigora-nemeton
+    amont: nemetonmcp
+    nature: mcp
+    par: "appelle les outils du serveur MCP nemeton (lister_projets, lancer_calcul, generer_rapport…) ; aigora_nemeton_mcp() l'active"
+    source: aigora/aigora-nemeton/.claude/settings.json:16 ; aigora/aigora-nemeton/R/aigora.R:409
+    confirme: oui
+  - aval: aigora-nemeton
+    amont: nemetonshiny
+    nature: code-r
+    par: "installé dans R ; n'emploie que l'API publique de nemetonshiny (>= 0.155.0), jamais nemetonshiny:::"
+    source: aigora/aigora-nemeton/README.md:20 ; aigora/aigora-nemeton/CLAUDE.md:34 (règle 2)
+    confirme: oui
+  - aval: aigora-nemeton
+    amont: nemeton
+    nature: code-r
+    par: "installé dans R"
+    source: aigora/aigora-nemeton/README.md:20
+    confirme: oui
+  - aval: aigora-nemeton
+    amont: aigora
+    nature: git
+    par: "adaptation : son origin git est le clone local d'aigora"
+    source: "git remote -v dans aigora/aigora-nemeton"
+    confirme: oui
+  - aval: aigora-nemeton
+    amont: victor
+    nature: service
+    par: "VICTOR le lance à la voix (espace « nemeton ») ; sens du lien à vérifier"
+    source: aigora/aigora-nemeton/README.md:17
+    confirme: non

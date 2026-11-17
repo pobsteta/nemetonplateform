@@ -1,8 +1,8 @@
 # Carte des dépendances de la plateforme Néméton
 
 > **Statut : validée par Pascal le 2026-11-16, avec le brief.** Relevé du 2026-11-16, fait par lecture
-> de la branche `main` de chaque dépôt. Chaque lien cite le fichier où il est écrit. Un
-> lien sans source est marqué « à confirmer ».
+> de la branche `main` de chaque dépôt. Les liens sont dans `docs/carte.yaml` (source unique), chacun avec le fichier où il est
+> écrit ; un lien non vérifié y porte `confirme: non`.
 
 ## Les projets et leur état
 
@@ -65,24 +65,11 @@ flowchart LR
 
 La flèche va de l'amont vers l'aval : un changement en amont peut casser l'aval.
 
-| Aval | Amont | Par quoi | Source |
-|---|---|---|---|
-| `nemetonshiny` | `nemeton` | `Imports: nemeton (>= 2026.11.30)`, installé depuis la dernière release | `nemetonshiny/DESCRIPTION` |
-| `nemetonshiny` | `foretaccess` | `Imports: foretaccess (>= 2.4.0)`, installé depuis la dernière release | `nemetonshiny/DESCRIPTION` |
-| `nemetonmcp` | `nemetonshiny` | `Imports: nemetonshiny (>= 2026.11.2)` ; étend son serveur MCP et lit 33 de ses objets internes | `nemetonmcp/r/DESCRIPTION`, `nemetonshiny/CONTRAT.md` § 6 bis |
-| `nemetonmcp` | `nemeton` | `Imports: nemeton (>= 2026.11.30)` | `nemetonmcp/r/DESCRIPTION` |
-| `victor` | `nemetonmcp` | appelle `nemetonmcp::fiche_projet()` et lit les fiches qu'il écrit | `victor/server.py` |
-| `victor` | `nemetonshiny` | démarre le service `nemetonshiny`, suit `compute_job.json` | `victor/server.py` |
-| `marculus`, `surculus`, `ramulus` | `terrain` | dépendance Gradle `com.github.pobsteta.terrain` (JitPack) | `*/build.gradle.kts` ou `gradle/libs.versions.toml` de chaque projet |
-| `groma` | `terrain` | `terrain-carte` et `terrain-style` en v0.7.1 | fichiers Gradle de `groma/android` |
-| `surculus` | `nemetonshiny` | **à confirmer** : lit le plan d'action (`export_action_plan_gpkg`) | `surculus/docs/architecture.md` |
-| `nemeton` | `surculus` | **à confirmer** : reçoit le bilan de gestion et les indicateurs | `surculus/docs/architecture.md` |
-| `nemeton` | `ramulus` | **à confirmer** : format commun `deperis.gpkg`, lu et écrit par les deux | `ramulus/pilotage/missions/002-format-echange-deperis-v1.md` |
-| `groma` | `nemeton`, `nemetonshiny` | **à confirmer** : briefs vers `nemeton` ; `groma` s'interdit de les modifier | `groma/CLAUDE.md` |
-| `aigora-nemeton` | `nemetonmcp` | appelle les outils du serveur MCP `nemeton` (`lister_projets`, `lancer_calcul`, `generer_rapport`…) ; `aigora_nemeton_mcp()` l'active | `aigora-nemeton/.claude/settings.json`, `aigora-nemeton/R/aigora.R` |
-| `aigora-nemeton` | `nemetonshiny`, `nemeton` | installés dans R ; n'emploie que l'API publique de `nemetonshiny` (>= 0.155.0), jamais `nemetonshiny:::` | `aigora-nemeton/README.md`, `aigora-nemeton/CLAUDE.md` (règle 2) |
-| `aigora-nemeton` | `aigora` | adaptation : son `origin` git est le clone local d'`aigora` | `git remote -v` dans `aigora-nemeton` |
-| `aigora-nemeton` | `victor` | **à confirmer** : VICTOR le lance à la voix (espace « nemeton ») ; sens du lien à vérifier | `aigora-nemeton/README.md` |
+Les liens (20 au 2026-11-17 : amont, aval, nature, ce par quoi ils passent, source et
+état « confirmé ou non ») sont dans **`docs/carte.yaml`**, source unique, lue par
+l'orchestrateur à chaque cycle (`docs/spec.md` § 8). Ils ne sont plus recopiés ici.
+Les six liens à confirmer y portent `confirme: non`.
+Le schéma ci-dessus n'en dessine que dix-sept ; en cas d'écart, le YAML fait foi.
 
 Lien non trouvé : `nemeton` ne déclare pas `foretaccess` dans son `DESCRIPTION`, alors
 que `nemeton/specs/` contient des briefs `brief-foretaccess-*.md`. Les deux projets
