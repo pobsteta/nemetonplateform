@@ -43,28 +43,28 @@ projets:
     chemin: ~/dev/foretaccess
     depot: pobsteta/foretaccess
     chaine: r
-    methode: aucune
+    methode: plugin            # mission 002 (PR foretaccess #166) ; relevé .claude/ du 2026-11-18
     briefs: ~/dev/briefs/vers-foretaccess
     fusion: merge    # 11 des 12 dernières PR par commit de fusion (#155 à #165, relevé 2026-11-18) ; #166 (mission 002) fusionnée en squash à tort
   nemetonshiny:
     chemin: ~/dev/nemetonshiny
     depot: pobsteta/nemetonshiny
     chaine: r
-    methode: pilotage
+    methode: plugin+pilotage   # settings.json versionné (mission 004) ; relevé .claude/ du 2026-11-18
     briefs: ~/dev/briefs/vers-nemetonshiny
     fusion: merge
   nemetonmcp:
     chemin: ~/dev/nemetonmcp
     depot: pobsteta/nemetonmcp
     chaine: r
-    methode: aucune
+    methode: plugin            # mission 003 ; relevé .claude/ du 2026-11-18
     briefs: ~/dev/briefs/vers-nemetonmcp
     fusion: squash
   victor:
     chemin: ~/dev/victor/victor
     depot: pobsteta/victor
     chaine: python
-    methode: aucune
+    methode: plugin            # mission 006 ; relevé .claude/ du 2026-11-18
     briefs: ~/dev/briefs/vers-victor
     fusion: squash
   aigora:

@@ -9,10 +9,10 @@
 | Projet | Nature | Méthode de l'Impératrice |
 |---|---|---|
 | `nemeton` | paquet R, cœur métier | plugin activé (`.claude/settings.json`), pas de `pilotage/` |
-| `foretaccess` | paquet R | ni plugin ni `pilotage/` |
-| `nemetonshiny` | application Shiny/golem | `pilotage/` complet, équipe validée le 2026-11-10 ; pas de `.claude/settings.json` versionné |
-| `nemetonmcp` | paquet R (`r/`) et plugin Claude | ni plugin ni `pilotage/` |
-| `victor` | assistant vocal, Python | ni plugin ni `pilotage/` |
+| `foretaccess` | paquet R | plugin activé et `.claude/test-command` (mission 002), pas de `pilotage/` |
+| `nemetonshiny` | application Shiny/golem | `pilotage/` complet, équipe validée le 2026-11-10 ; plugin versionné (mission 004) |
+| `nemetonmcp` | paquet R (`r/`) et plugin Claude | plugin activé et `.claude/test-command` (mission 003), pas de `pilotage/` |
+| `victor` | assistant vocal, Python | plugin activé, `.claude/test-command` et CI (mission 006), pas de `pilotage/` |
 | `aigora` | Claude Code en local, RStudio | non ; a ses propres agents, hooks et règles (`.claude/`) |
 | `aigora-nemeton` | adaptation privée d'`aigora` : diagnostics Néméton pour des clients, sans interface | non ; a ses propres agents, hooks et règles (`.claude/`), pas de `.claude/test-command` |
 | `terrain` | bibliothèque Kotlin (modules carte, gnss, gpkg, journal, style, voix), publiée par JitPack | plugin activé, `pilotage/` |
