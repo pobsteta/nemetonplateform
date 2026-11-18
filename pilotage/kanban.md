@@ -29,6 +29,22 @@ _Modèle de carte :_
 
 ## Planifié
 
+- [014-contrat-nemeton-sommier](missions/014-contrat-nemeton-sommier.md) · sommieR · depuis le cycle 9 · session lancée
+  - Homme : `testeur` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : test de contrat de ce que `sommieR` lit dans `nemeton` ; fusion réservée à Pascal
+  - Moyens : budget 3 $
+  - Dépend de : rien
+- [015-contrat-nemeton-nemetonshiny](missions/015-contrat-nemeton-nemetonshiny.md) · nemetonshiny · depuis le cycle 9 · session lancée
+  - Homme : `testeur` d'une session ouverte dans `nemetonshiny` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : test de contrat de ce que `nemetonshiny` lit dans `nemeton` ; fusion réservée à Pascal
+  - Moyens : budget 3 $
+  - Dépend de : rien
+- [016-contrat-nemeton-nemetonmcp](missions/016-contrat-nemeton-nemetonmcp.md) · nemetonmcp · depuis le cycle 9 · session lancée
+  - Homme : `testeur` d'une session ouverte dans `nemetonmcp` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : test de contrat de ce que `nemetonmcp` lit dans `nemeton` ; fusion réservée à Pascal
+  - Moyens : budget 3 $
+  - Dépend de : rien
+
 ## Terminé
 
 - [012-rangement-memoire](missions/012-rangement-memoire.md) · nemetonplateforme · depuis le cycle 8 · PR #27 fusionnée (120ccfe)
