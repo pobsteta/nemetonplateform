@@ -7,6 +7,8 @@
 > décision marquée **proposé** attend que Pascal la retienne, la corrige ou la rejette ;
 > elle devient la règle à son « oui » sur cette spec (porte n° 1, seconde moitié).
 > Les quatre préalables bloquants du brief ne sont pas levés ici : ils le seront par ADR.
+> (note du 2026-11-18 : levés par l'ADR 0001, `docs/adr/0001-agir-dans-un-autre-depot.md`,
+> acceptée par Pascal le 2026-11-16.)
 
 ## 1. Le parcours, du côté de Pascal
 
@@ -26,6 +28,7 @@ Pascal est le seul humain du parcours. Il ouvre une session Claude Code dans
    retient, corrige ou rejette.
 4. **Agir.** Il confie les missions retenues, en série le long d'une chaîne, en parallèle
    entre chaînes. **Bloqué** tant que les ADR des préalables ne sont pas tranchées.
+   (note du 2026-11-18 : plus bloqué, l'ADR 0001 est acceptée depuis le 2026-11-16.)
 5. **Dire tout de suite.** Toute rupture de contrat est dite à Pascal en quatre temps
    (§ 6), sans attendre la fin du cycle.
 
@@ -41,6 +44,7 @@ dans une session ouverte ici.
   par une question à lui poser ; un cycle qui tourne sans lui ne fait qu'empiler ces
   questions. Pas de secret à garder ni de CI à maintenir dans treize dépôts (test du
   successeur).
+  (note du 2026-11-18 : quatorze dépôts depuis l'ajout de `sommieR`, le 2026-11-17.)
 - Écarté pour l'instant : un rythme fixe (tâche planifiée) et un déclenchement par
   `repository_dispatch` à chaque release. On y revient si les cycles à la demande
   laissent passer des ruptures.
@@ -136,6 +140,8 @@ s'il recule.
 
 ## 7. Les accès aux treize dépôts, et le repli
 
+(note du 2026-11-18 : quatorze dépôts, `sommieR` ayant été ajouté le 2026-11-17.)
+
 **Proposé :**
 
 - **Lecture** : le clone local de chaque projet dans `~/dev/` (ou son chemin propre :
@@ -144,6 +150,9 @@ s'il recule.
 - `sylvostation` n'a pas de clone local et pas de branche `main` : l'orchestrateur le
   lit sur GitHub ; le clone et la branche `main` sont à proposer à Pascal avant toute
   mission.
+  (note du 2026-11-18 : périmé. Depuis le 2026-11-17, `sylvostation` a une branche `main`
+  et un clone `~/dev/sylvostation`, et c'est un projet piloté comme les autres, décision de
+  Pascal du 2026-11-17.)
 - **Repli si GitHub ne répond pas** : le cycle observe sur les clones locaux, le dit, et
   s'arrête avant « Agir » (pas de PR possible).
 - **Repli si JitPack ne répond pas** : aucune montée de version de `terrain` dans le
@@ -182,6 +191,7 @@ YAML : format ouvert, lisible sans outil, que tout successeur relit.
 - **Gardé parce que** : deux chaînes de langages distincts (R/Python, Kotlin/Android) ;
   des rythmes et des publications propres (CRAN-like, JitPack, Play) ; `aigora-nemeton`
   privé et sans GitHub ; sept projets ont déjà leur propre pilotage.
+  (note du 2026-11-18 : huit, avec `sylvostation` et `sommieR`.)
 - **Ce qu'il coûte** : une mission qui traverse deux projets fait deux PR, fusionnées
   dans l'ordre de la carte ; il faut relever la carte à chaque cycle ; les hooks du
   plugin ne protègent que le dépôt de la session (préalables bloquants).
@@ -191,6 +201,11 @@ YAML : format ouvert, lisible sans outil, que tout successeur relit.
 ## 10. `aigora-nemeton` et la porte n° 3
 
 `aigora-nemeton` n'a pas de dépôt GitHub et ne doit pas être publié : pas de PR possible.
+
+(note du 2026-11-18 : sans objet. Pascal a décidé le 2026-11-17 que `aigora` et
+`aigora-nemeton` sont seulement observés, sans mission : ils ne passent donc pas la porte
+n° 3. Champ `observe_seulement` de `docs/carte.yaml`. Le texte qui suit est gardé pour
+mémoire.)
 
 **Proposé :** une mission y travaille sur une branche locale ; l'orchestrateur fusionne
 la branche dans `main` aux conditions du § 5 (sans CI GitHub : la commande de tests du
@@ -220,7 +235,7 @@ Celui du brief, sans ajout.
 
 La spec est tenue quand :
 
-1. un cycle lancé à la demande produit, pour les treize projets, l'état lu et la liste des
+1. un cycle lancé à la demande produit, pour les treize projets, (note du 2026-11-18 : quatorze) l'état lu et la liste des
    changements depuis `pilotage/etat-cycle.yaml`, sans rien écrire dans un dépôt de
    projet ;
 2. `docs/carte.yaml` existe, chaque lien y cite sa source, et l'orchestrateur y détecte
@@ -235,6 +250,9 @@ La spec est tenue quand :
 7. avant toute mission « Agir » : les ADR sur les tests et les worktrees d'un dépôt à
    l'autre sont tranchées par Pascal, et l'inventaire des `.claude/test-command` des
    treize projets est fait.
+   (note du 2026-11-18 : quatorze projets. Critère levé par l'ADR 0001, acceptée le
+   2026-11-16. L'inventaire des `.claude/test-command` se fait projet par projet, au fil
+   des missions 001 à 004, 006 et 011.)
 
 ## Les ADR qui suivent
 

@@ -8,7 +8,7 @@
 
 **En une phrase (quoi, et pourquoi) :** Reporter dans les documents qui font foi ce qui ne vit aujourd'hui que dans le journal ou la mémoire de l'orchestrateur, et dater ce qui est périmé, pour qu'un successeur reprenne la plateforme demain et sache en une minute où en est le travail.
 
-**Redite par l'agent :** _à compléter par l'agent avant d'agir — s'il n'y arrive pas, il s'arrête._
+**Redite par l'agent :** Reporter dans les documents qui font foi (README, `CLAUDE.md`, brief, spec, carte, ADR 0001, équipe) ce qui ne vit que dans le journal, et dater ce qui est périmé, pour qu'un successeur sache en une minute où en est le travail, sans réécrire l'histoire. _(archiviste, 2026-11-18)_
 
 ## Ce qui est à faire (rapport de l'archiviste du 2026-11-18)
 

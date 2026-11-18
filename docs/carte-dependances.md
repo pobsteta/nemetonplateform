@@ -133,6 +133,9 @@ adaptation `aigora-nemeton` le fait (`CONTRAT.md` de nemetonshiny, § 6 bis, par
 Lu dans le plugin `imperatrice` 0.7.0. À trancher par ADR avant la première mission
 confiée depuis ce dépôt dans un autre.
 
+> (note du 2026-11-18 : tranché par l'ADR `docs/adr/0001-agir-dans-un-autre-depot.md`,
+> acceptée par Pascal le 2026-11-16. Le tableau ci-dessous garde le constat d'origine.)
+
 | Constat | Source | Conséquence |
 |---|---|---|
 | Le hook `tests_obligatoires` cherche `.claude/test-command` à la racine du dépôt de la session (`CLAUDE_PROJECT_DIR`) ; sans ce fichier, il ne fait rien | `hooks/tests_obligatoires.py` | une session ouverte ici laisse un agent dire « terminé » dans un autre dépôt sans tests verts |
@@ -148,8 +151,10 @@ confiée depuis ce dépôt dans un autre.
   le 2026-11-16).
 - ~~Le lien d'`aigora` avec la plateforme~~ : tranché par Pascal le 2026-11-16, il passe
   par `aigora-nemeton`, ajouté aux projets pilotés.
-- `aigora-nemeton` n'a pas de dépôt GitHub et ne doit pas être publié : une PR n'y est
-  pas possible comme ailleurs. Comment une mission y passe-t-elle la porte n° 3 ?
+- ~~`aigora-nemeton` n'a pas de dépôt GitHub et ne doit pas être publié : une PR n'y est
+  pas possible comme ailleurs. Comment une mission y passe-t-elle la porte n° 3 ?~~
+  (note du 2026-11-18 : question close par Pascal le 2026-11-17, `aigora-nemeton` est
+  seulement observé, sans mission ; `observe_seulement` dans `docs/carte.yaml`.)
 - ~~Le nom de ce dépôt~~ : tranché par Pascal le 2026-11-16, **`nemetonplateforme`**.
   Anciens noms : `nemetonplateform` (GitHub, redirigé), `nemeton_plateforme` (README),
   `platform_nemeton` (`CLAUDE.md` de `nemeton` et `nemetonshiny`, dossier
