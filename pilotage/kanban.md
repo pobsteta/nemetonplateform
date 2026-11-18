@@ -10,7 +10,7 @@
 > mission propre à un projet qui a son `pilotage/` reste dans le kanban de ce projet ;
 > ici, sa carte y renvoie par un lien, sans la recopier.
 
-**Dernier cycle :** 7 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
+**Dernier cycle :** 8 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
 rien lancé. Une carte est immobile quand dernier cycle − N ≥ 2.)_
 
 _Modèle de carte :_
@@ -27,20 +27,20 @@ _Modèle de carte :_
 
 ## Validé
 
-- [012-rangement-memoire](missions/012-rangement-memoire.md) · nemetonplateforme · depuis le cycle 7
-  - Homme : `archiviste` (sonnet)
-  - Mission : reporter dans les documents qui font foi ce qui ne vit que dans le journal (README, ADR 0001, `fusion:` dans la carte, projets observés, comptes)
-  - Moyens : un worktree de ce dépôt ; rangement sous délégation
-  - Dépend de : rien
-- [013-sommier-ci-dependances](missions/013-sommier-ci-dependances.md) · sommieR · depuis le cycle 7
-  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
-  - Mission : trouver pourquoi l'installation des dépendances R de la CI prend 20 min malgré le cache, et la corriger (sous 8 min)
-  - Moyens : budget 3 $ ; `gh` en lecture des runs de la PR #71
-  - Dépend de : rien
-
 ## Planifié
 
 ## Terminé
+
+- [012-rangement-memoire](missions/012-rangement-memoire.md) · nemetonplateforme · depuis le cycle 8 · PR #27 fusionnée (120ccfe)
+  - Homme : `archiviste` (sonnet)
+  - Mission : README, renvois à l'ADR 0001, `fusion:` par projet dans la carte, projets observés, comptes, tableau des missions, boîtes de `~/dev/briefs/`
+  - Moyens : un worktree de ce dépôt ; un écart relevé au passage (foretaccess #166 fusionnée en squash à tort)
+  - Dépend de : rien
+- [013-sommier-ci-dependances](missions/013-sommier-ci-dependances.md) · sommieR · depuis le cycle 8 · PR #72 fusionnée en squash (99984d6)
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : cause trouvée (apt des paquets -dev des Suggests, 117 Mo à 171 kB/s, hors du cache R) ; `PKG_SYSREQS=false` ; installation R de 12-20 min à 23-40 s
+  - Moyens : budget 3 $ ; deux passes, environ 2,8 $ cumulés
+  - Dépend de : rien
 
 - [011-sommier-demarrer](missions/011-sommier-demarrer.md) · sommieR · depuis le cycle 6 · PR #70 fusionnée en squash (cce46d0)
   - Homme : orchestrateur d'une session ouverte dans `sommieR` (`/imperatrice:demarrer`, sonnet, ADR 0001)
@@ -136,3 +136,4 @@ l'inscrit avec ce qu'elle nous apprend._
 - cycle 6 · sommieR, 14ᵉ projet, a la méthode, le plugin et une `.claude/test-command` (niveau rapide, base PostGIS jointe, échec si elle manque) ; carte entièrement tranchée par la règle « un lien suit la dépendance technique » ; `sylvostation` piloté · pour l'orchestrateur et Pascal · sept projets ont leurs fusions prouvables ; mauvaise nouvelle apprise : `/demarrer` pose ses questions à Pascal et ne se lance pas sans lui ; le gabarit met brief et ADR dans `docs/`, publié par pkgdown dans les paquets R ; le coût d'une session reprise est cumulé, pas additionnel
 - cycle 7 · rien de neuf à livrer : aucun tag, aucun `main` changé hors de la fusion sommieR #71 (porte n° 3 de sommieR alignée sur la délégation) · pour Pascal · mauvaise nouvelle apprise : la CI de sommieR peut échouer deux fois de suite à l'installation des dépendances (apt, 30 min) sans qu'aucun test tourne ; relancer est la bonne réponse, et le bilan dira si la CI doit mettre ses dépendances en cache
 - bilan du 2026-11-18 · carte entièrement tranchée (21 liens relus dans le code, un seul en attente de sommieR), 14 projets dont sommieR et `sylvostation` pilotés, sept projets aux fusions prouvables · pour Pascal et l'orchestrateur · au bilan précédent la carte gardait six liens douteux ; elle ne désigne plus d'aval qui n'en est pas un ; mais aucun changement réel n'a encore descendu la chaîne (aucune release de `nemeton` depuis le cycle 4)
+- cycle 8 · la CI de sommieR ne perd plus 12 à 30 min avant le premier test (installation des dépendances R sous 40 s, tests en 4 min 41 s au lieu de 28 min) ; la mémoire de la plateforme est écrite là où elle fait foi (README, convention de fusion par dépôt dans la carte) · pour Pascal et l'orchestrateur · une PR de sommieR est prouvée verte en minutes ; mauvaise nouvelle apprise : un gain mesuré sur une seule étape peut cacher un temps déplacé dans une autre, c'est la durée totale du job qui compte ; et `Setup R` reste lent, hors de portée du workflow

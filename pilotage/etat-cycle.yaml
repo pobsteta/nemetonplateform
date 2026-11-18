@@ -71,11 +71,11 @@ groma:
   lu_sur: github
 sylvostation:
   dernier_tag_vu: v2026.11.1
-  main_lu: ecdd6c9b10fe31eb51082e8f9e2bf8edd95f0860
+  main_lu: 89672373a687a5931e92eb8f682300b60716b6a8
   lu_le: 2026-11-18
   lu_sur: github
 sommieR:
   dernier_tag_vu: v0.37.1
-  main_lu: 84e1747e40880b54b1b0872f1da2dcf14d1c7098
+  main_lu: 99984d6f6a660222be2276e0aa62ae829a783d24
   lu_le: 2026-11-18
   lu_sur: github
