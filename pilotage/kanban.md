@@ -27,6 +27,17 @@ _Modèle de carte :_
 
 ## Validé
 
+- [012-rangement-memoire](missions/012-rangement-memoire.md) · nemetonplateforme · depuis le cycle 7
+  - Homme : `archiviste` (sonnet)
+  - Mission : reporter dans les documents qui font foi ce qui ne vit que dans le journal (README, ADR 0001, `fusion:` dans la carte, projets observés, comptes)
+  - Moyens : un worktree de ce dépôt ; rangement sous délégation
+  - Dépend de : rien
+- [013-sommier-ci-dependances](missions/013-sommier-ci-dependances.md) · sommieR · depuis le cycle 7
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : trouver pourquoi l'installation des dépendances R de la CI prend 20 min malgré le cache, et la corriger (sous 8 min)
+  - Moyens : budget 3 $ ; `gh` en lecture des runs de la PR #71
+  - Dépend de : rien
+
 ## Planifié
 
 ## Terminé
@@ -124,3 +135,4 @@ l'inscrit avec ce qu'elle nous apprend._
 - cycle 5 · plus aucun appel déprécié à `future::availableCores()` dans `nemetonshiny` ; carte relue dans le code (18 liens, 4 questions précises au lieu de 6 liens douteux) · pour l'orchestrateur et Pascal · la carte ne désigne plus d'aval qui n'existe pas (`surculus` n'est pas en aval de `nemetonshiny`) ; mauvaise nouvelle apprise : un trajet réel peut passer par un projet hors carte (sommieR), et une décision « seulement observé » peut perdre sa raison en un cycle (`sylvostation` a désormais un `main`)
 - cycle 6 · sommieR, 14ᵉ projet, a la méthode, le plugin et une `.claude/test-command` (niveau rapide, base PostGIS jointe, échec si elle manque) ; carte entièrement tranchée par la règle « un lien suit la dépendance technique » ; `sylvostation` piloté · pour l'orchestrateur et Pascal · sept projets ont leurs fusions prouvables ; mauvaise nouvelle apprise : `/demarrer` pose ses questions à Pascal et ne se lance pas sans lui ; le gabarit met brief et ADR dans `docs/`, publié par pkgdown dans les paquets R ; le coût d'une session reprise est cumulé, pas additionnel
 - cycle 7 · rien de neuf à livrer : aucun tag, aucun `main` changé hors de la fusion sommieR #71 (porte n° 3 de sommieR alignée sur la délégation) · pour Pascal · mauvaise nouvelle apprise : la CI de sommieR peut échouer deux fois de suite à l'installation des dépendances (apt, 30 min) sans qu'aucun test tourne ; relancer est la bonne réponse, et le bilan dira si la CI doit mettre ses dépendances en cache
+- bilan du 2026-11-18 · carte entièrement tranchée (21 liens relus dans le code, un seul en attente de sommieR), 14 projets dont sommieR et `sylvostation` pilotés, sept projets aux fusions prouvables · pour Pascal et l'orchestrateur · au bilan précédent la carte gardait six liens douteux ; elle ne désigne plus d'aval qui n'en est pas un ; mais aucun changement réel n'a encore descendu la chaîne (aucune release de `nemeton` depuis le cycle 4)

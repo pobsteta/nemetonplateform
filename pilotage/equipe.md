@@ -63,6 +63,8 @@
 | [001](missions/001-nemeton-commande-de-tests.md) commande de tests | `nemeton` | `testeur` | sonnet | appuyer | 3 oui | 1 |
 | [002](missions/002-foretaccess-plugin-et-tests.md) plugin et commande de tests | `foretaccess` | `testeur` | sonnet | appuyer | 3 oui | 1 |
 | [003](missions/003-nemetonmcp-plugin-et-tests.md) plugin et commande de tests | `nemetonmcp` | `testeur` | sonnet | appuyer | 3 oui | 1 |
+| [012](missions/012-rangement-memoire.md) rangement de la mémoire | `nemetonplateforme` | `archiviste` | sonnet | appuyer | 3 oui | 8 |
+| [013](missions/013-sommier-ci-dependances.md) dépendances R de la CI | `sommieR` | `dev` | sonnet | appuyer | 2 oui, 1 à vérifier | 8 |
 
 Chaque mission est exécutée par une session ouverte dans le dépôt du projet (ADR 0001),
 relue par le `relecteur`, puis prouvée et fusionnée par l'orchestrateur (spec § 5).
