@@ -45,7 +45,7 @@ projets:
     chaine: r
     methode: aucune
     briefs: ~/dev/briefs/vers-foretaccess
-    fusion: squash   # #166 en squash (journal l. 68) ; #162 à #165 par commit de fusion (relevé 2026-11-18) : convention à confirmer
+    fusion: merge    # 11 des 12 dernières PR par commit de fusion (#155 à #165, relevé 2026-11-18) ; #166 (mission 002) fusionnée en squash à tort
   nemetonshiny:
     chemin: ~/dev/nemetonshiny
     depot: pobsteta/nemetonshiny
