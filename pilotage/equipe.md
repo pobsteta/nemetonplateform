@@ -41,7 +41,17 @@
   sa place les missions de même nature que 001 à 003 (plugin et `.claude/test-command`
   dans un projet piloté) et les tâches de rangement de la plateforme. Les questions
   réservées ci-dessus ne sont pas tranchées : elles sont mises de côté et posées au bilan.
+- **Élargie le 2026-11-18 (Pascal, « oui et code ce qu'il reste à faire partout sans me
+  demander, va jusqu'au bout ») :** ouvrir, valider (porte n° 2) et fusionner sans lui
+  demander les missions qui réalisent les briefs en attente dans les projets pilotés
+  (inventaire du 2026-11-18 au journal), les tests de contrat 014 à 016 compris, quand les
+  six contrôles sont verts ; trancher par la valeur la plus prudente et la plus réversible
+  les questions de détail qu'un brief laisse ouvertes, chacune inscrite au journal. Restent
+  réservés : une rupture déclarée, ce qui touche l'extérieur sans retour possible ; une
+  montée de version de `terrain` dans l'aval est faite seulement si le brief la demande,
+  et dite au bilan.
 - **Inscrite au journal le :** 2026-11-16.
+- **Élargissement du 2026-11-18 inscrit au journal le :** 2026-11-18.
 
 ## Le vivier (catalogue, pas une équipe)
 
