@@ -49,7 +49,8 @@ Pascal le 2026-11-16, l'orchestrateur fusionne et publie quand tout est vert, au
 
 > **Statut : validées par Pascal le 2026-11-16, avec `docs/brief.md`.** Rien ne se
 > développe pour autant dans les projets avant la spec validée et la levée des préalables
-> bloquants du brief (ADR).
+> bloquants du brief (ADR) (note du 2026-11-18 : levés par l'ADR 0001, acceptée le
+> 2026-11-16).
 
 ### Les projets pilotés
 
@@ -59,6 +60,10 @@ derniers ajoutés par Pascal le 2026-11-16), `sommieR` (ajouté par Pascal le 20
 La liste et les liens entre eux sont dans `docs/carte.yaml` (la carte en prose,
 `docs/carte-dependances.md`, en garde le schéma et l'explication) ; Pascal y ajoute ou en retire
 un projet.
+
+Deux projets, `aigora` et `aigora-nemeton`, sont **seulement observés** (Pascal,
+2026-11-17) : ni plugin ni mission, l'orchestrateur les lit et n'y écrit pas. Le champ
+`observe_seulement` de `docs/carte.yaml` fait foi.
 
 ### Chaque projet reste chez lui
 
@@ -86,13 +91,10 @@ un projet.
 
 ### Ce qui ne marche pas encore d'un dépôt à l'autre
 
-Constaté à la lecture du plugin 0.7.0, à trancher par ADR au crible FRANCE avant la
-première mission dans un autre dépôt (détail dans `docs/carte-dependances.md`) :
-
-- le hook `tests_obligatoires` lit le `.claude/test-command` du dépôt où la session est
-  ouverte. Ouverte ici, elle ne lance donc les tests d'aucun projet ;
-- `/boucle` isole chaque agent dans un worktree du dépôt de la session, pas dans celui
-  du projet où il doit écrire.
+(note du 2026-11-18 : tranché par `docs/adr/0001-agir-dans-un-autre-depot.md`, acceptée
+par Pascal le 2026-11-16. Une mission dans un autre dépôt part d'une session ouverte dans
+ce dépôt-là ; l'orchestrateur prouve lui-même le vert avant de fusionner. Le constat
+d'origine, lu dans le plugin 0.7.0, est dans l'ADR.)
 
 ## Règles techniques communes
 

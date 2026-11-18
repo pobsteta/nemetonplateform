@@ -198,3 +198,23 @@ Les deux worktrees et branches d'essai ont été supprimés ; `terrain` est reve
 ## Question de contrôle
 
 Cette décision tient-elle nos six valeurs, et que sommes-nous prêts à payer pour cela ?
+
+## Ajout du 2026-11-18 : où sont les traces d'une session
+
+(Ajout, rien n'est modifié plus haut. Le tableau du crible FRANCE dit que « le journal du
+projet et le flux `stream-json` gardent le détail » : voici où est ce flux.)
+
+Chaque session lancée par l'orchestrateur écrit ses traces hors de tout dépôt, dans
+`~/.cache/nemetonplateforme/mNNN/` (NNN : le numéro de la mission) :
+
+- `flux.jsonl` : le flux `stream-json` de la session (ce qu'elle a fait, geste par geste) ;
+- `schema.json` : le schéma de sortie structurée passé à `claude -p` (`--json-schema`) ;
+- `preuve.log` : la preuve du vert, soit la sortie de la `.claude/test-command` lancée par
+  l'orchestrateur sur le commit exact de la PR ;
+- `err.log` : la sortie d'erreur de la session ; au besoin d'autres journaux de la mission.
+
+Ces dossiers sont **jetables** : le cache peut être vidé sans perte. **La mémoire, c'est
+le journal** (`pilotage/journal.md`) : la ligne de fusion y porte le SHA, la commande, le
+code de sortie et la durée de la preuve, et la ligne de session son coût. Une trace qui
+manque ne rend donc aucune décision introuvable ; elle ne sert qu'à relire un geste.
+Relevé au 2026-11-18 : `m005`, `m009`, `m011`, `m013`.

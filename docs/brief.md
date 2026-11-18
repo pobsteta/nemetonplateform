@@ -113,7 +113,7 @@ nom voisin qu'elle relève : `opencanopy`, `maestronemeton`, `treesatnemeton`,
 
 Les projets auxquels il touche sont les six de la réponse d'abord, plus `marculus`,
 `surculus`, `terrain`, `groma`, `ramulus`, `sylvostation` et `aigora-nemeton`, que
-Pascal a ajoutés le 2026-11-16.
+Pascal a ajoutés le 2026-11-16. (note du 2026-11-18 : plus `sommieR`, ajouté le 2026-11-17, soit quatorze projets.)
 
 ## Contraintes connues
 
@@ -132,9 +132,9 @@ Pascal a ajoutés le 2026-11-16.
   (`docs/ADR-015_Licence_GPL3.md`).
 - **Points de la carte**, tranchés par Pascal le 2026-11-16 : la liste des projets est
   complète (les dépôts au nom voisin sont hors périmètre) ; le lien d'`aigora` passe par
-  son adaptation privée `aigora-nemeton`, ajoutée aux projets pilotés (treize) ; le nom
+  son adaptation privée `aigora-nemeton`, ajoutée aux projets pilotés (treize) ; (note du 2026-11-18 : quatorze avec `sommieR`, ajouté par Pascal le 2026-11-17 ;) le nom
   de ce dépôt est `nemetonplateforme`. Reste ouvert : `aigora-nemeton` n'a pas de dépôt
-  GitHub et ne doit pas être publié, comment une mission y passe-t-elle la porte n° 3 ?
+  GitHub et ne doit pas être publié, comment une mission y passe-t-elle la porte n° 3 ? (note du 2026-11-18 : close, `aigora-nemeton` est seulement observé, Pascal, 2026-11-17.)
 - **Plafond global contre plafonds locaux** (contradicteur, point 5) : tranché par
   Pascal le 2026-11-16. Le plafond global de 3 PR, tous projets confondus, l'emporte
   toujours ; le plafond local d'un projet n'est qu'une limite de plus à l'intérieur de
@@ -147,6 +147,9 @@ Pascal a ajoutés le 2026-11-16.
 Rien de ce qui suit n'est levé ; tant qu'ils ne le sont pas, l'orchestrateur ne peut
 faire aucun geste « Agir » dans un autre dépôt. À trancher par ADR au crible FRANCE.
 
+(note du 2026-11-18 : tranchés par l'ADR 0001, `docs/adr/0001-agir-dans-un-autre-depot.md`,
+acceptée par Pascal le 2026-11-16. La liste ci-dessous est le constat d'origine, gardé.)
+
 - Le hook de tests du plugin `imperatrice` ne lit que le `.claude/test-command` du dépôt
   de la session (`hooks/tests_obligatoires.py`) : une session ouverte ici ne teste aucun
   projet.
@@ -157,6 +160,7 @@ faire aucun geste « Agir » dans un autre dépôt. À trancher par ADR au cribl
   un autre dépôt.
 - `.claude/test-command` manque au moins dans `nemeton` et `victor` : le premier cycle en
   fait l'inventaire pour les treize projets.
+  (note du 2026-11-18 : quatorze projets ; inventaire fait, ADR 0001.)
 
 ## Ce que la spec devra trancher (critique du contradicteur, retenue par Pascal le 2026-11-16)
 
@@ -169,7 +173,7 @@ faire aucun geste « Agir » dans un autre dépôt. À trancher par ADR au cribl
   `specs/`.
 - Ce que sont les « quatre temps » d'une alerte de rupture (fiche n° 8 : décidé et par
   qui ; ouvert ; ce que ça change ; qui fait quoi d'ici quand), et à qui elle s'adresse.
-- Les accès aux treize dépôts, et le repli si GitHub ou JitPack ne répond pas.
+- Les accès aux treize dépôts, et le repli si GitHub ou JitPack ne répond pas. (note du 2026-11-18 : quatorze dépôts.)
 - Une carte lisible par une machine (un fichier YAML, par exemple) à côté de sa version
   en prose, pour le test du successeur.
 - Le multi-dépôts est gardé : le dire, et ce qu'il coûte face à un monorepo.

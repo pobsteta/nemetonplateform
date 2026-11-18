@@ -5,7 +5,10 @@
 # Le schéma, l'état des projets (versions, tags) et les points ouverts restent dans
 # docs/carte-dependances.md. Ici : aucun lien nouveau, aucune source inventée.
 # Mission 010 (2026-11-17) : les six liens « à confirmer » relus dans le code des deux côtés ;
-# deux retirés (voir « Liens retirés » en fin de fichier), quatre laissés à `non` avec une question.
+# deux retirés (voir « Liens retirés » en fin de fichier), quatre laissés à `non` avec une question (un seul le reste au 2026-11-18, voir la note qui suit).
+# Note du 2026-11-18 (mission 012) : les quatre questions ont été tranchées par Pascal le
+# 2026-11-17 (bilan du cycle 5) ; il ne reste qu'un lien à `non` (nemetonshiny <- sommieR).
+# La règle de Pascal du 2026-11-17 « un lien suit la dépendance technique » est en pied de légende.
 #
 # Lecture : un lien va de l'amont vers l'aval ; un changement en amont peut casser l'aval.
 # Les chemins `source:` sont relatifs à ~/dev/ (ou à ~/dev/aigora/ pour aigora-nemeton).
@@ -16,6 +19,11 @@
 #   methode  : plugin | pilotage | plugin+pilotage | aucune  (méthode de l'Impératrice installée)
 #   briefs   : boîte de dépôt des briefs (convention spec § 4) ; le dossier peut ne pas exister
 #   branche  : branche par défaut quand ce n'est pas main
+#   fusion   : squash | merge | inconnu | null  (convention de fusion des PR vers main, mission 012,
+#              relevée le 2026-11-18 ; null = pas de dépôt GitHub, donc pas de PR). Lue par
+#              l'orchestrateur avant de fusionner (journal du 2026-11-16, écart sur ramulus #23).
+#              Preuves : lignes 45, 55, 56, 66, 68, 78, 88, 132 de pilotage/journal.md, et le
+#              nombre de parents du commit de fusion de chaque PR (API GitHub des commits).
 # liens[]
 #   nature   : code-r | gradle | donnees | mcp | service | brief | git
 #   confirme : oui | non  (non = « à confirmer » dans la carte en prose)
@@ -30,30 +38,35 @@ projets:
     chaine: r
     methode: plugin
     briefs: ~/dev/briefs/vers-nemeton
+    fusion: merge
   foretaccess:
     chemin: ~/dev/foretaccess
     depot: pobsteta/foretaccess
     chaine: r
     methode: aucune
     briefs: ~/dev/briefs/vers-foretaccess
+    fusion: merge    # 11 des 12 dernières PR par commit de fusion (#155 à #165, relevé 2026-11-18) ; #166 (mission 002) fusionnée en squash à tort
   nemetonshiny:
     chemin: ~/dev/nemetonshiny
     depot: pobsteta/nemetonshiny
     chaine: r
     methode: pilotage
     briefs: ~/dev/briefs/vers-nemetonshiny
+    fusion: merge
   nemetonmcp:
     chemin: ~/dev/nemetonmcp
     depot: pobsteta/nemetonmcp
     chaine: r
     methode: aucune
     briefs: ~/dev/briefs/vers-nemetonmcp
+    fusion: squash
   victor:
     chemin: ~/dev/victor/victor
     depot: pobsteta/victor
     chaine: python
     methode: aucune
     briefs: ~/dev/briefs/vers-victor
+    fusion: squash
   aigora:
     chemin: ~/dev/aigora/aigora
     depot: pobsteta/aigora
@@ -61,6 +74,7 @@ projets:
     methode: aucune
     observe_seulement: oui   # Pascal, 2026-11-17 : ni plugin ni mission, seulement observé
     briefs: ~/dev/briefs/vers-aigora
+    fusion: inconnu   # aucune PR fusionnée ; l'historique ne montre que des fusions de branches locales (relevé 2026-11-18)
   aigora-nemeton:
     chemin: ~/dev/aigora/aigora-nemeton
     depot: null            # dépôt git local sans GitHub ; ne jamais publier (son README.md)
@@ -68,48 +82,56 @@ projets:
     methode: aucune
     observe_seulement: oui   # Pascal, 2026-11-17 : ni plugin ni mission, seulement observé
     briefs: ~/dev/briefs/vers-aigora-nemeton
+    fusion: null   # pas de dépôt GitHub, donc pas de PR (observé seulement)
   terrain:
     chemin: ~/dev/terrain
     depot: pobsteta/terrain
     chaine: kotlin
     methode: plugin+pilotage
     briefs: ~/dev/briefs/vers-terrain
+    fusion: merge   # relevé 2026-11-18 : #31 à #33 par commit de fusion
   marculus:
     chemin: ~/dev/marculus
     depot: pobsteta/marculus
     chaine: kotlin
     methode: plugin+pilotage
     briefs: ~/dev/briefs/vers-marculus
+    fusion: squash   # relevé 2026-11-18 : #77 à #79 en squash
   surculus:
     chemin: ~/dev/surculus
     depot: pobsteta/surculus
     chaine: kotlin
     methode: plugin+pilotage
     briefs: ~/dev/briefs/vers-surculus
+    fusion: merge   # relevé 2026-11-18 : #178, #181 et #183 par commit de fusion
   ramulus:
     chemin: ~/dev/ramulus
     depot: pobsteta/ramulus
     chaine: kotlin
     methode: plugin+pilotage
     briefs: ~/dev/briefs/vers-ramulus
+    fusion: squash   # squash d'ordinaire (#24, #25), mais #23 par commit de fusion (journal l. 45, écart gardé)
   groma:
     chemin: ~/dev/groma
     depot: pobsteta/groma
     chaine: kotlin+python
     methode: plugin+pilotage
     briefs: ~/dev/briefs/vers-groma
+    fusion: squash
   sylvostation:
     chemin: ~/dev/sylvostation
     depot: pobsteta/sylvostation   # vérifié par gh le 2026-11-17
     chaine: r
     methode: plugin+pilotage   # plugin imperatrice activé dans son dépôt (relevé du 2026-11-17)
     briefs: ~/dev/briefs/vers-sylvostation
+    fusion: merge   # relevé 2026-11-18 : #1 à #4 par commit de fusion
   sommieR:
     chemin: ~/dev/sommieR
     depot: pobsteta/sommieR
     chaine: r
     methode: plugin+pilotage   # méthode installée par la mission 011 (PR sommieR #70, 2026-11-17)
     briefs: ~/dev/briefs/vers-sommier
+    fusion: squash
 
 liens:
   - aval: sommieR

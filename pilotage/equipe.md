@@ -63,9 +63,20 @@
 | [001](missions/001-nemeton-commande-de-tests.md) commande de tests | `nemeton` | `testeur` | sonnet | appuyer | 3 oui | 1 |
 | [002](missions/002-foretaccess-plugin-et-tests.md) plugin et commande de tests | `foretaccess` | `testeur` | sonnet | appuyer | 3 oui | 1 |
 | [003](missions/003-nemetonmcp-plugin-et-tests.md) plugin et commande de tests | `nemetonmcp` | `testeur` | sonnet | appuyer | 3 oui | 1 |
+| [004](missions/004-nemetonshiny-commande-de-tests.md) commande de tests versionnée | `nemetonshiny` | `testeur` | sonnet | appuyer | 3 oui | 2 |
+| [005](missions/005-nemetonshiny-service-monitoring-wiring.md) `service_monitoring_wiring` vert seul | `nemetonshiny` | `dev` | sonnet | appuyer | 3 oui | 3 |
+| [006](missions/006-victor-tests-et-ci.md) tests, commande de tests et CI | `victor` | `dev` | sonnet | appuyer | 3 oui | 3 |
+| [007](missions/007-carte-yaml.md) `docs/carte.yaml` | `nemetonplateforme` | `archiviste` | sonnet | appuyer | 3 oui | 4 |
+| [008](missions/008-etat-cycle-yaml.md) `pilotage/etat-cycle.yaml` | `nemetonplateforme` | `archiviste` | sonnet | appuyer | 3 oui | 4 |
+| [009](missions/009-nemetonshiny-availablecores-tests.md) `availableCores()` dans les tests | `nemetonshiny` | `dev` | sonnet | appuyer | 3 oui | 5 |
+| [010](missions/010-confirmer-liens-carte.md) confirmer les liens de la carte | `nemetonplateforme` | `archiviste` | sonnet | appuyer | 3 oui | 5 |
+| [011](missions/011-sommier-demarrer.md) installer la méthode | `sommieR` | session de `/demarrer` | sonnet | appuyer | 3 oui | 6 |
 | [012](missions/012-rangement-memoire.md) rangement de la mémoire | `nemetonplateforme` | `archiviste` | sonnet | appuyer | 3 oui | 8 |
 | [013](missions/013-sommier-ci-dependances.md) dépendances R de la CI | `sommieR` | `dev` | sonnet | appuyer | 2 oui, 1 à vérifier | 8 |
 
 Chaque mission est exécutée par une session ouverte dans le dépôt du projet (ADR 0001),
 relue par le `relecteur`, puis prouvée et fusionnée par l'orchestrateur (spec § 5).
-Les trois sont indépendantes : elles partent en parallèle, dans le plafond de 3 PR.
+Les missions 001 à 003 étaient indépendantes : elles sont parties en parallèle, dans le plafond
+de 3 PR. Pour les missions 004 à 013, la validation est inscrite au journal le jour où chacune a
+été ouverte (sous la délégation, ou sur le « oui » de Pascal). Tableau complété le 2026-11-18 (mission 012) ; la
+colonne « Cycle » donne le cycle où la mission a été lancée.
