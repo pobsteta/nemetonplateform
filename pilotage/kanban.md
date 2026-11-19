@@ -10,7 +10,7 @@
 > mission propre à un projet qui a son `pilotage/` reste dans le kanban de ce projet ;
 > ici, sa carte y renvoie par un lien, sans la recopier.
 
-**Dernier cycle :** 8 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
+**Dernier cycle :** 9 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
 rien lancé. Une carte est immobile quand dernier cycle − N ≥ 2.)_
 
 _Modèle de carte :_
@@ -29,23 +29,87 @@ _Modèle de carte :_
 
 ## Planifié
 
-- [014-contrat-nemeton-sommier](missions/014-contrat-nemeton-sommier.md) · sommieR · depuis le cycle 9 · session lancée
-  - Homme : `testeur` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
-  - Mission : test de contrat de ce que `sommieR` lit dans `nemeton` ; fusion réservée à Pascal
-  - Moyens : budget 3 $
-  - Dépend de : rien
-- [015-contrat-nemeton-nemetonshiny](missions/015-contrat-nemeton-nemetonshiny.md) · nemetonshiny · depuis le cycle 9 · session lancée
-  - Homme : `testeur` d'une session ouverte dans `nemetonshiny` (sonnet, ADR 0001), relu par le `relecteur`
-  - Mission : test de contrat de ce que `nemetonshiny` lit dans `nemeton` ; fusion réservée à Pascal
-  - Moyens : budget 3 $
-  - Dépend de : rien
-- [016-contrat-nemeton-nemetonmcp](missions/016-contrat-nemeton-nemetonmcp.md) · nemetonmcp · depuis le cycle 9 · session lancée
-  - Homme : `testeur` d'une session ouverte dans `nemetonmcp` (sonnet, ADR 0001), relu par le `relecteur`
-  - Mission : test de contrat de ce que `nemetonmcp` lit dans `nemeton` ; fusion réservée à Pascal
-  - Moyens : budget 3 $
-  - Dépend de : rien
+## En cours
+
+- [025-sommier-ortho-tuilee](missions/025-sommier-ortho-tuilee.md) · sommieR · depuis le cycle 9 · relue, reprise, rebranchée en 0.43.0 (remplace #79) ; **fusion en attente de Pascal** (rupture déclarée : `ortho.tif` → `ortho.mbtiles`)
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : ortho de la tournée des travaux en MBTiles EPSG:3857, zooms 12 à 18, bords transparents, attribution et date
+  - Moyens : budget 3 $ par passe ; quatre passes
+  - Dépend de : accord de Pascal sur la rupture
 
 ## Terminé
+
+- [014-contrat-nemeton-sommier](missions/014-contrat-nemeton-sommier.md) · sommieR · depuis le cycle 9 · PR #73 fusionnée en squash
+  - Homme : `testeur` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : test de contrat de ce que sommieR lit dans nemeton
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+
+- [015-contrat-nemeton-nemetonshiny](missions/015-contrat-nemeton-nemetonshiny.md) · nemetonshiny · depuis le cycle 9 · PR #306 fusionnée (6fe1df4d)
+  - Homme : `testeur` d'une session ouverte dans `nemetonshiny` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : test de contrat de ce que nemetonshiny lit dans nemeton ; R-CMD-check et coverage relancés deux fois (runners lents)
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+
+- [016-contrat-nemeton-nemetonmcp](missions/016-contrat-nemeton-nemetonmcp.md) · nemetonmcp · depuis le cycle 9 · PR #37 fusionnée en squash
+  - Homme : `testeur` d'une session ouverte dans `nemetonmcp` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : test de contrat de ce que nemetonmcp lit dans nemeton ; enable_rag et ingest verrouillés
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+
+- [017-nemetonmcp-suivre-nemeton](missions/017-nemetonmcp-suivre-nemeton.md) · nemetonmcp · depuis le cycle 9 · PR #38 fusionnée en squash (0f5c666)
+  - Homme : `dev` d'une session ouverte dans `nemetonmcp` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : suivre nemeton 2026.11.32-34 : froid d'hiver en tâche de fond, erreur si E-OBS manque, cache avant le choix d'UG
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+
+- [018-marculus-tarifs-et-style](missions/018-marculus-tarifs-et-style.md) · marculus · depuis le cycle 9 · PR #80 fusionnée en squash (8255b8f)
+  - Homme : `dev` d'une session ouverte dans `marculus` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : tarifs IFN et style commun ; issue #2 fermée
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+
+- [019-groma-texte-et-heure-utc](missions/019-groma-texte-et-heure-utc.md) · groma · depuis le cycle 9 · PR #113 fusionnée en squash (8859705)
+  - Homme : `dev` d'une session ouverte dans `groma` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : styles typographiques Material3 communs ; heure UTC complète du fix GNSS
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+
+- [020-groma-modules-terrain](missions/020-groma-modules-terrain.md) · groma · depuis le cycle 9 · PR #115 fusionnée en squash (4cff183)
+  - Homme : `dev` d'une session ouverte dans `groma` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : Position, Projections, Geodesie et FormatGpkg repris de terrain ; brief retour vers terrain (horodate et lecteur NMEA)
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+
+- [021-sommier-actions-realisees](missions/021-sommier-actions-realisees.md) · sommieR · depuis le cycle 9 · PR #80 fusionnée en squash (02702cc), 0.41.0 ; remplace #74
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : sommier_actions_realisees() et action_id en liste de valeurs QField ; lien nemetonshiny ← sommieR confirmé
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+
+- [022-sommier-niveaux-concurrence](missions/022-sommier-niveaux-concurrence.md) · sommieR · depuis le cycle 9 · PR #78 fusionnée en squash (7db28dd), 0.40.0 ; remplace #76
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : trois niveaux de concurrence et règle plant → placette ; réponse à Surculus
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+
+- [023-sommier-symbologie-travaux](missions/023-sommier-symbologie-travaux.md) · sommieR · depuis le cycle 9 · PR #75 fusionnée en squash (14c54f4), 0.38.0
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : symbologie des travaux comme Marculus ; CI épinglée sur ubuntu-24.04
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+
+- [024-sommier-demo-marsannay](missions/024-sommier-demo-marsannay.md) · sommieR · depuis le cycle 9 · PR #77 fusionnée en squash (f909f2e), 0.39.0
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : démo Marsannay : parcelles communales réelles, écritures inventées
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+
+- [026-sommier-photos-terrain](missions/026-sommier-photos-terrain.md) · sommieR · depuis le cycle 9 · PR #82 fusionnée en squash (88f7bdd), 0.42.0 ; remplace #81
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : photos de placette et de plant : EXIF (repère, précision, fuseau) et photos_terrain au schéma de Surculus ; réponse à Surculus
+  - Moyens : budget 3 $ par passe ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
 
 - [012-rangement-memoire](missions/012-rangement-memoire.md) · nemetonplateforme · depuis le cycle 8 · PR #27 fusionnée (120ccfe)
   - Homme : `archiviste` (sonnet)

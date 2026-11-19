@@ -21,13 +21,13 @@ foretaccess:
   lu_sur: github
 nemetonshiny:
   dernier_tag_vu: v2026.11.2
-  main_lu: 50de1fde820e7528d649584af5a9bb559c53c22b
-  lu_le: 2026-11-18
+  main_lu: 6fe1df4d201430de032231d0aa9cffa50dc15166
+  lu_le: 2026-11-19
   lu_sur: github
 nemetonmcp:
   dernier_tag_vu: v2026.11.11
-  main_lu: 890b42c450e58ae267f21e55a144f0a08ece19de
-  lu_le: 2026-11-18
+  main_lu: 0f5c6662b48a84bbb0395dfe3c506168ac74d55b
+  lu_le: 2026-11-19
   lu_sur: github
 victor:
   dernier_tag_vu: null
@@ -51,8 +51,8 @@ terrain:
   lu_sur: github
 marculus:
   dernier_tag_vu: v2026.11.2
-  main_lu: c960afbe02d3bc8855885f41e0b9609d8de349ef
-  lu_le: 2026-11-18
+  main_lu: 8255b8f8ff888f93ef3e735ce6bd36646a090f44
+  lu_le: 2026-11-19
   lu_sur: github
 surculus:
   dernier_tag_vu: v0.7.133
@@ -66,8 +66,8 @@ ramulus:
   lu_sur: github
 groma:
   dernier_tag_vu: v2026.11.8
-  main_lu: 370b18640fe3e132993f09cfff8a1d962f9150a2
-  lu_le: 2026-11-18
+  main_lu: 4cff1839e712063773a09e5d1e38b9cdf18cdadf
+  lu_le: 2026-11-19
   lu_sur: github
 sylvostation:
   dernier_tag_vu: v2026.11.1
@@ -75,7 +75,7 @@ sylvostation:
   lu_le: 2026-11-18
   lu_sur: github
 sommieR:
-  dernier_tag_vu: v0.37.1
-  main_lu: 99984d6f6a660222be2276e0aa62ae829a783d24
-  lu_le: 2026-11-18
+  dernier_tag_vu: v0.42.0
+  main_lu: 88f7bddf308463a36975076762c294fb8309ac9e
+  lu_le: 2026-11-19
   lu_sur: github
