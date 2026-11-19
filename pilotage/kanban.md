@@ -31,13 +31,13 @@ _Modèle de carte :_
 
 ## En cours
 
-- [025-sommier-ortho-tuilee](missions/025-sommier-ortho-tuilee.md) · sommieR · depuis le cycle 9 · relue, reprise, rebranchée en 0.43.0 (remplace #79) ; **fusion en attente de Pascal** (rupture déclarée : `ortho.tif` → `ortho.mbtiles`)
-  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
-  - Mission : ortho de la tournée des travaux en MBTiles EPSG:3857, zooms 12 à 18, bords transparents, attribution et date
-  - Moyens : budget 3 $ par passe ; quatre passes
-  - Dépend de : accord de Pascal sur la rupture
-
 ## Terminé
+
+- [025-sommier-ortho-tuilee](missions/025-sommier-ortho-tuilee.md) · sommieR · depuis le cycle 9 · PR #83 fusionnée en squash (ab21e89), 0.43.0 ; remplace #79 ; rupture acceptée par Pascal
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : ortho de la tournée des travaux en MBTiles EPSG:3857, zooms 12 à 18, PNG à bords transparents, attribution et date
+  - Moyens : budget 3 $ par passe ; cinq passes ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
 
 - [014-contrat-nemeton-sommier](missions/014-contrat-nemeton-sommier.md) · sommieR · depuis le cycle 9 · PR #73 fusionnée en squash
   - Homme : `testeur` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
