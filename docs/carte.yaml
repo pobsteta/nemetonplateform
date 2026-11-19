@@ -8,6 +8,7 @@
 # deux retirés (voir « Liens retirés » en fin de fichier), quatre laissés à `non` avec une question (un seul le reste au 2026-11-18, voir la note qui suit).
 # Note du 2026-11-18 (mission 012) : les quatre questions ont été tranchées par Pascal le
 # 2026-11-17 (bilan du cycle 5) ; il ne reste qu'un lien à `non` (nemetonshiny <- sommieR).
+# Note du 2026-11-19 : ce dernier lien passe à `oui` (sommieR 0.41.0, mission 021) ; aucun lien à `non`.
 # La règle de Pascal du 2026-11-17 « un lien suit la dépendance technique » est en pied de légende.
 #
 # Lecture : un lien va de l'amont vers l'aval ; un changement en amont peut casser l'aval.
@@ -28,6 +29,8 @@
 #   nature   : code-r | gradle | donnees | mcp | service | brief | git
 #   confirme : oui | non  (non = « à confirmer » dans la carte en prose)
 #   question : présente sur tout lien `non` : la question précise posée à Pascal
+#   test_contrat : test de contrat côté aval qui casse si l'amont change ce que l'aval lit
+#                  (missions 014 à 016, 2026-11-18) ; absent = pas encore de test
 #   note : précision sur un lien `oui` confirmé par décision ou dont le sens a été fixé par Pascal
 #   Règle (Pascal, 2026-11-17) : un lien suit la dépendance technique (l'amont produit ce que l'aval lit), jamais le seul flux des briefs.
 
@@ -140,6 +143,7 @@ liens:
     par: "Suggests: nemeton (Remotes pobsteta/nemeton) ; nemeton::ifn_prelevement_essence_ser()"
     source: sommieR/DESCRIPTION:33,43 ; sommieR/R/nemeton.R:100
     confirme: oui
+    test_contrat: sommieR/tests/testthat/test-contrat_nemeton.R (mission 014, PR sommieR #73)
   - aval: surculus
     amont: sommieR
     nature: donnees
@@ -151,14 +155,15 @@ liens:
     nature: donnees
     par: "réalisé de la tournée de travaux : CSV écrit par sommier_actions_realisees(), relu par nemetonshiny"
     source: nemetonshiny/R/service_tournee_travaux.R:1-7,59 ; nemetonshiny/R/mod_action_plan.R:163
-    confirme: non
-    question: "nemetonshiny lit le CSV écrit par sommier_actions_realisees(), mais cette fonction n'existe pas sur origin/main de sommieR (relevé du 2026-11-17 ; le clone est sur la branche a50-1-edition). Le lien est-il à venir (fonction pas encore livrée par sommieR) ou la fonction a-t-elle changé de nom ?"
+    confirme: oui
+    note: "confirmé le 2026-11-19 : sommier_actions_realisees() livrée par sommieR 0.41.0 (mission 021, PR sommieR #80, R/actions_realisees.R) ; la question du 2026-11-17 est close"
   - aval: nemetonshiny
     amont: nemeton
     nature: code-r
     par: "Imports: nemeton (>= 2026.11.35), installé depuis la dernière release"
     source: nemetonshiny/DESCRIPTION:15   # relevé du 2026-11-17
     confirme: oui
+    test_contrat: nemetonshiny/tests/testthat/test-contrat_nemeton.R (mission 015, PR nemetonshiny #306)
   - aval: nemetonshiny
     amont: foretaccess
     nature: code-r
@@ -177,6 +182,7 @@ liens:
     par: "Imports: nemeton (>= 2026.11.30)"
     source: nemetonmcp/r/DESCRIPTION:20
     confirme: oui
+    test_contrat: nemetonmcp/r/tests/testthat/test-contrat_nemeton.R (mission 016, PR nemetonmcp #37)
   - aval: victor
     amont: nemetonmcp
     nature: mcp

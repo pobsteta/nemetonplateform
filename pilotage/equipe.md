@@ -83,6 +83,19 @@
 | [011](missions/011-sommier-demarrer.md) installer la méthode | `sommieR` | session de `/demarrer` | sonnet | appuyer | 3 oui | 6 |
 | [012](missions/012-rangement-memoire.md) rangement de la mémoire | `nemetonplateforme` | `archiviste` | sonnet | appuyer | 3 oui | 8 |
 | [013](missions/013-sommier-ci-dependances.md) dépendances R de la CI | `sommieR` | `dev` | sonnet | appuyer | 2 oui, 1 à vérifier | 8 |
+| [014](missions/014-contrat-nemeton-sommier.md) contrat avec nemeton | `sommieR` | `testeur` | sonnet | appuyer | 3 oui | 9 |
+| [015](missions/015-contrat-nemeton-nemetonshiny.md) contrat avec nemeton | `nemetonshiny` | `testeur` | sonnet | appuyer | 3 oui | 9 |
+| [016](missions/016-contrat-nemeton-nemetonmcp.md) contrat avec nemeton | `nemetonmcp` | `testeur` | sonnet | appuyer | 3 oui | 9 |
+| [017](missions/017-nemetonmcp-suivre-nemeton.md) suivre nemeton 2026.11.32-34 | `nemetonmcp` | `dev` | sonnet | appuyer | 3 oui | 9 |
+| [018](missions/018-marculus-tarifs-et-style.md) tarifs IFN et style commun | `marculus` | `dev` | sonnet | appuyer | 3 oui | 9 |
+| [019](missions/019-groma-texte-et-heure-utc.md) styles de texte et heure UTC | `groma` | `dev` | sonnet | appuyer | 3 oui | 9 |
+| [020](missions/020-groma-modules-terrain.md) modules repris de terrain | `groma` | `dev` | sonnet | appuyer | 3 oui | 9 |
+| [021](missions/021-sommier-actions-realisees.md) réalisé vers nemetonshiny | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
+| [022](missions/022-sommier-niveaux-concurrence.md) niveaux de concurrence | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
+| [023](missions/023-sommier-symbologie-travaux.md) symbologie des travaux | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
+| [024](missions/024-sommier-demo-marsannay.md) démo Marsannay | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
+| [025](missions/025-sommier-ortho-tuilee.md) ortho tuilée et métadonnées | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
+| [026](missions/026-sommier-photos-terrain.md) photos de terrain | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
 
 Chaque mission est exécutée par une session ouverte dans le dépôt du projet (ADR 0001),
 relue par le `relecteur`, puis prouvée et fusionnée par l'orchestrateur (spec § 5).

@@ -55,7 +55,7 @@ flowchart LR
   nemetonmcp --> victor
   nemeton --> sommieR
   sommieR --> surculus
-  sommieR -.-> nemetonshiny
+  sommieR --> nemetonshiny
   aigora_nemeton --> victor
   nemetonmcp --> aigora_nemeton[aigora-nemeton]
   nemetonshiny --> aigora_nemeton
@@ -75,8 +75,8 @@ La flèche va de l'amont vers l'aval : un changement en amont peut casser l'aval
 Les liens (21 au 2026-11-17 : amont, aval, nature, ce par quoi ils passent, source et
 état « confirmé ou non ») sont dans **`docs/carte.yaml`**, source unique, lue par
 l'orchestrateur à chaque cycle (`docs/spec.md` § 8). Ils ne sont plus recopiés ici.
-Un seul lien y porte `confirme: non`, avec sa question : `nemetonshiny` ← `sommieR`
-(pointillé dans le schéma). `sommieR` est entré dans la carte le 2026-11-17, à la demande de
+Le dernier lien à `confirme: non`, `nemetonshiny` ← `sommieR`, est confirmé le 2026-11-19
+(sommieR 0.41.0 livre `sommier_actions_realisees()`, mission 021) : aucun lien n'est plus à confirmer. `sommieR` est entré dans la carte le 2026-11-17, à la demande de
 Pascal, avec trois liens relevés dans le code. Les six liens « à confirmer » de la mission
 010 (2026-11-17) sont tous tranchés : `nemeton` ← `ramulus` a été confirmé par Pascal le 2026-11-17
 sur la foi de l'ADR 0003 de `ramulus`, avant le code de `nemeton` ;
