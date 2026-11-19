@@ -74,6 +74,11 @@ encore d'un déploiement OVH. **L'hébergeur du connecteur distant est donc à c
 Pascal** ; cet ADR ne le tranche pas. Il n'existe pas d'ADR dédié à ce remplacement dans
 `docs/`.
 
+> **Tranché par Pascal le 2026-11-19 : Hostinger.** Le connecteur distant est hébergé sur un
+> VPS Hostinger, comme le décrit `docs/ARCHITECTURE-nemeton-llm.md` ; l'ADR-003 (OVHcloud +
+> Scaleway) est remplacée sur ce point. Brief déposé vers `nemetonshiny`, dont le brief et
+> l'ADR 0003 parlent encore d'OVH.
+
 ## Le reste à faire, hors de ce dépôt (non fait ici)
 
 - **`nemetonmcp`** : déployer le connecteur distant (`r/R/distant.R`) derrière Keycloak ;
@@ -88,7 +93,7 @@ Pascal** ; cet ADR ne le tranche pas. Il n'existe pas d'ADR dédié à ce rempla
 
 - ADR-003/004/005 n'existent qu'en `.odt`/`.pdf` (un seul fichier pour ADR-001 à 010) :
   pas de lien direct vers une section.
-- Hébergeur du connecteur : OVH (brief) ou Hostinger (`ARCHITECTURE-nemeton-llm.md`).
+- Hébergeur du connecteur : OVH (brief) ou Hostinger (`ARCHITECTURE-nemeton-llm.md`). _(Tranché le 2026-11-19 : Hostinger.)_
 - Propriétaire de la veille sur l'option B : non nommé dans la source.
 
 ## Sources
