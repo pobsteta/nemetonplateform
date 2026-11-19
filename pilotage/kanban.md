@@ -33,6 +33,12 @@ _Modèle de carte :_
 
 ## Terminé
 
+- [027-sommier-import-sans-blocage](missions/027-sommier-import-sans-blocage.md) · sommieR · depuis le cycle 9 · PR #84 fusionnée en squash (2ca88d8), 0.44.0 ; 8,54 $ pour un budget de 3 $
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : aucun écart de forme d'une tournée de terrain ne fait refuser l'import ; accepté et signalé
+  - Moyens : quatre passes ; vert prouvé par l'orchestrateur sur 6a24a90 (568 s)
+  - Dépend de : rien
+
 - [025-sommier-ortho-tuilee](missions/025-sommier-ortho-tuilee.md) · sommieR · depuis le cycle 9 · PR #83 fusionnée en squash (ab21e89), 0.43.0 ; remplace #79 ; rupture acceptée par Pascal
   - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
   - Mission : ortho de la tournée des travaux en MBTiles EPSG:3857, zooms 12 à 18, PNG à bords transparents, attribution et date
