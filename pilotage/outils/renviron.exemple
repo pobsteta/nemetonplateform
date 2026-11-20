@@ -1,0 +1,8 @@
+# Environnement de la base PostgreSQL de test (noms seulement, jamais de valeur).
+# Copier ce fichier HORS du dépôt (par exemple ~/.config/nemetonplateforme/renviron), y mettre
+# les valeurs, puis pointer NEMETON_RENVIRON vers ce fichier. Ne jamais le verser dans git.
+SOMMIER_TEST_DB
+SOMMIER_TEST_HOST
+SOMMIER_TEST_PORT
+SOMMIER_TEST_USER
+SOMMIER_TEST_PASSWORD

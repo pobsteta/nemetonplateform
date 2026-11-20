@@ -218,3 +218,73 @@ le journal** (`pilotage/journal.md`) : la ligne de fusion y porte le SHA, la com
 code de sortie et la durée de la preuve, et la ligne de session son coût. Une trace qui
 manque ne rend donc aucune décision introuvable ; elle ne sert qu'à relire un geste.
 Relevé au 2026-11-18 : `m005`, `m009`, `m011`, `m013`.
+
+(Ajout du 2026-11-20 au relevé ci-dessus, qui n'est pas modifié : présents au
+2026-11-20 dans `~/.cache/nemetonplateforme/`, `m005`, `m009`, `m011`, `m013` à `m027`, et
+`m029`, `m030`, `m031` pour les missions en cours. Le relevé du 2026-11-18 était donc périmé.)
+
+## Ajout du 2026-11-20 : les outils d'exécution
+
+(Ajout, rien n'est modifié plus haut. Mission 032, décidée au bilan du 2026-11-20.)
+
+**Le trou comblé.** Les scripts qui lancent, reprennent et prouvent les missions vivaient
+hors dépôt (`~/.cache/nemetonplateforme/`) et lisaient `m011/schema.json` et
+`m011/renviron`, c'est-à-dire un dossier de trace que cette ADR dit jetable. Un successeur
+ne pouvait ni les lire ni les refaire. Ils sont désormais dans
+[`pilotage/outils/`](../../pilotage/outils/), versionnés, avec le schéma de sortie
+(`schema.json`) et un `renviron.exemple` qui ne liste que les **noms** des variables de la
+base de test. Le fichier réel, qui contient un mot de passe, reste hors dépôt : son chemin est
+la variable `NEMETON_RENVIRON` (défaut `~/.config/nemetonplateforme/renviron`).
+
+**Les scripts** (tous lisent leurs chemins dans `pilotage/outils/commun.sh`, réglables par
+`NEMETON_CACHE`, `NEMETON_DEV`, `NEMETON_RENVIRON`, `NEMETON_CONTENEUR`) :
+
+| Script | Usage | Ce qu'il fait |
+|---|---|---|
+| `lance.sh` | `lance.sh NNN depot fiche.md` | copie le schéma et la fiche dans `mNNN/`, écrit la consigne de l'agent `dev`, ouvre une session `claude -p` dans un worktree `mission-NNN` du dépôt cible, en tâche de fond (`flux.jsonl`, `err.log`, `pid`) |
+| `relance.sh` | `relance.sh NNN depot k message.md` | reprend la session de la mission (`--resume`, identifiant lu dans `flux*.jsonl`), sortie dans `fluxk.jsonl` |
+| `preuve.sh` | `preuve.sh NNN depot numero_pr` | prouve `.claude/test-command` sur le SHA exact de la PR, dans un worktree jetable, et affiche « sha, code, durée » pour la ligne de fusion du journal ; sortie dans `preuve.log` |
+| `resultat.sh` | `resultat.sh NNN [flux]` | résume un flux : coût, sortie structurée, dernier texte de l'agent |
+| `test.sh` | `bash pilotage/outils/test.sh` | `bash -n` de chaque script et essai à blanc (aucun appel à `claude`, `gh` ni `docker`, aucune écriture dans le cache) |
+
+**La commande `claude -p` complète** (celle de `lance.sh` ; `relance.sh` ajoute `--resume
+<session>` et remplace la consigne par le message) :
+
+```
+timeout 7200 claude -p "<consigne>" -w mission-NNN --model sonnet \
+  --settings '{"enabledPlugins":{"imperatrice@pobsteta":true}}' \
+  --permission-mode auto --permission-prompts none \
+  --disallowedTools "Bash(gh pr merge *)" --max-budget-usd 3 \
+  --output-format stream-json --verbose --json-schema "$(cat schema.json)"
+```
+
+Elle interdit la fusion à la session (la fusion reste à l'orchestrateur, après sa propre
+preuve) et plafonne chaque passe à 3 $. `A_BLANC=1` affiche la commande au lieu de la lancer.
+
+**Une base de test par mission et par preuve.** Depuis le 2026-11-18 (journal), chaque
+mission teste sur sa base `sommier_test_mNNN`, atteinte par une copie du `~/.Renviron`
+(`mNNN/Renviron`, désignée par `R_ENVIRON_USER`), car le `~/.Renviron` fixe
+`SOMMIER_TEST_DB` et écraserait la variable d'environnement. La preuve a la sienne,
+`sommier_test_mpreuveNNN`, recréée à neuf à chaque preuve (`DROP DATABASE … WITH (FORCE)`,
+`CREATE DATABASE`, extensions `postgis` et `pgcrypto`) avec un fichier `Renviron.preuve` à
+part : sans cela, une session reprise pendant la preuve teste sur la même base (collision
+du 2026-11-19). Les bases de test d'une mission fusionnée se retirent avec son worktree.
+
+**Le coût d'une reprise est cumulé.** `total_cost_usd` d'une passe reprise (`--resume`)
+contient déjà les passes précédentes (leçon du 2026-11-17, confirmée le 2026-11-20). Le coût
+d'une mission est donc le **maximum** relu dans ses `flux*.jsonl` (ce que montre
+`resultat.sh` sur le dernier flux), jamais la somme des passes. Le plafond de 3 $ est celui
+de chaque passe.
+
+**Le contrôle de charge.** `lance.sh`, `relance.sh` et `preuve.sh` lisent
+`/proc/pressure/io` (ligne `some`) avant d'agir et **s'arrêtent avec le code 3 et un message
+clair** si la pression d'E/S dépasse **60 % sur 60 s** (`avg60`). Réglages :
+`SEUIL_CHARGE_IO` (défaut 60), `FENETRE_CHARGE_IO` (`avg10`, `avg60`, `avg300`),
+`PRESSURE_IO_FICHIER` (pour les essais). Sans `/proc/pressure/io` (autre système), le
+contrôle est ignoré avec un avertissement. Raison : le 2026-11-19, un disque saturé par des
+calculs d'une autre session (pression à 77 %) a fait perdre deux passes à la mission 027.
+
+**Ce qui reste hors dépôt**, par nécessité : le fichier d'environnement de la base (mot de
+passe), le `~/.Renviron` de l'utilisateur, les traces `mNNN/` (jetables) et les boîtes
+d'échange `~/dev/briefs/`, dont le [`README.md`](../../README.md) fait une dépendance
+déclarée du pilotage.

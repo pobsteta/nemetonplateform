@@ -14,6 +14,11 @@ Où regarder, dans l'ordre :
 - Où en est le travail, et ce qui attend : [`pilotage/kanban.md`](pilotage/kanban.md) (colonnes « Bac à sable » et « Validé »).
 - Ce qui s'est passé et pourquoi : [`pilotage/journal.md`](pilotage/journal.md), en ajout seul, les dernières lignes en bas.
 - L'équipe, le plafond de PR, les missions : [`pilotage/equipe.md`](pilotage/equipe.md) et `pilotage/missions/`.
+- Les outils qui lancent, reprennent et prouvent les missions : [`pilotage/outils/`](pilotage/outils/), décrits dans l'ADR 0001 (section « Les outils d'exécution », [`docs/adr/0001-agir-dans-un-autre-depot.md`](docs/adr/0001-agir-dans-un-autre-depot.md)).
 - L'état lu de chaque projet au dernier cycle : [`pilotage/etat-cycle.yaml`](pilotage/etat-cycle.yaml).
+
+Dépendance hors dépôt : `~/dev/briefs/` (boîtes d'échange de briefs entre sessions, une par
+projet destinataire, `traites/` pour les exécutés), décrit par son propre `README.md`. Le
+pilotage y dépose et y lit des briefs ; rien n'en est copié ici.
 
 Un lien plutôt qu'une copie : ce fichier ne recopie aucun état.
