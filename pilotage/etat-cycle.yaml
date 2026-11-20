@@ -45,8 +45,8 @@ aigora-nemeton:
   lu_le: 2026-11-18
   lu_sur: clone local
 terrain:
-  dernier_tag_vu: v2026.11.1
-  main_lu: 39bba22c31911af1b8dc1060988cd03fc1088c92
+  dernier_tag_vu: v2026.11.2
+  main_lu: 73a0d54119f2f93198a6456f1eaef59bf3023d43
   lu_le: 2026-11-20
   lu_sur: github
 marculus:
