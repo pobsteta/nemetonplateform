@@ -293,3 +293,12 @@ calculs d'une autre session (pression à 77 %) a fait perdre deux passes à la m
 passe), le `~/.Renviron` de l'utilisateur, les traces `mNNN/` (jetables) et les boîtes
 d'échange `~/dev/briefs/`, dont le [`README.md`](../../README.md) du dépôt fait une dépendance
 déclarée du pilotage.
+
+**Note du 2026-11-20 (mission 034) : la base de test seulement pour qui s'en sert.**
+`lance.sh`, `relance.sh` et `preuve.sh` ne préparent la base PostgreSQL de test
+(`SOMMIER_TEST_DB`, fichier d'environnement, base `sommier_test_mNNN` ou
+`sommier_test_mpreuveNNN`) que pour les dépôts listés dans `DEPOTS_AVEC_BASE` (défaut :
+`sommieR`), par la fonction `depot_a_base` de `commun.sh`. Un autre dépôt, `terrain` par
+exemple, ne touche plus à la base. En passant, `lance.sh` crée la base `sommier_test_mNNN`
+(avec `postgis` et `pgcrypto`) quand elle manque, comme `preuve.sh` le faisait déjà pour la
+sienne (écart de la mission 029). Interface inchangée pour le reste.

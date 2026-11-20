@@ -10,6 +10,8 @@
 #   SEUIL_CHARGE_IO     seuil de pression d'E/S en % (défaut 60)
 #   FENETRE_CHARGE_IO   avg10, avg60 ou avg300 (défaut avg60 : 60 s)
 #   PRESSURE_IO_FICHIER fichier lu (défaut /proc/pressure/io ; pour les essais)
+#   DEPOTS_AVEC_BASE    dépôts qui se servent de la base de test, séparés par des espaces
+#                       (défaut sommieR) ; les autres ne reçoivent ni SOMMIER_TEST_DB ni base
 #   A_BLANC=1           affiche la commande au lieu de la lancer
 OUTILS=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 DEPOT=$(cd "$OUTILS/../.." && pwd)
@@ -36,4 +38,24 @@ controle_charge() {
 charge_renviron() {
   if [ -f "$RENVIRON" ]; then set -a; . "$RENVIRON"; set +a; return 0; fi
   echo "pas de fichier d'environnement ($RENVIRON) : tests d'intégration de la base ignorés" >&2; return 1
+}
+
+# Dit (code 0) si le dépôt $1 se sert de la base PostgreSQL de test. Critère : une liste
+# réglable, DEPOTS_AVEC_BASE (défaut « sommieR »), le plus simple et le plus sûr ; un dépôt
+# absent de la liste ne touche jamais à la base (mission 034).
+depot_a_base() {
+  local d
+  for d in ${DEPOTS_AVEC_BASE-sommieR}; do [ "$d" = "$1" ] && return 0; done
+  return 1
+}
+
+# Crée la base $1 (avec postgis et pgcrypto) si elle manque ; $2 = recréer (DROP avant).
+# Utilise les variables SOMMIER_TEST_* déjà chargées par charge_renviron.
+prepare_base() {
+  local base=$1 recree=$2 psql q
+  psql() { docker exec -e PGPASSWORD="$SOMMIER_TEST_PASSWORD" "$CONTENEUR" psql -U "$SOMMIER_TEST_USER" "$@"; }
+  if [ -n "$recree" ]; then psql -d postgres -qc "DROP DATABASE IF EXISTS $base WITH (FORCE)"; fi
+  if [ "$(psql -d postgres -tAc "SELECT 1 FROM pg_database WHERE datname='$base'")" != 1 ]; then
+    psql -d postgres -qc "CREATE DATABASE $base" && psql -d "$base" -qc "CREATE EXTENSION postgis; CREATE EXTENSION pgcrypto"
+  fi
 }
