@@ -102,10 +102,14 @@
 | [030](missions/030-terrain-fix-horodate-lecteur-nmea.md) heure UTC du fix, lecteur NMEA | `terrain` | `dev` | sonnet | appuyer | 3 oui | 10 |
 | [031](missions/031-nemetonshiny-hebergeur-hostinger.md) note Hostinger | `nemetonshiny` | `dev` | sonnet | appuyer | 3 oui | 10 |
 | [032](missions/032-plateforme-outils-execution.md) outils d'exécution versés | `nemetonplateforme` | `archiviste` | sonnet | appuyer | 3 oui | 10 |
+| [033](missions/033-terrain-version-calendaire.md) version calendaire | `terrain` | `dev` | sonnet | appuyer | 3 oui | 11 |
+| [034](missions/034-plateforme-base-de-test-utile.md) base de test seulement où elle sert | `nemetonplateforme` | `dev` | sonnet | appuyer | 3 oui | 12 |
+| [035](missions/035-groma-terrain-gnss-2026-11-1.md) Groma sur `terrain-gnss` v2026.11.1 | `groma` | `dev` | sonnet | appuyer | 3 oui | 12 |
+| [036](missions/036-terrain-agent-ntrip-obligatoire.md) agent NTRIP obligatoire | `terrain` | `dev` | sonnet | appuyer | 3 oui | 13 |
 
 Chaque mission est exécutée par une session ouverte dans le dépôt du projet (ADR 0001),
 relue par le `relecteur`, puis prouvée et fusionnée par l'orchestrateur (spec § 5).
 Les missions 001 à 003 étaient indépendantes : elles sont parties en parallèle, dans le plafond
 de 3 PR. Pour les missions 004 à 013, la validation est inscrite au journal le jour où chacune a
-été ouverte (sous la délégation, ou sur le « oui » de Pascal). Missions 014 à 026 : délégation élargie du 2026-11-18 ; 027 : cap de Pascal du 2026-11-19 ; 028 et 029 : caps de Pascal au bilan du 2026-11-20 ; 030 à 032 : délégation élargie (journal). Tableau complété le 2026-11-18 (mission 012), puis au bilan du 2026-11-20 ; la
+été ouverte (sous la délégation, ou sur le « oui » de Pascal). Missions 014 à 026 : délégation élargie du 2026-11-18 ; 027 : cap de Pascal du 2026-11-19 ; 028 et 029 : caps de Pascal au bilan du 2026-11-20 ; 030 à 032 : délégation élargie (journal) ; 033, 035 et 036 : caps de Pascal du 2026-11-20 ; 034 : délégation élargie. Tableau complété le 2026-11-18 (mission 012), puis aux bilans du 2026-11-20 (le second, cycles 10 à 13 : délégation gardée telle quelle, aucune défaite) ; la
 colonne « Cycle » donne le cycle où la mission a été lancée.
