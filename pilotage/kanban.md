@@ -33,6 +33,11 @@ _Modèle de carte :_
 
 ## Terminé
 
+- [036-terrain-agent-ntrip-obligatoire](missions/036-terrain-agent-ntrip-obligatoire.md) · terrain · depuis le cycle 13 · PR #36 fusionnée (73a0d54), tag `v2026.11.2` publié (release et JitPack)
+  - Homme : `dev` d'une session ouverte dans `terrain` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : `agent` obligatoire dans `Ntrip.requete`, validé (vide, blanc, espace, caractère de contrôle refusés) ; rupture déclarée, briefs à Marculus et Surculus
+  - Moyens : budget 2 $ (0,52 $ dépensés)
+  - Dépend de : rien
 - [035-groma-terrain-gnss-2026-11-1](missions/035-groma-terrain-gnss-2026-11-1.md) · groma · depuis le cycle 12 · PR #116 fusionnée en squash (f6e7c22) après un aller-retour ; release 2026.11.9 (PR release-please #114) à décider
   - Homme : `dev` d'une session ouverte dans `groma` (sonnet, ADR 0001), relu par le `relecteur`
   - Mission : terrain v2026.11.1 et `terrain-gnss` à la place de la copie GNSS de Groma, noms de terrain dans le code, GeoPackage inchangé (voie A)
