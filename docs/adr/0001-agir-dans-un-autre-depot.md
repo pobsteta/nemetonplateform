@@ -280,11 +280,16 @@ de chaque passe.
 `/proc/pressure/io` (ligne `some`) avant d'agir et **s'arrêtent avec le code 3 et un message
 clair** si la pression d'E/S dépasse **60 % sur 60 s** (`avg60`). Réglages :
 `SEUIL_CHARGE_IO` (défaut 60), `FENETRE_CHARGE_IO` (`avg10`, `avg60`, `avg300`),
-`PRESSURE_IO_FICHIER` (pour les essais). Sans `/proc/pressure/io` (autre système), le
-contrôle est ignoré avec un avertissement. Raison : le 2026-11-19, un disque saturé par des
+`PRESSURE_IO_FICHIER` (pour les essais). Quand la mesure est impossible (fichier absent ou
+illisible, fichier vide ou sans ligne `some`, fenêtre inconnue, valeur non numérique), le
+contrôle est ignoré avec un avertissement et **ne bloque pas** (décision de l'orchestrateur
+par délégation, 2026-11-20 : la valeur qui ne bloque pas à tort). Un `SEUIL_CHARGE_IO` non
+numérique donne un avertissement et le seuil par défaut (60). Le fichier d'environnement de
+la base est, par défaut, `~/.config/nemetonplateforme/renviron`, posé le 2026-11-20 par
+l'orchestrateur avec les droits 600. Raison : le 2026-11-19, un disque saturé par des
 calculs d'une autre session (pression à 77 %) a fait perdre deux passes à la mission 027.
 
 **Ce qui reste hors dépôt**, par nécessité : le fichier d'environnement de la base (mot de
 passe), le `~/.Renviron` de l'utilisateur, les traces `mNNN/` (jetables) et les boîtes
-d'échange `~/dev/briefs/`, dont le [`README.md`](../../README.md) fait une dépendance
+d'échange `~/dev/briefs/`, dont le [`README.md`](../../README.md) du dépôt fait une dépendance
 déclarée du pilotage.

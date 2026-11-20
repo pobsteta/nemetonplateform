@@ -22,5 +22,19 @@ for s in lance preuve relance; do
   { [ $c = 3 ] && grep -q ARRÊT "$T/sortie"; } && ok "$s.sh s'arrête sous charge (code 3)" || ko "$s.sh sous charge (code $c)"
   SEUIL_CHARGE_IO=90 PRESSURE_IO_FICHIER=$T/haut bash "$O/$s.sh" 999 projet 1 "$T/msg.md" 2>&1 | grep -q ARRÊT && ko "$s.sh : seuil réglable" || ok "$s.sh : seuil réglable"
 done
+# Cas dégradés : jamais de blocage, un avertissement.
+echo "" > "$T/vide"; echo "full avg60=99.00" > "$T/sanssome"; echo "some avg60=abc" > "$T/nan"
+cas(){ # nom, fichier, VAR=val
+  local nom=$1 fic=$2; shift 2
+  env "$@" PRESSURE_IO_FICHIER=$fic bash "$O/lance.sh" 999 projet x.md >"$T/sortie" 2>&1; c=$?
+  { [ $c = 0 ] && grep -q "contrôle de charge" "$T/sortie"; } && ok "charge : $nom (pas de blocage, avertissement)" || ko "charge : $nom (code $c)"
+}
+cas "fichier absent" "$T/nexiste-pas" X=1
+cas "fichier vide" "$T/vide" X=1
+cas "sans ligne some" "$T/sanssome" X=1
+cas "valeur non numérique" "$T/nan" X=1
+cas "fenêtre inconnue" "$T/haut" FENETRE_CHARGE_IO=avg7
+cas "seuil non numérique" "$T/bas" SEUIL_CHARGE_IO=beaucoup
+SEUIL_CHARGE_IO=beaucoup PRESSURE_IO_FICHIER=$T/haut bash "$O/lance.sh" 999 projet x.md >"$T/sortie" 2>&1; [ $? = 3 ] && ok "seuil non numérique : défaut 60 appliqué (77 % arrête)" || ko "seuil non numérique : défaut"
 [ "$(ls "$T/cache/m999")" = "flux.jsonl" ] && ok "essai à blanc sans trace" || ko "l'essai à blanc a écrit des traces"
 exit $rc

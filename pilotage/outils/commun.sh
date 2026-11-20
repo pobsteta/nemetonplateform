@@ -20,10 +20,12 @@ CONTENEUR=${NEMETON_CONTENEUR:-nemeton_timescaledb}
 
 # Contrôle de charge décidé au bilan du 2026-11-20 : s'arrête (code 3) si le disque est saturé.
 controle_charge() {
-  local f=${PRESSURE_IO_FICHIER:-/proc/pressure/io} seuil=${SEUIL_CHARGE_IO:-60} fen=${FENETRE_CHARGE_IO:-avg60} v
+  local f=${PRESSURE_IO_FICHIER:-/proc/pressure/io} seuil=${SEUIL_CHARGE_IO:-60} fen=${FENETRE_CHARGE_IO:-avg60} v num='^[0-9]+([.][0-9]+)?$'
+  if [[ ! $seuil =~ $num ]]; then echo "contrôle de charge : SEUIL_CHARGE_IO='$seuil' non numérique, seuil par défaut (60)" >&2; seuil=60; fi
   if [ ! -r "$f" ]; then echo "contrôle de charge ignoré : $f illisible" >&2; return 0; fi
   v=$(awk -v k="$fen" '$1=="some"{for(i=2;i<=NF;i++){split($i,a,"=");if(a[1]==k)print a[2]}}' "$f")
-  if [ -z "$v" ]; then echo "contrôle de charge : $fen introuvable dans $f" >&2; return 2; fi
+  if [ -z "$v" ]; then echo "contrôle de charge ignoré : $fen introuvable dans $f (format inattendu)" >&2; return 0; fi
+  if [[ ! $v =~ $num ]]; then echo "contrôle de charge ignoré : valeur '$v' non numérique dans $f" >&2; return 0; fi
   if awk -v v="$v" -v s="$seuil" 'BEGIN{exit !(v+0>s+0)}'; then
     echo "ARRÊT : pression d'E/S ($fen) à $v % pour un seuil de $seuil % ; attendre que le disque se libère ou régler SEUIL_CHARGE_IO (ADR 0001, « Les outils d'exécution »)." >&2
     return 3
