@@ -7,16 +7,15 @@ n=$1; repo=$2; pr=$3; M=$CACHE/m$n; P=$M/preuve
 controle_charge || exit $?
 cd "$DEV/$repo" || exit 1
 if [ -n "$A_BLANC" ]; then
-  echo "À BLANC : preuve de $repo#$pr dans $P (SHA lu par gh pr view), base sommier_test_mpreuve$n, puis bash .claude/test-command > $M/preuve.log"; exit 0
+  if depot_a_base "$repo"; then b=", base sommier_test_mpreuve$n"; else b=", sans base (dépôt hors DEPOTS_AVEC_BASE)"; fi
+  echo "À BLANC : preuve de $repo#$pr dans $P (SHA lu par gh pr view)$b, puis bash .claude/test-command > $M/preuve.log"; exit 0
 fi
 sha=$(gh pr view "$pr" --json headRefOid -q .headRefOid)
 git worktree remove -f -f "$P" 2>/dev/null; git fetch -q origin; git worktree add -q --detach "$P" "$sha" || exit 1
-if charge_renviron; then
+if depot_a_base "$repo" && charge_renviron; then
   export SOMMIER_TEST_DB=sommier_test_mpreuve$n
   sed "s/^SOMMIER_TEST_DB=.*/SOMMIER_TEST_DB=sommier_test_mpreuve$n/" ~/.Renviron > "$M/Renviron.preuve"; export R_ENVIRON_USER=$M/Renviron.preuve
-  for q in "DROP DATABASE IF EXISTS sommier_test_mpreuve$n WITH (FORCE)" "CREATE DATABASE sommier_test_mpreuve$n"; do
-    docker exec -e PGPASSWORD="$SOMMIER_TEST_PASSWORD" "$CONTENEUR" psql -U "$SOMMIER_TEST_USER" -d postgres -qc "$q"; done
-  docker exec -e PGPASSWORD="$SOMMIER_TEST_PASSWORD" "$CONTENEUR" psql -U "$SOMMIER_TEST_USER" -d sommier_test_mpreuve$n -qc "CREATE EXTENSION postgis; CREATE EXTENSION pgcrypto"
+  prepare_base "sommier_test_mpreuve$n" recree || exit 1
 fi
 cd "$P"; s=$(date +%s); bash .claude/test-command > "$M/preuve.log" 2>&1; c=$?
 echo "$n $repo#$pr sha=$sha code=$c duree=$(( $(date +%s)-s ))s"

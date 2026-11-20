@@ -20,10 +20,11 @@ Rends le résultat selon le schéma JSON fourni.
 EOC
 [ -z "$A_BLANC" ] && printf '%s\n' "$CONSIGNE" > "$M/consigne.txt"
 cd "$DEV/$repo" || exit 1
-if charge_renviron; then
+if depot_a_base "$repo" && charge_renviron; then
   export SOMMIER_TEST_DB=sommier_test_m$n
-  if [ -z "$A_BLANC" ]; then sed "s/^SOMMIER_TEST_DB=.*/SOMMIER_TEST_DB=sommier_test_m$n/" ~/.Renviron > "$M/Renviron"; fi
+  if [ -z "$A_BLANC" ]; then sed "s/^SOMMIER_TEST_DB=.*/SOMMIER_TEST_DB=sommier_test_m$n/" ~/.Renviron > "$M/Renviron"; prepare_base "sommier_test_m$n" || exit 1; fi
   export R_ENVIRON_USER=$M/Renviron
+  [ -n "$A_BLANC" ] && echo "À BLANC : base sommier_test_m$n créée si elle manque (postgis, pgcrypto)"
 fi
 CMD=(timeout 7200 claude -p "$CONSIGNE" -w mission-$n --model sonnet --settings '{"enabledPlugins":{"imperatrice@pobsteta":true}}' --permission-mode auto --permission-prompts none --disallowedTools "Bash(gh pr merge *)" --max-budget-usd 3 --output-format stream-json --verbose --json-schema "$(cat "$OUTILS/schema.json")")
 if [ -n "$A_BLANC" ]; then echo "À BLANC, dans $PWD (SOMMIER_TEST_DB=${SOMMIER_TEST_DB:-}) :"; printf '%q ' "${CMD[@]}" | cut -c1-400; echo; exit 0; fi

@@ -22,6 +22,17 @@ for s in lance preuve relance; do
   { [ $c = 3 ] && grep -q ARRÊT "$T/sortie"; } && ok "$s.sh s'arrête sous charge (code 3)" || ko "$s.sh sous charge (code $c)"
   SEUIL_CHARGE_IO=90 PRESSURE_IO_FICHIER=$T/haut bash "$O/$s.sh" 999 projet 1 "$T/msg.md" 2>&1 | grep -q ARRÊT && ko "$s.sh : seuil réglable" || ok "$s.sh : seuil réglable"
 done
+# Base de test : seulement pour les dépôts de DEPOTS_AVEC_BASE (défaut sommieR).
+printf 'SOMMIER_TEST_DB=x\n' > "$T/renv"; mkdir -p "$T/dev/sommieR"
+b(){ env -u SOMMIER_TEST_DB NEMETON_RENVIRON=$T/renv "$@" 2>&1; }
+b bash "$O/lance.sh" 999 projet x.md | grep -q "SOMMIER_TEST_DB=sommier\|base sommier" && ko "lance.sh : dépôt sans base ne doit pas annoncer de base" || ok "lance.sh : dépôt sans base, pas de base annoncée"
+b bash "$O/lance.sh" 999 sommieR x.md | grep -q "SOMMIER_TEST_DB=sommier_test_m999" && ok "lance.sh : sommieR, SOMMIER_TEST_DB annoncée" || ko "lance.sh : sommieR sans base"
+b bash "$O/lance.sh" 999 sommieR x.md | grep -q "base sommier_test_m999 créée si elle manque" && ok "lance.sh : sommieR, création de la base dite à blanc" || ko "lance.sh : création non annoncée"
+b bash "$O/preuve.sh" 999 projet 1 | grep -q "sans base" && ! b bash "$O/preuve.sh" 999 projet 1 | grep -q mpreuve && ok "preuve.sh : dépôt sans base, pas de base de preuve" || ko "preuve.sh : dépôt sans base"
+b bash "$O/preuve.sh" 999 sommieR 1 | grep -q "base sommier_test_mpreuve999" && ok "preuve.sh : sommieR, base de preuve annoncée" || ko "preuve.sh : sommieR sans base de preuve"
+b env DEPOTS_AVEC_BASE="projet autre" bash "$O/lance.sh" 999 projet x.md | grep -q "SOMMIER_TEST_DB=sommier_test_m999" && ok "DEPOTS_AVEC_BASE : liste réglable (projet ajouté)" || ko "DEPOTS_AVEC_BASE : projet ajouté"
+b env DEPOTS_AVEC_BASE="projet autre" bash "$O/lance.sh" 999 sommieR x.md | grep -q "SOMMIER_TEST_DB=sommier" && ko "DEPOTS_AVEC_BASE : sommieR retiré de la liste" || ok "DEPOTS_AVEC_BASE : sommieR retiré, plus de base"
+b env DEPOTS_AVEC_BASE= bash "$O/lance.sh" 999 sommieR x.md | grep -q "SOMMIER_TEST_DB=sommier" && ko "DEPOTS_AVEC_BASE vide : aucune base" || ok "DEPOTS_AVEC_BASE vide : aucune base"
 # Cas dégradés : jamais de blocage, un avertissement.
 echo "" > "$T/vide"; echo "full avg60=99.00" > "$T/sanssome"; echo "some avg60=abc" > "$T/nan"
 cas(){ # nom, fichier, VAR=val
