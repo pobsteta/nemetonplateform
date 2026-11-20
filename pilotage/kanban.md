@@ -10,7 +10,7 @@
 > mission propre à un projet qui a son `pilotage/` reste dans le kanban de ce projet ;
 > ici, sa carte y renvoie par un lien, sans la recopier.
 
-**Dernier cycle :** 12 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
+**Dernier cycle :** 13 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
 rien lancé. Une carte est immobile quand dernier cycle − N ≥ 2.)_
 
 _Modèle de carte :_
@@ -274,3 +274,4 @@ l'inscrit avec ce qu'elle nous apprend._
 - bilan du 2026-11-20 · sommieR de 0.38 à 0.44 sur les briefs du terrain (réalisé des travaux, photos, ortho sans réseau dans QField, import qui ne bloque plus la tournée) et contrats de `nemeton` testés · pour Pascal sur le terrain · au bilan du 2026-11-18 aucun changement réel n'avait descendu la chaîne ; cette fois des changements réels sont arrivés jusqu'aux applications de terrain
 - cycle 10 · sommieR v2026.11.2 lit les comptages de plants à l'import (décision du bilan arrivée en release le jour même) et passe aux versions calendaires ; `terrain` porte l'heure UTC du fix pour Groma (v0.8.0 à taguer) ; le pilotage se reprend depuis le dépôt seul (`pilotage/outils/`, contrôle de charge) · pour Pascal sur le terrain et un successeur · mauvaise nouvelle apprise : la lecture des comptages ne sert à rien tant que Surculus n'écrit pas les deux colonnes ; le lanceur ne créait pas la base de la mission ; un disque saturé par une autre session retient tout le cycle
 - cycle 12 · Groma 2026.11.9 · le forestier qui fait l'inventaire vidéo · première version de Groma sur la bibliothèque GNSS commune de terrain (v2026.11.1, heure UTC du fix), sans changement de fichier ni d'écran ; la livraison du cycle 11 était la bibliothèque elle-même
+- cycle 13 · terrain v2026.11.2 · les applications de terrain (Groma, Marculus, Surculus) · livraison technique : chaque application doit donner son propre nom au caster NTRIP, aucune ne peut plus se présenter sous le nom d'une autre ; rien de nouveau pour le forestier, Groma 2026.11.9 se nommait déjà
