@@ -1,0 +1,7 @@
+{"type":"object","required":["redite","pr","tests","question_pour_pascal"],
+ "properties":{
+  "redite":{"type":"string"},
+  "pr":{"type":["object","null"],"properties":{"numero":{"type":"integer"},"url":{"type":"string"},"sha":{"type":"string"}}},
+  "tests":{"type":"array","items":{"type":"object","required":["sha","commande","code_sortie"],
+    "properties":{"sha":{"type":"string"},"commande":{"type":"string"},"code_sortie":{"type":"integer"},"duree_s":{"type":"number"},"note":{"type":"string"}}}},
+  "question_pour_pascal":{"type":"string"}}}

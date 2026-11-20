@@ -34,6 +34,8 @@ l'effort.**
 | Les missions qui traversent plusieurs projets | `pilotage/missions/NNN-titre.md` |
 | L'avancement, tous projets confondus | `pilotage/kanban.md` |
 | La mémoire du pilotage commun | `pilotage/journal.md` — **ajout seul, on n'efface jamais** |
+| Lancer, reprendre et prouver une mission (scripts, schéma, contrôle de charge) | `pilotage/outils/`, décrits dans l'ADR 0001 (« Les outils d'exécution ») |
+| Les briefs échangés entre sessions (hors dépôt) | `~/dev/briefs/` et son `README.md` : dépendance du pilotage, non versionnée |
 | Les règles, les tests et le pilotage propres à un projet | le `CLAUDE.md`, le `.claude/test-command` et le `pilotage/` de ce projet |
 
 Un lien plutôt qu'une copie. Si une information existe à deux endroits, l'un des deux est faux.

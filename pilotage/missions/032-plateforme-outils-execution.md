@@ -7,7 +7,7 @@
 
 **En une phrase (quoi, et pourquoi) :** Verser au dépôt les outils qui lancent, reprennent et prouvent les missions, les décrire dans l'ADR 0001 et remettre à jour l'état de la plateforme, pour qu'un successeur reprenne le pilotage depuis le dépôt seul.
 
-**Redite par l'agent :** _à compléter par l'agent avant d'agir — s'il n'y arrive pas, il s'arrête._
+**Redite par l'agent :** Verser au dépôt les scripts d'exécution (sans chemin en dur ni secret, avec contrôle de charge), les décrire dans l'ADR 0001 et le README, nommer `~/dev/briefs/`, mettre à jour sommieR et ranger le dossier imbriqué de `vers-groma` (archiviste, 2026-11-20).
 
 ## Les sources à lire avant d'agir
 
