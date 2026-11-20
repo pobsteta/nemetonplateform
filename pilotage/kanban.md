@@ -10,7 +10,7 @@
 > mission propre à un projet qui a son `pilotage/` reste dans le kanban de ce projet ;
 > ici, sa carte y renvoie par un lien, sans la recopier.
 
-**Dernier cycle :** 9 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
+**Dernier cycle :** 10 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
 rien lancé. Une carte est immobile quand dernier cycle − N ≥ 2.)_
 
 _Modèle de carte :_
@@ -31,14 +31,13 @@ _Modèle de carte :_
 
 ## En cours
 
-- [028-sommier-import-comptages](missions/028-sommier-import-comptages.md) · sommieR · depuis le cycle 10 · lancée le 2026-11-20
+## Terminé
+
+- [028-sommier-import-comptages](missions/028-sommier-import-comptages.md) · sommieR · depuis le cycle 10 · PR #86 fusionnée en squash (fa558ed) après deux allers-retours ; release v2026.11.2
   - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
   - Mission : l'import QField lit `nb_plants_vivants` et `nb_plants_concurrences`
   - Moyens : budget 3 $
   - Dépend de : fusion de 029 (mêmes fichiers de version)
-
-## Terminé
-
 - [029-sommier-version-calendaire](missions/029-sommier-version-calendaire.md) · sommieR · depuis le cycle 10 · PR #85 fusionnée en squash (df94a39) ; release v2026.11.1
   - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
   - Mission : versions, tags et releases en `AAAA.M.N` (convention de `nemeton`), première 2026.11.1

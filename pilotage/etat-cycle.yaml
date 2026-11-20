@@ -21,13 +21,13 @@ foretaccess:
   lu_sur: github
 nemetonshiny:
   dernier_tag_vu: v2026.11.2
-  main_lu: 6fe1df4d201430de032231d0aa9cffa50dc15166
-  lu_le: 2026-11-19
+  main_lu: c6f94cf70ac7af126e509a0177eb82a3822f0cfa
+  lu_le: 2026-11-20
   lu_sur: github
 nemetonmcp:
-  dernier_tag_vu: v2026.11.11
-  main_lu: 0f5c6662b48a84bbb0395dfe3c506168ac74d55b
-  lu_le: 2026-11-19
+  dernier_tag_vu: v2026.11.13
+  main_lu: 0159b24cd97a73e3d8230b7ed3bc40415be2386b
+  lu_le: 2026-11-20
   lu_sur: github
 victor:
   dernier_tag_vu: null
@@ -46,13 +46,13 @@ aigora-nemeton:
   lu_sur: clone local
 terrain:
   dernier_tag_vu: v0.7.1
-  main_lu: 330ac46b7dd1eeef37283f3c1d385066d14bf622
-  lu_le: 2026-11-18
+  main_lu: e49186a62f72fa82703f2fa8d72f4b90ab963160
+  lu_le: 2026-11-20
   lu_sur: github
 marculus:
-  dernier_tag_vu: v2026.11.2
-  main_lu: 8255b8f8ff888f93ef3e735ce6bd36646a090f44
-  lu_le: 2026-11-19
+  dernier_tag_vu: v2026.11.3
+  main_lu: 41a01f78627aab78f81db6a4df1e71ab6bc11853
+  lu_le: 2026-11-20
   lu_sur: github
 surculus:
   dernier_tag_vu: v0.7.133
@@ -70,12 +70,12 @@ groma:
   lu_le: 2026-11-19
   lu_sur: github
 sylvostation:
-  dernier_tag_vu: v2026.11.1
+  dernier_tag_vu: v2026.11.2
   main_lu: 89672373a687a5931e92eb8f682300b60716b6a8
-  lu_le: 2026-11-18
+  lu_le: 2026-11-20
   lu_sur: github
 sommieR:
-  dernier_tag_vu: v0.44.0
-  main_lu: 2ca88d8d4c140c1b3097b82932ee176f5752852c
+  dernier_tag_vu: v2026.11.2
+  main_lu: fa558ed32cb91497c6cf9137f75551c3ab4acece
   lu_le: 2026-11-20
   lu_sur: github
