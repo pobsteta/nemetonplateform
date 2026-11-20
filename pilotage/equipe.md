@@ -96,10 +96,11 @@
 | [024](missions/024-sommier-demo-marsannay.md) démo Marsannay | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
 | [025](missions/025-sommier-ortho-tuilee.md) ortho tuilée et métadonnées | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
 | [026](missions/026-sommier-photos-terrain.md) photos de terrain | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
+| [027](missions/027-sommier-import-sans-blocage.md) import de terrain sans blocage | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
 
 Chaque mission est exécutée par une session ouverte dans le dépôt du projet (ADR 0001),
 relue par le `relecteur`, puis prouvée et fusionnée par l'orchestrateur (spec § 5).
 Les missions 001 à 003 étaient indépendantes : elles sont parties en parallèle, dans le plafond
 de 3 PR. Pour les missions 004 à 013, la validation est inscrite au journal le jour où chacune a
-été ouverte (sous la délégation, ou sur le « oui » de Pascal). Tableau complété le 2026-11-18 (mission 012) ; la
+été ouverte (sous la délégation, ou sur le « oui » de Pascal). Missions 014 à 026 : délégation élargie du 2026-11-18 ; 027 : cap de Pascal du 2026-11-19 (journal). Tableau complété le 2026-11-18 (mission 012), puis au bilan du 2026-11-20 ; la
 colonne « Cycle » donne le cycle où la mission a été lancée.

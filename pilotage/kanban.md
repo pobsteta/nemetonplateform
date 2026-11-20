@@ -25,6 +25,9 @@ _Modèle de carte :_
 
 ## Bac à sable
 
+- 028-sommier-import-comptages · sommieR · depuis le cycle 9 · décidé par Pascal au bilan du 2026-11-20 : l'import QField lit `nb_plants_vivants` et `nb_plants_concurrences`
+- 029-sommier-version-calendaire · sommieR · depuis le cycle 9 · décidé par Pascal au bilan du 2026-11-20 : versions, tags et releases en `AAAA.M.N`
+
 ## Validé
 
 ## Planifié
@@ -33,7 +36,7 @@ _Modèle de carte :_
 
 ## Terminé
 
-- [027-sommier-import-sans-blocage](missions/027-sommier-import-sans-blocage.md) · sommieR · depuis le cycle 9 · PR #84 fusionnée en squash (2ca88d8), 0.44.0 ; 8,54 $ pour un budget de 3 $
+- [027-sommier-import-sans-blocage](missions/027-sommier-import-sans-blocage.md) · sommieR · depuis le cycle 9 · PR #84 fusionnée en squash (2ca88d8), 0.44.0 ; 3,15 $ pour un budget de 3 $ (coût cumulé de la dernière passe)
   - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
   - Mission : aucun écart de forme d'une tournée de terrain ne fait refuser l'import ; accepté et signalé
   - Moyens : quatre passes ; vert prouvé par l'orchestrateur sur 6a24a90 (568 s)
@@ -223,3 +226,6 @@ l'inscrit avec ce qu'elle nous apprend._
 - cycle 7 · rien de neuf à livrer : aucun tag, aucun `main` changé hors de la fusion sommieR #71 (porte n° 3 de sommieR alignée sur la délégation) · pour Pascal · mauvaise nouvelle apprise : la CI de sommieR peut échouer deux fois de suite à l'installation des dépendances (apt, 30 min) sans qu'aucun test tourne ; relancer est la bonne réponse, et le bilan dira si la CI doit mettre ses dépendances en cache
 - bilan du 2026-11-18 · carte entièrement tranchée (21 liens relus dans le code, un seul en attente de sommieR), 14 projets dont sommieR et `sylvostation` pilotés, sept projets aux fusions prouvables · pour Pascal et l'orchestrateur · au bilan précédent la carte gardait six liens douteux ; elle ne désigne plus d'aval qui n'en est pas un ; mais aucun changement réel n'a encore descendu la chaîne (aucune release de `nemeton` depuis le cycle 4)
 - cycle 8 · la CI de sommieR ne perd plus 12 à 30 min avant le premier test (installation des dépendances R sous 40 s, tests en 4 min 41 s au lieu de 28 min) ; la mémoire de la plateforme est écrite là où elle fait foi (README, convention de fusion par dépôt dans la carte) · pour Pascal et l'orchestrateur · une PR de sommieR est prouvée verte en minutes ; mauvaise nouvelle apprise : un gain mesuré sur une seule étape peut cacher un temps déplacé dans une autre, c'est la durée totale du job qui compte ; et `Setup R` reste lent, hors de portée du workflow
+- cycle 9 · 13 missions (014 à 026) fusionnées ; tests de contrat sur les trois liens de code de `nemeton` (vers sommieR, nemetonshiny, nemetonmcp) ; nemetonmcp suit `nemeton` 2026.11.32-34 ; sommieR de 0.38 à 0.43 (réalisé des travaux vers nemetonshiny, photos, symbologie, ortho MBTiles) · pour Pascal et le terrain · mauvaise nouvelle apprise : base de test commune entre sessions, `journal_intact` refuse le rattrapage de `main` par merge (4 PR remplacées), et la spec de l'aval doit être lue avant de coder
+- bilan du 2026-11-19 (partiel, deux décisions de Pascal) · règle d'import « accepter et signaler, refuser seulement l'illisible » (mission 027) ; hébergeur du connecteur distant : Hostinger · pour Pascal et le terrain · aucune ligne de livraison n'avait été écrite à ce bilan (trou relevé le 2026-11-20)
+- bilan du 2026-11-20 · sommieR de 0.38 à 0.44 sur les briefs du terrain (réalisé des travaux, photos, ortho sans réseau dans QField, import qui ne bloque plus la tournée) et contrats de `nemeton` testés · pour Pascal sur le terrain · au bilan du 2026-11-18 aucun changement réel n'avait descendu la chaîne ; cette fois des changements réels sont arrivés jusqu'aux applications de terrain
