@@ -66,8 +66,8 @@ ramulus:
   lu_sur: github
 groma:
   dernier_tag_vu: v2026.11.8
-  main_lu: 4cff1839e712063773a09e5d1e38b9cdf18cdadf
-  lu_le: 2026-11-19
+  main_lu: f6e7c227dfbfe1a41d064832867348751c9bf68f
+  lu_le: 2026-11-20
   lu_sur: github
 sylvostation:
   dernier_tag_vu: v2026.11.2

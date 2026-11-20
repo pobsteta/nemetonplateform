@@ -10,7 +10,7 @@
 > mission propre à un projet qui a son `pilotage/` reste dans le kanban de ce projet ;
 > ici, sa carte y renvoie par un lien, sans la recopier.
 
-**Dernier cycle :** 11 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
+**Dernier cycle :** 12 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
 rien lancé. Une carte est immobile quand dernier cycle − N ≥ 2.)_
 
 _Modèle de carte :_
@@ -33,6 +33,16 @@ _Modèle de carte :_
 
 ## Terminé
 
+- [035-groma-terrain-gnss-2026-11-1](missions/035-groma-terrain-gnss-2026-11-1.md) · groma · depuis le cycle 12 · PR #116 fusionnée en squash (f6e7c22) après un aller-retour ; release 2026.11.9 (PR release-please #114) à décider
+  - Homme : `dev` d'une session ouverte dans `groma` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : terrain v2026.11.1 et `terrain-gnss` à la place de la copie GNSS de Groma, noms de terrain dans le code, GeoPackage inchangé (voie A)
+  - Moyens : budget 3 $ (1,85 $ dépensés, coût cumulé)
+  - Dépend de : terrain v2026.11.1 (fait)
+- [034-plateforme-base-de-test-utile](missions/034-plateforme-base-de-test-utile.md) · nemetonplateforme · depuis le cycle 12 · PR #45 fusionnée (00e7eea)
+  - Homme : `dev` dans un worktree de ce dépôt (sonnet), relu par le `relecteur`
+  - Mission : base de test PostgreSQL préparée seulement pour les dépôts qui s'en servent (sommieR)
+  - Moyens : budget 2 $
+  - Dépend de : rien
 - [033-terrain-version-calendaire](missions/033-terrain-version-calendaire.md) · terrain · depuis le cycle 11 · PR #35 fusionnée (39bba22) ; tag et release v2026.11.1 posés par l'orchestrateur, JitPack sert v2026.11.1
   - Homme : `dev` d'une session ouverte dans `terrain` (sonnet, ADR 0001), relu par le `relecteur`
   - Mission : tags, releases et versions de terrain en `vAAAA.M.N`, première v2026.11.1 (porte la 030) ; tag posé par l'orchestrateur après fusion
