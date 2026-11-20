@@ -25,14 +25,38 @@ _Modèle de carte :_
 
 ## Bac à sable
 
-- 028-sommier-import-comptages · sommieR · depuis le cycle 9 · décidé par Pascal au bilan du 2026-11-20 : l'import QField lit `nb_plants_vivants` et `nb_plants_concurrences`
-- 029-sommier-version-calendaire · sommieR · depuis le cycle 9 · décidé par Pascal au bilan du 2026-11-20 : versions, tags et releases en `AAAA.M.N`
-
 ## Validé
 
 ## Planifié
 
+- [028-sommier-import-comptages](missions/028-sommier-import-comptages.md) · sommieR · depuis le cycle 10
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : l'import QField lit `nb_plants_vivants` et `nb_plants_concurrences`
+  - Moyens : budget 3 $
+  - Dépend de : fusion de 029 (mêmes fichiers de version)
+
 ## En cours
+
+- [029-sommier-version-calendaire](missions/029-sommier-version-calendaire.md) · sommieR · depuis le cycle 10
+  - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : versions, tags et releases en `AAAA.M.N` (convention de `nemeton`), première 2026.11.1
+  - Moyens : budget 3 $ ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+- [030-terrain-fix-horodate-lecteur-nmea](missions/030-terrain-fix-horodate-lecteur-nmea.md) · terrain · depuis le cycle 10
+  - Homme : `dev` d'une session ouverte dans `terrain` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : heure UTC du fix et lecteur NMEA demandés par Groma, additifs, aux noms de terrain
+  - Moyens : budget 3 $ ; vert prouvé par l'orchestrateur sur le SHA exact
+  - Dépend de : rien
+- [031-nemetonshiny-hebergeur-hostinger](missions/031-nemetonshiny-hebergeur-hostinger.md) · nemetonshiny · depuis le cycle 10
+  - Homme : `dev` d'une session ouverte dans `nemetonshiny` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : note datée Hostinger dans le brief et l'ADR 0003, documentation seule
+  - Moyens : budget 1 $
+  - Dépend de : rien
+- [032-plateforme-outils-execution](missions/032-plateforme-outils-execution.md) · nemetonplateforme · depuis le cycle 10
+  - Homme : `archiviste`, relu par le `relecteur`
+  - Mission : outils d'exécution versés au dépôt et décrits dans l'ADR 0001 ; état de la plateforme à jour
+  - Moyens : worktree de ce dépôt ; PR de pilotage, hors plafond
+  - Dépend de : rien
 
 ## Terminé
 
