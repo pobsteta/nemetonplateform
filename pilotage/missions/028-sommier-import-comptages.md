@@ -25,7 +25,7 @@
 
 1. L'import lit les deux colonnes quand elles existent et les passe à `registre6_controle()` ; le bilan d'import porte les avertissements comme pour `photos_terrain`.
 2. Le projet QField des travaux (`sommier_projet_qfield_travaux()`) porte ces deux champs dans la couche des contrôles, si la spec de Surculus les y met ; sinon ne rien ajouter et le dire.
-3. Tests pour chaque cas limite ; `.claude/test-command` verte ; CI verte ; version suivante au format calendaire de la mission 029 ; NEWS ; journal en ajout seul.
+3. Tests pour chaque cas limite ; `.claude/test-command` verte ; CI verte ; version suivante au format calendaire de la mission 029 : `main` est à 2026.11.1 (release posée le 2026-11-20, sans passage en `.9000`), la version de cette mission est donc **2026.11.2** (si le mois a changé à la fusion, `AAAA.M.1`) ; NEWS ; journal en ajout seul.
 4. Un mot à Surculus : `~/dev/briefs/vers-surculus/2026-11-20-reponse-sommier-import-comptages.md` (ce qui est lu, sous quels noms, ce qui est signalé).
 
 Aucune rupture : une tournée sans ces colonnes s'importe comme avant.
@@ -35,4 +35,5 @@ Aucune rupture : une tournée sans ces colonnes s'importe comme avant.
 - **Agent :** `dev`, dans une session ouverte dans `sommieR`. **Modèle :** sonnet. Relu par le `relecteur`.
 - **Moyens :** budget 3 $ ; worktree depuis `origin/main`.
 - **Ce qui ne lui est pas demandé :** toucher un autre dépôt (sauf la boîte `vers-surculus`) ; fusionner ; changer les seuils 20 % et 50 %.
-- **Dépend de / rouge attendu jusqu'à :** la fusion de la mission 029 (mêmes fichiers de version). Ne part pas avant.
+- **Dépend de / rouge attendu jusqu'à :** la fusion de la mission 029 (mêmes fichiers de version) : faite le 2026-11-20 (df94a39, v2026.11.1).
+- **Base de test :** celle de `R_ENVIRON_USER` posé par le lanceur (`sommier_test_m028`) ; ne pas écrire d'autre fichier d'environnement ni viser une autre base (écart de la mission 029).

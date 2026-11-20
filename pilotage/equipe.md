@@ -97,10 +97,15 @@
 | [025](missions/025-sommier-ortho-tuilee.md) ortho tuilée et métadonnées | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
 | [026](missions/026-sommier-photos-terrain.md) photos de terrain | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
 | [027](missions/027-sommier-import-sans-blocage.md) import de terrain sans blocage | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 9 |
+| [028](missions/028-sommier-import-comptages.md) import des comptages de plants | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 10 |
+| [029](missions/029-sommier-version-calendaire.md) version calendaire | `sommieR` | `dev` | sonnet | appuyer | 3 oui | 10 |
+| [030](missions/030-terrain-fix-horodate-lecteur-nmea.md) heure UTC du fix, lecteur NMEA | `terrain` | `dev` | sonnet | appuyer | 3 oui | 10 |
+| [031](missions/031-nemetonshiny-hebergeur-hostinger.md) note Hostinger | `nemetonshiny` | `dev` | sonnet | appuyer | 3 oui | 10 |
+| [032](missions/032-plateforme-outils-execution.md) outils d'exécution versés | `nemetonplateforme` | `archiviste` | sonnet | appuyer | 3 oui | 10 |
 
 Chaque mission est exécutée par une session ouverte dans le dépôt du projet (ADR 0001),
 relue par le `relecteur`, puis prouvée et fusionnée par l'orchestrateur (spec § 5).
 Les missions 001 à 003 étaient indépendantes : elles sont parties en parallèle, dans le plafond
 de 3 PR. Pour les missions 004 à 013, la validation est inscrite au journal le jour où chacune a
-été ouverte (sous la délégation, ou sur le « oui » de Pascal). Missions 014 à 026 : délégation élargie du 2026-11-18 ; 027 : cap de Pascal du 2026-11-19 (journal). Tableau complété le 2026-11-18 (mission 012), puis au bilan du 2026-11-20 ; la
+été ouverte (sous la délégation, ou sur le « oui » de Pascal). Missions 014 à 026 : délégation élargie du 2026-11-18 ; 027 : cap de Pascal du 2026-11-19 ; 028 et 029 : caps de Pascal au bilan du 2026-11-20 ; 030 à 032 : délégation élargie (journal). Tableau complété le 2026-11-18 (mission 012), puis au bilan du 2026-11-20 ; la
 colonne « Cycle » donne le cycle où la mission a été lancée.

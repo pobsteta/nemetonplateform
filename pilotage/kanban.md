@@ -29,36 +29,36 @@ _Modèle de carte :_
 
 ## Planifié
 
-- [028-sommier-import-comptages](missions/028-sommier-import-comptages.md) · sommieR · depuis le cycle 10
+## En cours
+
+- [028-sommier-import-comptages](missions/028-sommier-import-comptages.md) · sommieR · depuis le cycle 10 · lancée le 2026-11-20
   - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
   - Mission : l'import QField lit `nb_plants_vivants` et `nb_plants_concurrences`
   - Moyens : budget 3 $
   - Dépend de : fusion de 029 (mêmes fichiers de version)
 
-## En cours
+## Terminé
 
-- [029-sommier-version-calendaire](missions/029-sommier-version-calendaire.md) · sommieR · depuis le cycle 10
+- [029-sommier-version-calendaire](missions/029-sommier-version-calendaire.md) · sommieR · depuis le cycle 10 · PR #85 fusionnée en squash (df94a39) ; release v2026.11.1
   - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
   - Mission : versions, tags et releases en `AAAA.M.N` (convention de `nemeton`), première 2026.11.1
   - Moyens : budget 3 $ ; vert prouvé par l'orchestrateur sur le SHA exact
   - Dépend de : rien
-- [030-terrain-fix-horodate-lecteur-nmea](missions/030-terrain-fix-horodate-lecteur-nmea.md) · terrain · depuis le cycle 10
+- [030-terrain-fix-horodate-lecteur-nmea](missions/030-terrain-fix-horodate-lecteur-nmea.md) · terrain · depuis le cycle 10 · PR #34 fusionnée (e49186a) ; tag v0.8.0 à poser par Pascal
   - Homme : `dev` d'une session ouverte dans `terrain` (sonnet, ADR 0001), relu par le `relecteur`
   - Mission : heure UTC du fix et lecteur NMEA demandés par Groma, additifs, aux noms de terrain
   - Moyens : budget 3 $ ; vert prouvé par l'orchestrateur sur le SHA exact
   - Dépend de : rien
-- [031-nemetonshiny-hebergeur-hostinger](missions/031-nemetonshiny-hebergeur-hostinger.md) · nemetonshiny · depuis le cycle 10
+- [031-nemetonshiny-hebergeur-hostinger](missions/031-nemetonshiny-hebergeur-hostinger.md) · nemetonshiny · depuis le cycle 10 · PR #307 fusionnée (c6f94cf7), documentation seule
   - Homme : `dev` d'une session ouverte dans `nemetonshiny` (sonnet, ADR 0001), relu par le `relecteur`
   - Mission : note datée Hostinger dans le brief et l'ADR 0003, documentation seule
   - Moyens : budget 1 $
   - Dépend de : rien
-- [032-plateforme-outils-execution](missions/032-plateforme-outils-execution.md) · nemetonplateforme · depuis le cycle 10
+- [032-plateforme-outils-execution](missions/032-plateforme-outils-execution.md) · nemetonplateforme · depuis le cycle 10 · PR #40 fusionnée (9d6c16d), un aller-retour
   - Homme : `archiviste`, relu par le `relecteur`
   - Mission : outils d'exécution versés au dépôt et décrits dans l'ADR 0001 ; état de la plateforme à jour
   - Moyens : worktree de ce dépôt ; PR de pilotage, hors plafond
   - Dépend de : rien
-
-## Terminé
 
 - [027-sommier-import-sans-blocage](missions/027-sommier-import-sans-blocage.md) · sommieR · depuis le cycle 9 · PR #84 fusionnée en squash (2ca88d8), 0.44.0 ; 3,15 $ pour un budget de 3 $ (coût cumulé de la dernière passe)
   - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
