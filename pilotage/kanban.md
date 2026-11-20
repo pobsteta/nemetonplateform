@@ -10,7 +10,7 @@
 > mission propre à un projet qui a son `pilotage/` reste dans le kanban de ce projet ;
 > ici, sa carte y renvoie par un lien, sans la recopier.
 
-**Dernier cycle :** 10 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
+**Dernier cycle :** 11 _(augmenté de 1 à la fin de chaque `/boucle`, même quand elle n'a
 rien lancé. Une carte est immobile quand dernier cycle − N ≥ 2.)_
 
 _Modèle de carte :_
@@ -33,6 +33,11 @@ _Modèle de carte :_
 
 ## Terminé
 
+- [033-terrain-version-calendaire](missions/033-terrain-version-calendaire.md) · terrain · depuis le cycle 11 · PR #35 fusionnée (39bba22) ; tag et release v2026.11.1 posés par l'orchestrateur, JitPack sert v2026.11.1
+  - Homme : `dev` d'une session ouverte dans `terrain` (sonnet, ADR 0001), relu par le `relecteur`
+  - Mission : tags, releases et versions de terrain en `vAAAA.M.N`, première v2026.11.1 (porte la 030) ; tag posé par l'orchestrateur après fusion
+  - Moyens : budget 3 $ ; worktree depuis `origin/main`
+  - Dépend de : rien
 - [028-sommier-import-comptages](missions/028-sommier-import-comptages.md) · sommieR · depuis le cycle 10 · PR #86 fusionnée en squash (fa558ed) après deux allers-retours ; release v2026.11.2
   - Homme : `dev` d'une session ouverte dans `sommieR` (sonnet, ADR 0001), relu par le `relecteur`
   - Mission : l'import QField lit `nb_plants_vivants` et `nb_plants_concurrences`
