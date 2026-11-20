@@ -44,3 +44,6 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Copie locale de Pascal, non versée (dépôt public) : voir docs/references/piedallu-2006-stations-vosges.md
+docs/Piedallu_al_2006_etude_CAS.pdf
